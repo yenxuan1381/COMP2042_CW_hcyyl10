@@ -38,16 +38,20 @@ public class Player {
 
     /**
      * Constructor to create a player class 
-     * @param ballPoint The coordinates of the point of the ball that touches the player paddle
-     * @param width The width of the player
-     * @param height The height of the player
-     * @param container The rectangle shape of the player paddle
+     * @param ballPoint The coordinates of the point of the ball that touches the player's paddle
+     * @param width The width of the player's paddle
+     * @param height The height of the player's paddle
+     * @param container The rectangle shape of the player's paddle
      */
 
     public Player(Point ballPoint,int width,int height,Rectangle container) {
         this.ballPoint = ballPoint;
+        
+        //initialise the moveAmount
         moveAmount = 0;
         playerFace = makeRectangle(width, height);
+        
+        //container.x is the X coordinate of the upper-left corner of the Rectangle container.
         min = container.x + (width / 2);
         max = min + container.width - width;
 

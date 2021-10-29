@@ -74,7 +74,6 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         this.owner = owner;
 
 
-
         menuFace = new Rectangle(new Point(0,0),area);
         this.setPreferredSize(area);
 

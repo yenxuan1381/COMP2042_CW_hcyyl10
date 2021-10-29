@@ -31,13 +31,15 @@ abstract public class Ball {
      * Constructor of Ball class
      * 
      * @param center The coordinates of the center of the ball
-     * @param radiusA The vertical radius of the ball
-     * @param radiusB The horizontal radius of the ball
+     * @param radiusA The horizontal radius of the ball
+     * @param radiusB The vertical radius of the ball
      * @param inner The color code for the inner color of the ball object
      * @param border The color code for the border color of the ball object
      */
+    
+    //since the ball is circle, one radius should be enough?
 
-    public Ball(Point2D center,int radiusA,int radiusB,Color inner,Color border){
+    public Ball(Point2D center,int radius,Color inner,Color border){
         this.center = center;
 
         up = new Point2D.Double();
@@ -45,14 +47,14 @@ abstract public class Ball {
         left = new Point2D.Double();
         right = new Point2D.Double();
 
-        up.setLocation(center.getX(),center.getY()-(radiusB / 2));
-        down.setLocation(center.getX(),center.getY()+(radiusB / 2));
+        up.setLocation(center.getX(),center.getY()-(radius / 2));
+        down.setLocation(center.getX(),center.getY()+(radius / 2));
 
-        left.setLocation(center.getX()-(radiusA /2),center.getY());
-        right.setLocation(center.getX()+(radiusA /2),center.getY());
+        left.setLocation(center.getX()-(radius /2),center.getY());
+        right.setLocation(center.getX()+(radius /2),center.getY());
 
 
-        ballFace = makeBall(center,radiusA,radiusB);
+        ballFace = makeBall(center,radius);
         this.border = border;
         this.inner  = inner;
         speedX = 0;
@@ -62,12 +64,12 @@ abstract public class Ball {
     /**
      * Abstract method to create the shape of the ball object
      * @param center The coordinates of the center of the ball
-     * @param radiusA The vertical radius of the ball
-     * @param radiusB The horizontal radius of the ball
+     * @param radiusA The horizontal radius of the ball
+     * @param radiusB The vertical radius of the ball
      * @return The shape of the ball object
      */
 
-    protected abstract Shape makeBall(Point2D center,int radiusA,int radiusB);
+    protected abstract Shape makeBall(Point2D center,int radius);
     
     /**
      * Method to move the ball object 
@@ -160,7 +162,7 @@ abstract public class Ball {
     
     /**
      * Getter for the shape of the ball object
-     * @return the shape of the ball <!!>
+     * @return the shape of the ball 
      */
     
     public Shape getBallFace(){
