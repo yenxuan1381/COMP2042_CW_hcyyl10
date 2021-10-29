@@ -45,6 +45,11 @@ abstract public class Brick  {
         private int crackDepth;
         private int steps;
 
+        /**
+         * Constructer of crack class
+         * @param crackDepth
+         * @param steps
+         */
 
         public Crack(int crackDepth, int steps){
 
@@ -53,8 +58,6 @@ abstract public class Brick  {
             this.steps = steps;
 
         }
-
-
 
         public GeneralPath draw(){
 
@@ -189,6 +192,15 @@ abstract public class Brick  {
 
     private boolean broken;
 
+    /**
+     * Constructor for the brick object
+     * @param name Name of the brick object
+     * @param pos Position of the brick object
+     * @param size Size of the brick object
+     * @param border Color of the border of the brick object
+     * @param inner Inner color of the brick object
+     * @param strength Strength of the brick object
+     */
 
     public Brick(String name, Point pos,Dimension size,Color border,Color inner,int strength){
         rnd = new Random();
@@ -200,6 +212,13 @@ abstract public class Brick  {
         this.fullStrength = this.strength = strength;
 
     }
+    
+    /**
+     * Abstract method to create the shape of the brick object
+     * @param pos Position of the brick object
+     * @param size Size of the brick object
+     * @return The shape of the brick object
+     */
 
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
 
@@ -210,18 +229,36 @@ abstract public class Brick  {
         return  broken;
     }
 
+    /**
+     * Getter for the shape of the brick object
+     * @return The shape of the brick object
+     */
+    
     public abstract Shape getBrick();
-
-
+    
+    /**
+     * Getter for the border color of the brick object
+     * @return the color of the border of the brick object
+     */
 
     public Color getBorderColor(){
         return  border;
     }
+    
+    /**
+     * Getter for the inner color of the brick object
+     * @return the inner color of the brick object
+     */
 
     public Color getInnerColor(){
         return inner;
     }
-
+    
+    /**
+     * Method to find the impact point between the ball object and the brick object
+     * @param b The ball object
+     * @return The speed and direction of the ball after impact
+     */
 
     public final int findImpact(Ball b){
         if(broken)
@@ -237,15 +274,28 @@ abstract public class Brick  {
             out = UP_IMPACT;
         return out;
     }
+    
+    /**
+     * Method to determine whether the brick object is broken
+     * @return True if the brick object is broken, False if the brick object is not broken
+     */
 
     public final boolean isBroken(){
         return broken;
     }
+    
+    /**
+     * Method to reset the strength of the brick object to full strength
+     */
 
     public void repair() {
         broken = false;
         strength = fullStrength;
     }
+    
+    /**
+     * Method to decrease the strength of the brick object
+     */
 
     public void impact(){
         strength--;

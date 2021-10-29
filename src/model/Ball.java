@@ -87,7 +87,7 @@ abstract public class Ball {
     }
     
     /**
-     * Method to set the speed of the ball
+     * Setter to set the speed of the ball
      * @param x The horizontal speed of the ball
      * @param y The vertical speed of the ball
      */
@@ -98,7 +98,7 @@ abstract public class Ball {
     }
     
     /**
-     * Method to set the horizontal speed of the ball
+     * Setter to set horizontal speed of the ball
      * @param s The horizontal speed of the ball
      */
 
@@ -107,7 +107,7 @@ abstract public class Ball {
     }
     
     /**
-     * Method to set the vertical speed of the ball
+     * Setter to set the vertical speed of the ball
      * @param s The vertical speed of the ball
      */
     
@@ -133,7 +133,7 @@ abstract public class Ball {
     
     /**
      * Getter for the border color of the ball object
-     * @return Color code of the border color of the ball 
+     * @return Color code of the border color of the ball object
      */
 
     public Color getBorderColor(){
@@ -142,7 +142,7 @@ abstract public class Ball {
     
     /**
      * Getter for the inner Color of the ball object
-     * @return Color code of the inner color of the ball 
+     * @return Color code of the inner color of the ball object 
      */
 
     public Color getInnerColor(){
@@ -184,7 +184,7 @@ abstract public class Ball {
     }
     
     /**
-     * Method to set the points of the ball
+     * Setter to set set the points of the ball
      * @param width The width of the ball
      * @param height The height of the ball
      */

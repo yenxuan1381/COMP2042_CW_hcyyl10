@@ -36,6 +36,13 @@ public class Player {
     private int min;
     private int max;
 
+    /**
+     * Constructor to create a player class 
+     * @param ballPoint The coordinates of the point of the ball that touches the player paddle
+     * @param width The width of the player
+     * @param height The height of the player
+     * @param container The rectangle shape of the player paddle
+     */
 
     public Player(Point ballPoint,int width,int height,Rectangle container) {
         this.ballPoint = ballPoint;
@@ -45,15 +52,32 @@ public class Player {
         max = min + container.width - width;
 
     }
+    
+    /**
+     * Method to create a rectangle object 
+     * @param width The width of the rectangle
+     * @param height The height of the rectangle
+     * @return A rectangle object
+     */
 
     private Rectangle makeRectangle(int width,int height){
         Point p = new Point((int)(ballPoint.getX() - (width / 2)),(int)ballPoint.getY());
         return  new Rectangle(p,new Dimension(width,height));
     }
+    
+    /**
+     * Method that determines whether the ball touches the player's paddle
+     * @param b The ball object
+     * @return True if the ball touches the player's paddle, False if the ball did not touch the player's paddle
+     */
 
     public boolean impact(Ball b){
         return playerFace.contains(b.getPosition()) && playerFace.contains(b.down) ;
     }
+    
+    /**
+     * Method to move the player's paddle
+     */
 
     public void move(){
         double x = ballPoint.getX() + moveAmount;
@@ -62,22 +86,44 @@ public class Player {
         ballPoint.setLocation(x,ballPoint.getY());
         playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
     }
+    
+    /**
+     * Method to move the player's paddle to the left
+     */
 
     public void moveLeft(){
         moveAmount = -DEF_MOVE_AMOUNT;
     }
+    
+    /**
+     * Method to move the player's paddle to the right
+     */
 
     public void movRight(){
         moveAmount = DEF_MOVE_AMOUNT;
     }
+    
+    /**
+     * Method to stop the player's paddle from moving
+     */
 
     public void stop(){
         moveAmount = 0;
     }
+    
+    /**
+     * Getter to get the shape of the player's paddle
+     * @return The shape of the player's paddle
+     */
 
     public Shape getPlayerFace(){
         return  playerFace;
     }
+    
+    /**
+     * Method to move the player's paddle to a specific point
+     * @param p The coordinates of the point for the player's paddle to move to
+     */
 
     public void moveTo(Point p){
         ballPoint.setLocation(p);
