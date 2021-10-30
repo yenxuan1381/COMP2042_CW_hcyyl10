@@ -29,7 +29,6 @@ import java.awt.event.*;
 import java.awt.font.FontRenderContext;
 
 
-
 public class GameBoard extends JComponent implements KeyListener,MouseListener,MouseMotionListener {
 
     private static final String CONTINUE = "Continue";
@@ -68,8 +67,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         strLen = 0;
         showPauseMenu = false;
-
-
 
         menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
 
@@ -112,8 +109,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         });
 
     }
-
-
 
     private void initialize(){
         this.setPreferredSize(new Dimension(DEF_WIDTH,DEF_HEIGHT));

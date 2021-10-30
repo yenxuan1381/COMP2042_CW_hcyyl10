@@ -44,6 +44,15 @@ public class Wall {
     private int brickCount;
     private int ballCount;
     private boolean ballLost;
+    
+    /**
+     * Constructor to create a wall class
+     * @param drawArea the wall shape
+     * @param brickCount the amount of bricks
+     * @param lineCount the amount of lines
+     * @param brickDimensionRatio the ratio of the brick shape
+     * @param ballPos the coordinates of the point of the ball
+     */
 
     public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
@@ -72,8 +81,17 @@ public class Wall {
 
         area = drawArea;
 
-
     }
+    
+    /**
+     * Method to create an array of a single type of bricks
+     * @param drawArea The area of the wall
+     * @param brickCnt The amount of bricks
+     * @param lineCnt The amount of line
+     * @param brickSizeRatio The ratio of the brick
+     * @param type The type of the brick
+     * @return An array of brick objects
+     */
 
     private Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int type){
         /*
@@ -114,6 +132,17 @@ public class Wall {
         return tmp;
 
     }
+    
+    /**
+     * Method to create an array of a two type of bricks in a chessboard pattern
+     * @param drawArea The area of the wall
+     * @param brickCnt The amount of bricks
+     * @param lineCnt The amount of line
+     * @param brickSizeRatio The ratio of the brick
+     * @param typeA The type of the brick
+     * @param typeB The type of the brick
+     * @return An array of brick objects
+     */
 
     private Brick[] makeChessboardLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int typeA, int typeB){
         /*
@@ -159,10 +188,24 @@ public class Wall {
         }
         return tmp;
     }
+    
+    /**
+     * Method to create a ball at a specific position
+     * @param ballPos The coordinates of the point of the ball
+     */
 
     private void makeBall(Point2D ballPos){
         setBall(new RubberBall(ballPos));
     }
+    
+    /**
+     * Method to create multiple game levels
+     * @param drawArea The area of the wall
+     * @param brickCount The amount of bricks
+     * @param lineCount The amount of lines
+     * @param brickDimensionRatio The ratio of the brick shape
+     * @return An array of brick objects
+     */
 
     private Brick[][] makeLevels(Rectangle drawArea,int brickCount,int lineCount,double brickDimensionRatio){
         Brick[][] tmp = new Brick[LEVELS_COUNT][];
@@ -172,12 +215,22 @@ public class Wall {
         tmp[3] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,CEMENT);
         return tmp;
     }
+    
+    /**
+     * Method to move the player and the ball object
+     */
 
     public void move(){
         getPlayer().move();
         getBall().move();
     }
 
+    /**
+     * Method to find the impact made by the ball
+     * <li> if impact made between ball and player, ball change direction
+     * <li> if impact made between ball and wall, the amount of bricks decreases 
+     */
+    
     public void findImpacts(){
         if(getPlayer().impact(getBall())){
             getBall().reverseY();
@@ -199,6 +252,11 @@ public class Wall {
             ballLost = true;
         }
     }
+    
+    /**
+     * Method to determine and set the direction of the ball if impact made between the ball and the wall
+     * @return True if impact is made, False if no impact is made
+     */
 
     private boolean impactWall(){
         for(Brick b : getBricks()){
@@ -222,6 +280,11 @@ public class Wall {
         }
         return false;
     }
+    
+    /**
+     * Method to determine and set the direction of the ball if impact made between the ball and the border
+     * @return True if impact is made, False if no impact is made
+     */
 
     private boolean impactBorder(){
         Point2D p = getBall().getPosition();
@@ -239,6 +302,10 @@ public class Wall {
     public boolean isBallLost(){
         return ballLost;
     }
+    
+    /**
+     * Method to reset the coordinates of the points of the ball to the default starting position
+     */
 
     public void ballReset(){
         getPlayer().moveTo(startPoint);
@@ -254,6 +321,10 @@ public class Wall {
         getBall().setSpeed(speedX,speedY);
         ballLost = false;
     }
+    
+    /**
+     * Method to reset the wall to the default amount of bricks
+     */
 
     public void wallReset(){
         for(Brick b : getBricks())
@@ -291,6 +362,14 @@ public class Wall {
         ballCount = 3;
     }
 
+    /**
+     * Method to create brick objects
+     * @param point The point of the brick object
+     * @param size The size of the brick object
+     * @param type The type of the brick object
+     * @return A brick object
+     */
+    
     private Brick makeBrick(Point point, Dimension size, int type){
         Brick out;
         switch(type){
