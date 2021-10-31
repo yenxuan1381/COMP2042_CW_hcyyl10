@@ -8,7 +8,7 @@ import java.util.Random;
 
 /**
  * This abstract class Brick allows other class to implement its method
- * @author filippo
+ * @author Emily
  *
  */
 
@@ -24,7 +24,11 @@ abstract public class Brick  {
     public static final int LEFT_IMPACT = 300;
     public static final int RIGHT_IMPACT = 400;
 
-
+    /**
+     * Objects of this class represent the cracks of the brick
+     * @author Emily
+     *
+     */
 
     public class Crack{
 
@@ -38,8 +42,6 @@ abstract public class Brick  {
         public static final int VERTICAL = 100;
         public static final int HORIZONTAL = 200;
 
-
-
         private GeneralPath crack;
 
         private int crackDepth;
@@ -47,8 +49,8 @@ abstract public class Brick  {
 
         /**
          * Constructer of crack class
-         * @param crackDepth
-         * @param steps
+         * @param crackDepth The depth of the crack
+         * @param steps The steps of the crack
          */
 
         public Crack(int crackDepth, int steps){
@@ -58,15 +60,29 @@ abstract public class Brick  {
             this.steps = steps;
 
         }
+        
+        /**
+         * Method to draw the crack
+         * @return Crack
+         */
 
         public GeneralPath draw(){
-
             return crack;
         }
+        
+        /**
+         * Method to reset the crack
+         */
 
         public void reset(){
             crack.reset();
         }
+        
+        /**
+         * Method to create a crack on a brick
+         * @param point The coordinates of the point of impact made by the ball on the brick
+         * @param direction The direction of the impact
+         */
 
         protected void makeCrack(Point2D point, int direction){
             Rectangle bounds = Brick.this.brickFace.getBounds();
@@ -107,11 +123,16 @@ abstract public class Brick  {
 
             }
         }
+        
+        /**
+         * Method to create a crack on a brick
+         * @param start The starting point of the crack
+         * @param end The ending point of the crack
+         */
 
         protected void makeCrack(Point start, Point end){
 
             GeneralPath path = new GeneralPath();
-
 
             path.moveTo(start.x,start.y);
 
@@ -138,11 +159,25 @@ abstract public class Brick  {
             path.lineTo(end.x,end.y);
             crack.append(path,true);
         }
+        
+        /**
+         * Method to get a random integer in bound
+         * @param bound The bound
+         * @return Random integer in the range of the bound
+         */
 
         private int randomInBounds(int bound){
             int n = (bound * 2) + 1;
             return rnd.nextInt(n) - bound;
         }
+        
+        /**
+         * Method to determine if i is in between steps and divisions
+         * @param i integer i
+         * @param steps number of steps
+         * @param divisions number of divisions
+         * @return
+         */
 
         private boolean inMiddle(int i,int steps,int divisions){
             int low = (steps / divisions);
@@ -150,6 +185,13 @@ abstract public class Brick  {
 
             return  (i > low) && (i < up);
         }
+        
+        /**
+         * Method to jump if in bound
+         * @param bound The bound
+         * @param probability The probability of jump
+         * @return A random integer in bound, Returns 0 if less than probability
+         */
 
         private int jumps(int bound,double probability){
 
@@ -158,6 +200,14 @@ abstract public class Brick  {
             return  0;
 
         }
+        
+        /**
+         * Method that return a random point in range between starting point and ending point
+         * @param from Starting point
+         * @param to Ending point
+         * @param direction The direction of impact
+         * @return A random point in range between from and to
+         */
 
         private Point makeRandomPoint(Point from,Point to, int direction){
 
@@ -221,6 +271,13 @@ abstract public class Brick  {
      */
 
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
+    
+    /**
+     * Method to determine whether the brick is broken or not
+     * @param point The coordinates of the point of the brick
+     * @param dir The direction of the impact
+     * @return True if brick is not broken, False if the brick is broken
+     */
 
     public  boolean setImpact(Point2D point , int dir){
         if(broken)

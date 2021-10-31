@@ -21,9 +21,13 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Objects of this class represent the player
+ * @author Emily
+ *
+ */
 
 public class Player {
-
 
     public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
     public static final Color INNER_COLOR = Color.GREEN;

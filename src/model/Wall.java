@@ -21,6 +21,11 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
+/**
+ * Objects of this class creates a wall of bricks
+ * @author Emily
+ *
+ */
 
 public class Wall {
 
@@ -47,7 +52,7 @@ public class Wall {
     
     /**
      * Constructor to create a wall class
-     * @param drawArea the wall shape
+     * @param drawArea the area of the wall
      * @param brickCount the amount of bricks
      * @param lineCount the amount of lines
      * @param brickDimensionRatio the ratio of the brick shape
@@ -80,7 +85,6 @@ public class Wall {
         setPlayer(new Player((Point) ballPos.clone(),150,10, drawArea));
 
         area = drawArea;
-
     }
     
     /**
@@ -136,8 +140,8 @@ public class Wall {
     /**
      * Method to create an array of a two type of bricks in a chessboard pattern
      * @param drawArea The area of the wall
-     * @param brickCnt The amount of bricks
-     * @param lineCnt The amount of line
+     * @param brickCnt The number of bricks
+     * @param lineCnt The number of line
      * @param brickSizeRatio The ratio of the brick
      * @param typeA The type of the brick
      * @param typeB The type of the brick
@@ -201,8 +205,8 @@ public class Wall {
     /**
      * Method to create multiple game levels
      * @param drawArea The area of the wall
-     * @param brickCount The amount of bricks
-     * @param lineCount The amount of lines
+     * @param brickCount The number of bricks
+     * @param lineCount The number of lines
      * @param brickDimensionRatio The ratio of the brick shape
      * @return An array of brick objects
      */
@@ -290,14 +294,29 @@ public class Wall {
         Point2D p = getBall().getPosition();
         return ((p.getX() < area.getX()) ||(p.getX() > (area.getX() + area.getWidth())));
     }
+    
+    /**
+     * Getter to get the number of bricks
+     * @return the number of bricks
+     */
 
     public int getBrickCount(){
         return brickCount;
     }
+    
+    /**
+     * Getter to get the number of balls left (lives)
+     * @return the number of balls left
+     */
 
     public int getBallCount(){
         return ballCount;
     }
+    
+    /**
+     * Method to determine is the ball lost (no impact made)
+     * @return True if the ball is lost, False if the ball is not lost
+     */
 
     public boolean isBallLost(){
         return ballLost;
@@ -332,31 +351,65 @@ public class Wall {
         brickCount = getBricks().length;
         ballCount = 3;
     }
+    
+    /**
+     * Method to determine if the balls left is 0
+     * @return True if the number of balls left is 0, False if the number of balls left is > 0
+     */
 
     public boolean ballEnd(){
         return ballCount == 0;
     }
+    
+    /**
+     * Method to determine if the game is done
+     * Game is done when the number of bricks left is 0
+     * @return True if the number of bricks left is 0, False if the number of bricks left is > 0
+     */
 
     public boolean isDone(){
         return brickCount == 0;
     }
+    
+    /**
+     * Method to move to the next level
+     */
 
     public void nextLevel(){
         setBricks(levels[level++]);
         this.brickCount = getBricks().length;
     }
+    
+    /**
+     * Method to determine if the game has another level
+     * @return True if the game has another level, False if the game is on the final level
+     */
 
     public boolean hasLevel(){
         return level < levels.length;
     }
+    
+    /**
+     * Setter to set the horizontal speed of the ball
+     * @param s Horizontal speed of the ball
+     */
 
     public void setBallXSpeed(int s){
         getBall().setXSpeed(s);
     }
+    
+    /**
+     * Setter to set the vertical speed of the ball
+     * @param s Vertical speed of the ball
+     */
 
     public void setBallYSpeed(int s){
         getBall().setYSpeed(s);
     }
+    
+    /**
+     * Method to reset the amount of balls left to 3 balls
+     */
 
     public void resetBallCount(){
         ballCount = 3;
@@ -387,26 +440,56 @@ public class Wall {
         }
         return  out;
     }
+    
+    /**
+     * Getter to get the player object
+     * @return The player obejct
+     */
 
 	public Player getPlayer() {
 		return player;
 	}
+	
+	/**
+	 * Setter to set the player object
+	 * @param player The player object
+	 */
 
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
+	
+	/**
+	 * Getter to get the ball object
+	 * @return The ball object
+	 */
 
 	public Ball getBall() {
 		return ball;
 	}
+	
+	/**
+	 * Setter to set the ball object
+	 * @param ball The ball object
+	 */
 
 	public void setBall(Ball ball) {
 		this.ball = ball;
 	}
+	
+	/**
+	 * Getter to get the array of brick objects
+	 * @return An array of brick objects
+	 */
 
 	public Brick[] getBricks() {
 		return bricks;
 	}
+	
+	/**
+	 * Setter to set the array of brick objects
+	 * @param bricks An Array of brick objects
+	 */
 
 	public void setBricks(Brick[] bricks) {
 		this.bricks = bricks;

@@ -4,9 +4,13 @@ import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
+/**
+ * Objects of this class inherits from the brick class, creating cement brick objects
+ * @author Emily
+ *
+ */
 
 public class CementBrick extends Brick {
-
 
     private static final String NAME = "Cement Brick";
     private static final Color DEF_INNER = new Color(147, 147, 147);
@@ -16,6 +20,11 @@ public class CementBrick extends Brick {
     private Crack crack;
     private Shape brickFace;
 
+    /**
+     * Constructor to create a brick object of the type cement
+     * @param point The coordinates of the point of the cement brick
+     * @param size The size of the cement brick 
+     */
 
     public CementBrick(Point point, Dimension size){
         super(NAME,point,size,DEF_BORDER,DEF_INNER,CEMENT_STRENGTH);
@@ -46,6 +55,10 @@ public class CementBrick extends Brick {
     public Shape getBrick() {
         return brickFace;
     }
+    
+    /**
+     * Method to update the condition of the cement brick
+     */
 
     private void updateBrick(){
         if(!super.isBroken()){
@@ -55,6 +68,7 @@ public class CementBrick extends Brick {
         }
     }
 
+    @Override
     public void repair(){
         super.repair();
         crack.reset();

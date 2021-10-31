@@ -25,6 +25,11 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 import java.awt.event.WindowListener;
 
+/**
+ * Objects of this class extend the JFrame class and implement WindowFocusListener interface
+ * @author Windows10
+ *
+ */
 
 public class GameFrame extends JFrame implements WindowFocusListener {
 
@@ -49,10 +54,12 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.add(homeMenu,BorderLayout.CENTER);
 
         this.setUndecorated(true);
-
-
     }
 
+    /**
+     * Method to initialize the variables
+     */
+    
     public void initialize(){
         this.setTitle(DEF_TITLE);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -60,6 +67,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.autoLocate();
         this.setVisible(true);
     }
+    
+    /**
+     * Method to enable the game board
+     */
 
     public void enableGameBoard(){
         this.dispose();
@@ -71,6 +82,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
+    
+    /**
+     * Method to auto locate the screen
+     */
 
     private void autoLocate(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();

@@ -26,16 +26,27 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+/**
+ * Object of this class extend JDialog and implements WindowListener interface
+ * @author Emily
+ *
+ */
+
 public class DebugConsole extends JDialog implements WindowListener{
 
     private static final String TITLE = "Debug Console";
-
 
     private JFrame owner;
     private DebugPanel debugPanel;
     private GameBoard gameBoard;
     private Wall wall;
 
+    /**
+     * Method to debug the console
+     * @param owner The owner
+     * @param wall The wall
+     * @param gameBoard The game board
+     */
 
     public DebugConsole(JFrame owner,Wall wall,GameBoard gameBoard){
 
@@ -46,10 +57,12 @@ public class DebugConsole extends JDialog implements WindowListener{
 
         debugPanel = new DebugPanel(wall);
         this.add(debugPanel,BorderLayout.CENTER);
-
-
         this.pack();
     }
+    
+    /**
+     * Method to initialize the variables
+     */
 
     private void initialize(){
         this.setModal(true);
@@ -60,6 +73,9 @@ public class DebugConsole extends JDialog implements WindowListener{
         this.setFocusable(true);
     }
 
+    /**
+     * Method to set the location of the owner
+     */
 
     private void setLocation(){
         int x = ((owner.getWidth() - this.getWidth()) / 2) + owner.getX();

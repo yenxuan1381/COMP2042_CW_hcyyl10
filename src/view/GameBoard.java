@@ -28,6 +28,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.font.FontRenderContext;
 
+/**
+ * Objects of this class extend JComponenet and implements KeyListener, MouseListener and MouseMotionListener methods
+ * @author Emily
+ *
+ */
 
 public class GameBoard extends JComponent implements KeyListener,MouseListener,MouseMotionListener {
 
@@ -61,7 +66,11 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private DebugConsole debugConsole;
 
-
+    /**
+     * Constructor to create the game board
+     * @param owner JFrame owner
+     */
+    
     public GameBoard(JFrame owner){
         super();
 
@@ -82,7 +91,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         gameTimer = new Timer(10,e ->{
             wall.move();
             wall.findImpacts();
-            message = String.format("Bricks: %d Balls %d",wall.getBrickCount(),wall.getBallCount());
+            message = String.format("Bricks: %d %nBalls %d",wall.getBrickCount(),wall.getBallCount());
             if(wall.isBallLost()){
                 if(wall.ballEnd()){
                     wall.wallReset();
@@ -109,6 +118,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         });
 
     }
+    
+    /**
+     * Method to initialize the variables
+     */
 
     private void initialize(){
         this.setPreferredSize(new Dimension(DEF_WIDTH,DEF_HEIGHT));
@@ -119,6 +132,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         this.addMouseMotionListener(this);
     }
 
+    /**
+     * Method to paint the graphics
+     */
 
     public void paint(Graphics g){
 
@@ -143,12 +159,23 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         Toolkit.getDefaultToolkit().sync();
     }
 
+    /**
+     * Method to clear the graphics
+     * @param g2d graphics
+     */
+    
     private void clear(Graphics2D g2d){
         Color tmp = g2d.getColor();
         g2d.setColor(BG_COLOR);
         g2d.fillRect(0,0,getWidth(),getHeight());
         g2d.setColor(tmp);
     }
+    
+    /**
+     * Method to draw the bricks
+     * @param brick Brick object
+     * @param g2d Graphics
+     */
 
     private void drawBrick(Brick brick,Graphics2D g2d){
         Color tmp = g2d.getColor();
@@ -162,6 +189,12 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         g2d.setColor(tmp);
     }
+    
+    /**
+     * Method to draw the ball
+     * @param ball Ball object
+     * @param g2d Graphics
+     */
 
     private void drawBall(Ball ball,Graphics2D g2d){
         Color tmp = g2d.getColor();
@@ -176,6 +209,12 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         g2d.setColor(tmp);
     }
+    
+    /**
+     * Method to draw the player
+     * @param p Player object
+     * @param g2d Graphics
+     */
 
     private void drawPlayer(Player p,Graphics2D g2d){
         Color tmp = g2d.getColor();
@@ -190,10 +229,20 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.setColor(tmp);
     }
 
+    /**
+     * Method to draw the menu
+     * @param g2d Graphics
+     */
+    
     private void drawMenu(Graphics2D g2d){
         obscureGameBoard(g2d);
         drawPauseMenu(g2d);
     }
+    
+    /**
+     * Method to draw the game board
+     * @param g2d Graphics
+     */
 
     private void obscureGameBoard(Graphics2D g2d){
 
@@ -209,11 +258,15 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.setComposite(tmp);
         g2d.setColor(tmpColor);
     }
+    
+    /**
+     * Method to draw the pause menu
+     * @param g2d Graphics
+     */
 
     private void drawPauseMenu(Graphics2D g2d){
         Font tmpFont = g2d.getFont();
         Color tmpColor = g2d.getColor();
-
 
         g2d.setFont(menuFont);
         g2d.setColor(MENU_COLOR);
@@ -362,6 +415,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
+    
+    /**
+     * Method to pause the game when focus is lost
+     */
 
     public void onLostFocus(){
         gameTimer.stop();

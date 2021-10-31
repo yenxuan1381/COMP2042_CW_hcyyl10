@@ -31,14 +31,11 @@ abstract public class Ball {
      * Constructor of Ball class
      * 
      * @param center The coordinates of the center of the ball
-     * @param radiusA The horizontal radius of the ball
-     * @param radiusB The vertical radius of the ball
+     * @param radius The radius of the ball
      * @param inner The color code for the inner color of the ball object
      * @param border The color code for the border color of the ball object
      */
     
-    //since the ball is circle, one radius should be enough?
-
     public Ball(Point2D center,int radius,Color inner,Color border){
         this.center = center;
 
@@ -64,8 +61,7 @@ abstract public class Ball {
     /**
      * Abstract method to create the shape of the ball object
      * @param center The coordinates of the center of the ball
-     * @param radiusA The horizontal radius of the ball
-     * @param radiusB The vertical radius of the ball
+     * @param radius The radius of the ball
      * @return The shape of the ball object
      */
 
