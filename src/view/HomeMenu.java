@@ -302,7 +302,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         }
         
         else if(infoButton.contains(p)){
-            //owner.enable(); show info page
+            owner.enableInfoPage();
         }
     }
 
