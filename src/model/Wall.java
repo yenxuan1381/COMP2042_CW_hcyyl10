@@ -34,6 +34,7 @@ public class Wall {
     private static final int CLAY = 1;
     private static final int STEEL = 2;
     private static final int CEMENT = 3;
+    private static final int SPECIAL = 4;
 
     private Random rnd;
     private Rectangle area;
@@ -70,6 +71,9 @@ public class Wall {
         ballLost = false;
 
         rnd = new Random();
+        
+        //if <condition> then make high speed
+        //if <condition> then make make multiple balls
 
         makeBall(ballPos);
         int speedX,speedY;
@@ -115,6 +119,8 @@ public class Wall {
 
         Dimension brickSize = new Dimension((int) brickLen,(int) brickHgt);
         Point p = new Point();
+        
+        Random rand = new Random();
 
         int i;
         for(i = 0; i < tmp.length; i++){
@@ -125,13 +131,33 @@ public class Wall {
             x =(line % 2 == 0) ? x : (x - (brickLen / 2));
             double y = (line) * brickHgt;
             p.setLocation(x,y);
-            tmp[i] = makeBrick(p,brickSize,type);
+            
+            double r = rand.nextDouble();
+    
+            // 10% chance to create Special Brick
+            if(r < 0.1) {
+            	tmp[i] = makeBrick(p,brickSize,SPECIAL);
+            }
+            
+            else {
+            	tmp[i] = makeBrick(p,brickSize,type);
+            }
+
         }
 
         for(double y = brickHgt;i < tmp.length;i++, y += 2*brickHgt){
             double x = (brickOnLine * brickLen) - (brickLen / 2);
             p.setLocation(x,y);
-            tmp[i] = new ClayBrick(p,brickSize);
+            
+            double r = rand.nextDouble();
+            
+            if(r < 0.1) {
+            	tmp[i] = makeBrick(p,brickSize,SPECIAL);
+            }
+            
+            else {
+            	tmp[i] = makeBrick(p,brickSize,type);
+            }
         }
         return tmp;
 
@@ -169,6 +195,8 @@ public class Wall {
 
         Dimension brickSize = new Dimension((int) brickLen,(int) brickHgt);
         Point p = new Point();
+        
+        Random rand = new Random();
 
         int i;
         for(i = 0; i < tmp.length; i++){
@@ -182,13 +210,32 @@ public class Wall {
             p.setLocation(x,y);
 
             boolean b = ((line % 2 == 0 && i % 2 == 0) || (line % 2 != 0 && posX > centerLeft && posX <= centerRight));
-            tmp[i] = b ?  makeBrick(p,brickSize,typeA) : makeBrick(p,brickSize,typeB);
+            
+            double r = rand.nextDouble();
+            
+            if(r < 0.1) {
+            	tmp[i] = makeBrick(p,brickSize,SPECIAL);
+            }
+            
+            else {
+            	tmp[i] = b ?  makeBrick(p,brickSize,typeA) : makeBrick(p,brickSize,typeB);
+            }
+            
         }
 
         for(double y = brickHgt;i < tmp.length;i++, y += 2*brickHgt){
             double x = (brickOnLine * brickLen) - (brickLen / 2);
             p.setLocation(x,y);
-            tmp[i] = makeBrick(p,brickSize,typeA);
+            double r = rand.nextDouble();
+            
+            if(r < 0.1) {
+            	tmp[i] = makeBrick(p,brickSize,SPECIAL);
+            }
+            
+            else {
+            	tmp[i] = makeBrick(p,brickSize,typeA);
+            }
+            
         }
         return tmp;
     }
@@ -434,6 +481,9 @@ public class Wall {
                 break;
             case CEMENT:
                 out = new CementBrick(point, size);
+                break;
+            case SPECIAL:
+                out = new SpecialBrick(point, size);
                 break;
             default:
                 throw  new IllegalArgumentException(String.format("Unknown Type:%d\n",type));

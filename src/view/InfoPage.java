@@ -25,7 +25,8 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
     private static final String DESCRIPTION = "A simple ball shooter game";
     private static final String PARAGRAPH1 = "Press A to move the paddle to the left";
     private static final String PARAGRAPH2 = "Press D to move the paddle to the right";
-    private static final String PARAGRAPH3 = "Press Spacebar to start the game!";
+    private static final String PARAGRAPH3 = "Press Esc to pause the game";
+    private static final String PARAGRAPH4 = "Press Spacebar to start the game!";
 	
     private static final Color BG_COLOR = new Color(233, 196, 106);
     private static final Color BORDER_COLOR = new Color(231, 111, 81); 
@@ -116,6 +117,11 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         g2d.setFont(prevFont);
         g2d.setColor(prevColor);
     }
+    
+    /**
+     * Method to draw a container
+     * @param g2d Graphics
+     */
 
     private void drawContainer(Graphics2D g2d){
         Color prev = g2d.getColor();
@@ -138,6 +144,11 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         g2d.setColor(prev);
     }
     
+    /**
+     * Method to draw the text
+     * @param g2d Graphics
+     */
+    
     private void drawText(Graphics2D g2d){
 
         g2d.setColor(TEXT_COLOR);
@@ -149,6 +160,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         Rectangle2D paragraphRect1 = paragraphFont.getStringBounds(PARAGRAPH1,frc);
         Rectangle2D paragraphRect2 = paragraphFont.getStringBounds(PARAGRAPH2,frc);
         Rectangle2D paragraphRect3 = paragraphFont.getStringBounds(PARAGRAPH3,frc);
+        Rectangle2D paragraphRect4 = paragraphFont.getStringBounds(PARAGRAPH4,frc);
 
         int sX,sY;
 
@@ -180,8 +192,17 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
         g2d.drawString(PARAGRAPH3,sX,sY);
         
+        sX = (int)(menuFace.getWidth() - paragraphRect4.getWidth()) / 2;
+        sY += (int) paragraphRect4.getHeight() * 1.1;
+
+        g2d.drawString(PARAGRAPH4,sX,sY);
 
     }
+    
+    /**
+     * Method to draw a button
+     * @param g2d Graphics
+     */
 
     private void drawButton(Graphics2D g2d){
 
@@ -219,8 +240,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -229,9 +249,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         if(returnButton.contains(p))
             this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         else
-            this.setCursor(Cursor.getDefaultCursor());
-
-		
+            this.setCursor(Cursor.getDefaultCursor());	
 	}
 
 	@Override
@@ -240,7 +258,6 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         if(returnButton.contains(p)){
            owner.enableHomeMenu();
         }
-	
 	}
 
 	@Override
@@ -257,21 +274,17 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 		if(returnClicked ){
             returnClicked = false;
             repaint(returnButton.x,returnButton.y,returnButton.width+1,returnButton.height+1);
-        }
-        
-		
+        }	
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 }

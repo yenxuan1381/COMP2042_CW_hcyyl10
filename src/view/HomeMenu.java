@@ -145,6 +145,11 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g2d.setFont(prevFont);
         g2d.setColor(prevColor);
     }
+    
+    /**
+     * Method to draw the container
+     * @param g2d Graphics
+     */
 
     private void drawContainer(Graphics2D g2d){
         Color prev = g2d.getColor();
@@ -166,6 +171,11 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
         g2d.setColor(prev);
     }
+    
+    /**
+     * Method to draw the text
+     * @param g2d Graphics
+     */
 
     private void drawText(Graphics2D g2d){
 
@@ -197,6 +207,11 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g2d.setFont(creditsFont);
         g2d.drawString(CREDITS,sX,sY);
     }
+    
+    /**
+     * Method to draw the button
+     * @param g2d Graphics
+     */
 
     private void drawButton(Graphics2D g2d){
 
