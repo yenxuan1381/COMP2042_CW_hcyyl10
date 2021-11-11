@@ -149,17 +149,7 @@ abstract public class Brick  {
         return broken;
     }
     
-//    /**
-//     * Method to unlock super mode (10%chance)
-//     * @return true if super mode, false if super mode not unlocked
-//     */
-//    public boolean isSuper() {
-//    	java.util.Random random = new java.util.Random();
-//    	double r = random.nextDouble();
-//    	
-//    	return (r < 0.1);
-//    }
-    
+
     /**
      * Method to reset the strength of the brick object to full strength
      */

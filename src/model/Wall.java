@@ -71,17 +71,14 @@ public class Wall {
         ballLost = false;
 
         rnd = new Random();
-        
-        //if <condition> then make high speed
-        //if <condition> then make make multiple balls
 
         makeBall(ballPos);
         int speedX,speedY;
         do{
-            speedX = rnd.nextInt(5) - 2;
+            speedX = rnd.nextInt(7) - 3;
         }while(speedX == 0);
         do{
-            speedY = -rnd.nextInt(3);
+            speedY = -rnd.nextInt(5);
         }while(speedY == 0);
 
         getBall().setSpeed(speedX,speedY);
@@ -134,8 +131,8 @@ public class Wall {
             
             double r = rand.nextDouble();
     
-            // 10% chance to create Special Brick
-            if(r < 0.1) {
+            // 30% chance to create Special Brick
+            if(r < 0.3) {
             	tmp[i] = makeBrick(p,brickSize,SPECIAL);
             }
             
@@ -151,7 +148,7 @@ public class Wall {
             
             double r = rand.nextDouble();
             
-            if(r < 0.1) {
+            if(r < 0.3) {
             	tmp[i] = makeBrick(p,brickSize,SPECIAL);
             }
             
@@ -213,7 +210,7 @@ public class Wall {
             
             double r = rand.nextDouble();
             
-            if(r < 0.1) {
+            if(r < 0.2) {
             	tmp[i] = makeBrick(p,brickSize,SPECIAL);
             }
             
@@ -228,7 +225,7 @@ public class Wall {
             p.setLocation(x,y);
             double r = rand.nextDouble();
             
-            if(r < 0.1) {
+            if(r < 0.2) {
             	tmp[i] = makeBrick(p,brickSize,SPECIAL);
             }
             
@@ -248,7 +245,7 @@ public class Wall {
     private void makeBall(Point2D ballPos){
         setBall(new RubberBall(ballPos));
     }
-    
+
     /**
      * Method to create multiple game levels
      * @param drawArea The area of the wall
@@ -275,6 +272,7 @@ public class Wall {
         getPlayer().move();
         getBall().move();
     }
+    
 
     /**
      * Method to find the impact made by the ball
@@ -303,6 +301,7 @@ public class Wall {
             ballLost = true;
         }
     }
+        
     
     /**
      * Method to determine and set the direction of the ball if impact made between the ball and the wall
@@ -310,28 +309,29 @@ public class Wall {
      */
 
     private boolean impactWall(){
-        for(Brick b : getBricks()){
-            switch(b.findImpact(getBall())) {
+        for(Brick br : getBricks()){
+            switch(br.findImpact(getBall())) {
                 //Vertical Impact
                 case Brick.UP_IMPACT:
                     getBall().reverseY();
-                    return b.setImpact(getBall().down, Crack.UP);
+                    return br.setImpact(getBall().down, Crack.UP);
                 case Brick.DOWN_IMPACT:
                     getBall().reverseY();
-                    return b.setImpact(getBall().up, Crack.DOWN);
+                    return br.setImpact(getBall().up, Crack.DOWN);
 
                 //Horizontal Impact
                 case Brick.LEFT_IMPACT:
                     getBall().reverseX();
-                    return b.setImpact(getBall().right, Crack.RIGHT);
+                    return br.setImpact(getBall().right, Crack.RIGHT);
                 case Brick.RIGHT_IMPACT:
                     getBall().reverseX();
-                    return b.setImpact(getBall().left, Crack.LEFT);
+                    return br.setImpact(getBall().left, Crack.LEFT);
             }
         }
         return false;
     }
     
+
     /**
      * Method to determine and set the direction of the ball if impact made between the ball and the border
      * @return True if impact is made, False if no impact is made
@@ -340,7 +340,7 @@ public class Wall {
     private boolean impactBorder(){
         Point2D p = getBall().getPosition();
         return ((p.getX() < area.getX()) ||(p.getX() > (area.getX() + area.getWidth())));
-    }
+    } 
     
     /**
      * Getter to get the number of bricks

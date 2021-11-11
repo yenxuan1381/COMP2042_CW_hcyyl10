@@ -22,11 +22,19 @@ import javax.swing.*;
 import model.Ball;
 import model.Brick;
 import model.Player;
+import model.RubberBall;
+import model.SpecialBrick;
 import model.Wall;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.font.FontRenderContext;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.TimerTask;
+import java.util.Timer;
+
 
 /**
  * Objects of this class extend JComponenet and implements KeyListener, MouseListener and MouseMotionListener methods
@@ -49,7 +57,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private static final Color BG_COLOR = Color.BLACK;
 
-    private Timer gameTimer;
+    private javax.swing.Timer gameTimer;
 
     private Wall wall;
 
@@ -63,9 +71,18 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
     private int strLen;
+    private int sec;
+    private Double r;
+    private java.util.List<Ball> balls;
+    private java.util.List<Brick> bricks;
+    private java.util.Timer t;
+    private TimerTask task;
+    private int period;
+    private int speedBoost;
+
 
     private DebugConsole debugConsole;
-
+    
     /**
      * Constructor to create the game board
      * @param owner JFrame owner
@@ -85,13 +102,45 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         wall = new Wall(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
 
         debugConsole = new DebugConsole(owner,wall,this);
+        
         //initialize the first level
         wall.nextLevel();
+        
+        sec = 0;
+        period = 0;
 
-        gameTimer = new Timer(10,e ->{
-            wall.move();
+        bricks = new ArrayList<Brick>();
+        
+        gameTimer = new javax.swing.Timer(10,e ->{
+
+        	wall.move();
             wall.findImpacts();
             message = String.format("Bricks: %d %nBalls %d",wall.getBrickCount(),wall.getBallCount());
+ 
+            
+            for(Brick br : wall.getBricks()) {
+            	
+            	// If a new special brick is broken, unlock cheat mode
+            	if (br.getClass() == SpecialBrick.class && br.isBroken()) {
+            		
+            		if(!bricks.contains(br)) {
+            			bricks.add(br);
+            			
+            			Random rand = new Random();
+            			r = rand.nextDouble();
+            			
+            			// 70% Bonus mode, 30% Speed boost
+            			if(r < 0.7) {
+            				Bonus();
+            			}
+            			else {
+            				superSpeedBall();
+            			}
+
+            		}		
+            	}
+            }
+            
             
             if(wall.isBallLost()){
                 if(wall.ballEnd()){
@@ -115,12 +164,75 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 }
             }
 
+            sec++;
             repaint();
         });
 
     }
     
     /**
+     * Method to apply speed boost to the ball 
+     */
+    private void superSpeedBall() {
+    	
+    	speedBoost = 2;
+    	
+    	int speedX = wall.getBall().getSpeedX();
+    	int speedY = wall.getBall().getSpeedY();
+    	
+    	if(speedX > 0) {
+    		speedX += speedBoost;
+    	}
+    	else {
+    		speedX -= speedBoost;
+    	}
+    	
+    	speedY += speedBoost;
+        
+        wall.getBall().setSpeed(speedX,speedY);
+        wall.getPlayer().move(speedBoost);
+	}
+    
+   /**
+    * Method to allow the ball to behave differently 
+    */
+    private void Bonus() {
+    	
+    	balls = new ArrayList<>();
+    	
+    	Point2D p = wall.getBall().getPosition();
+    	
+    	balls.add(wall.getBall());
+    	
+    	Random rnd = new Random();
+
+    	Ball ballA = new RubberBall(p);
+    	Ball ballB = new RubberBall(p);
+    	
+    	balls.add(ballA);
+    	balls.add(ballB);
+    	
+    	for(Ball b: balls) {
+    		
+    		b.makeBall(p, 10);
+  
+            int speedX,speedY;
+            do{
+                speedX = rnd.nextInt(7) - 3;
+            }while(speedX == 0);
+            do{
+                speedY = -rnd.nextInt(5);
+            }while(speedY == 0);
+
+            b.setSpeed(speedX,speedY);
+            
+            b.move();
+            wall.findImpacts();
+    	} 	
+    	
+    }
+
+	/**
      * Method to initialize the variables
      */
 
@@ -132,6 +244,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
+
 
     /**
      * Method to paint the graphics
@@ -147,8 +260,11 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.drawString(message,250,225);
 
         drawBall(wall.getBall(),g2d);
-
+         
+  
+        //for bricks in the wall, 
         for(Brick b : wall.getBricks())
+        	// if brick is not broken, draw the brick
             if(!b.isBroken())
                 drawBrick(b,g2d);
 
@@ -159,7 +275,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         Toolkit.getDefaultToolkit().sync();
     }
-
+    
     /**
      * Method to clear the graphics
      * @param g2d graphics

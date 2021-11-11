@@ -6,7 +6,7 @@ import java.awt.geom.RectangularShape;
 
 /**
  * This abstract class Ball allows other class to implement its method
- * @author filippo
+ * @author Emily
  *
  */
 
@@ -65,7 +65,7 @@ abstract public class Ball {
      * @return The shape of the ball object
      */
 
-    protected abstract Shape makeBall(Point2D center,int radius);
+    public abstract Shape makeBall(Point2D center,int radius);
     
     /**
      * Method to move the ball object 

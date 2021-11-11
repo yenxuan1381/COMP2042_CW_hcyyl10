@@ -95,6 +95,14 @@ public class Player {
         playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
     }
     
+    public void move(int m){
+        double x = ballPoint.getX() + m;
+        if(x < min || x > max)
+            return;
+        ballPoint.setLocation(x,ballPoint.getY());
+        playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
+    }
+    
     /**
      * Method to move the player's paddle to the left
      */

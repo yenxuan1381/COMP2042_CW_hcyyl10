@@ -43,7 +43,7 @@ public class RubberBall extends Ball {
     }
 
     @Override
-    protected Shape makeBall(Point2D center, int radius) {
+	public Shape makeBall(Point2D center, int radius) {
 
         double x = center.getX() - (radius / 2);
         double y = center.getY() - (radius / 2);
