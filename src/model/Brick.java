@@ -43,14 +43,7 @@ abstract public class Brick  {
 
     private boolean broken;
     
-    /**
-     * Default Constuctor
-     */
-    
-    public Brick() {
-    	
-    }
-
+   
     /**
      * Constructor for the brick object
      * @param name Name of the brick object
@@ -175,6 +168,10 @@ abstract public class Brick  {
 
 	public static void setRnd(Random rnd) {
 		Brick.rnd = rnd;
+	}
+
+	public static Random getRnd() {
+		return rnd;
 	}
 
 	/**

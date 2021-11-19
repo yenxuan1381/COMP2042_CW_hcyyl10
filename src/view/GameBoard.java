@@ -129,9 +129,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             			Random rand = new Random();
             			r = rand.nextDouble();
             			
-            			// 70% Bonus mode, 30% Speed boost
+            			// 70% trigger odd bounce, 30% Speed boost
             			if(r < 0.7) {
-            				Bonus();
+            				oddBounce();
             			}
             			else {
             				superSpeedBall();
@@ -194,9 +194,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 	}
     
    /**
-    * Method to allow the ball to behave differently 
+    * Method to allow the ball to bounce oddly 
     */
-    private void Bonus() {
+    private void oddBounce() {
     	
     	balls = new ArrayList<>();
     	

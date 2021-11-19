@@ -9,7 +9,7 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
-public class Crack extends Brick{
+public class Crack{
 	
         private static final int CRACK_SECTIONS = 3;
         private static final double JUMP_PROBABILITY = 0.7;
@@ -21,19 +21,13 @@ public class Crack extends Brick{
         public static final int VERTICAL = 100;
         public static final int HORIZONTAL = 200;
         
+        protected static Random rnd;
         private GeneralPath crack;
 
         private int crackDepth;
         private int steps;
         
-        /**
-         * Default Constructor
-         */
-        
-        public Crack(){
-            super();
-        }
-
+   
         /**
          * Constructer of crack class
          * @param crackDepth The depth of the crack
@@ -71,8 +65,8 @@ public class Crack extends Brick{
          * @param direction The direction of the impact
          */
 
-        protected void makeCrack(Point2D point, int direction){
-            Rectangle bounds = getBrick().getBounds();
+        protected void makeCrack(Shape brickFace, Point2D point, int direction){
+            Rectangle bounds = brickFace.getBounds();
 
             Point impact = new Point((int)point.getX(),(int)point.getY());
             Point start = new Point();
@@ -155,7 +149,7 @@ public class Crack extends Brick{
 
         private int randomInBounds(int bound){
             int n = (bound * 2) + 1;
-            return rnd.nextInt(n) - bound;
+            return Brick.getRnd().nextInt(n) - bound;
         }
         
         /**
@@ -182,7 +176,7 @@ public class Crack extends Brick{
 
         private int jumps(int bound,double probability){
 
-            if(rnd.nextDouble() > probability)
+            if(Brick.getRnd().nextDouble() > probability)
                 return randomInBounds(bound);
             return  0;
 
@@ -203,28 +197,18 @@ public class Crack extends Brick{
 
             switch(direction){
                 case HORIZONTAL:
-                    pos = rnd.nextInt(to.x - from.x) + from.x;
+                    pos = Brick.getRnd().nextInt(to.x - from.x) + from.x;
                     out.setLocation(pos,to.y);
                     break;
                 case VERTICAL:
-                    pos = rnd.nextInt(to.y - from.y) + from.y;
+                    pos = Brick.getRnd().nextInt(to.y - from.y) + from.y;
                     out.setLocation(to.x,pos);
                     break;
             }
             return out;
         }
 
-		@Override
-		protected Shape makeBrickFace(Point pos, Dimension size) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public Shape getBrick() {
-			// TODO Auto-generated method stub
-			return null;
-		}
+		
 
     }
 
