@@ -33,6 +33,7 @@ public class Player {
     public static final Color INNER_COLOR = Color.GREEN;
 
     private static final int DEF_MOVE_AMOUNT = 5;
+	private static Player player;
 
     private Rectangle playerFace;
     private Point ballPoint;
@@ -47,8 +48,12 @@ public class Player {
      * @param height The height of the player's paddle
      * @param container The rectangle shape of the player's paddle
      */
+    
+    private Player() {
+    	
+    }
 
-    public Player(Point ballPoint,int width,int height,Rectangle container) {
+    private Player(Point ballPoint,int width,int height,Rectangle container) {
         this.ballPoint = ballPoint;
         
         //initialise the moveAmount
@@ -125,6 +130,24 @@ public class Player {
 
     public void stop(){
         moveAmount = 0;
+    }
+    
+    public static Player getUniquePlayer() {
+    	if(player == null) {
+    		player = new Player();
+    	}
+    	
+		return player;
+    	
+    }
+    
+    public static Player getUniquePlayer(Point ballPoint,int width,int height,Rectangle container) {
+    	if(player == null) {
+    		player = new Player(ballPoint, width, height, container);
+    	}
+    	
+		return player;
+    	
     }
     
     /**

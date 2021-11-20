@@ -19,6 +19,7 @@ package view;
 
 import javax.swing.*;
 
+import main.HighScore;
 import model.Ball;
 import model.Brick;
 import model.Player;
@@ -71,13 +72,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
     private int strLen;
-    private int sec;
+    private int score;
     private Double r;
     private java.util.List<Ball> balls;
     private java.util.List<Brick> bricks;
-    private java.util.Timer t;
-    private TimerTask task;
-    private int period;
     private int speedBoost;
 
 
@@ -106,8 +104,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         //initialize the first level
         wall.nextLevel();
         
-        sec = 0;
-        period = 0;
+        score = 99999;
 
         bricks = new ArrayList<Brick>();
         
@@ -154,17 +151,22 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 if(wall.hasLevel()){
                     message = "Go to Next Level";
                     gameTimer.stop();
+                    
+                    //saveHighScore(score);
+                    
                     wall.ballReset();
                     wall.wallReset();
                     wall.nextLevel();
+                    
                 }
                 else{
                     message = "ALL WALLS DESTROYED";
+                    //saveHighScore(score);
                     gameTimer.stop();
                 }
             }
 
-            sec++;
+            score--;
             repaint();
         });
 
@@ -244,7 +246,35 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
-
+    
+//    /**
+//     * Method to save the highscore into the highscore.txt file
+//     * @param score The score
+//     */
+//    
+//    private void saveHighScore(int score) {
+//    	int[] highscores = HighScore.loadScores();
+//    	int [] updatedHighScores = new int[10];
+//    	
+//    	for(int i = 0; i < highscores.length; i++) {
+//    		// Checks if the current score is greater than the score being checked
+//            if (score > highscores[i]) {
+//                // Sets the updated score in the parallel array
+//                updatedHighScores[i] = score;
+//                // Bumps the rest of the scores down
+//                for (int x = i+1; x < updatedHighScores.length; x++) {
+//                    updatedHighScores[x] = highscores[x-1];
+//                }
+//                break;
+//            } else {
+//                updatedHighScores[i] = highscores[i];
+//            }
+//            
+//            HighScore.saveScores(updatedHighScores);
+//            
+//    	}
+//    }
+    
 
     /**
      * Method to paint the graphics
@@ -272,6 +302,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         if(showPauseMenu)
             drawMenu(g2d);
+
 
         Toolkit.getDefaultToolkit().sync();
     }
@@ -375,6 +406,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.setComposite(tmp);
         g2d.setColor(tmpColor);
     }
+    
     
     /**
      * Method to draw the pause menu

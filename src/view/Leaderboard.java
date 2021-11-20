@@ -15,18 +15,16 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
+import java.util.Scanner;
 
 import javax.swing.JComponent;
 
-public class InfoPage extends JComponent implements MouseListener, MouseMotionListener  {
+import main.HighScore;
+
+public class Leaderboard extends JComponent implements MouseListener, MouseMotionListener {
 	
-    private static final String TITLE = "Brick Breaker";
+	private static final String TITLE = "Leaderboard";
     private static final String RETURN_TEXT = "Return";
-    private static final String DESCRIPTION = "A simple ball shooter game";
-    private static final String PARAGRAPH1 = "Press A to move the paddle to the left";
-    private static final String PARAGRAPH2 = "Press D to move the paddle to the right";
-    private static final String PARAGRAPH3 = "Press Esc to pause the game";
-    private static final String PARAGRAPH4 = "Press Spacebar to start the game!";
 	
     private static final Color BG_COLOR = new Color(233, 196, 106);
     private static final Color BORDER_COLOR = new Color(231, 111, 81); 
@@ -37,16 +35,14 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
     private static final int BORDER_SIZE = 5;
     private static final float[] DASHES = {12,6};
 
-    private Rectangle menuFace;
+    private Rectangle leaderboardFace;
     private Rectangle returnButton;
-
 
     private BasicStroke borderStoke;
     private BasicStroke borderStoke_noDashes;
 
     private Font titleFont;
-    private Font paragraphFont;
-    private Font descriptionFont;
+    private Font scoreFont;
     private Font buttonFont;
 
     private GameFrame owner;
@@ -54,8 +50,10 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
     private boolean returnClicked;
     private String name;
 
-    public InfoPage(GameFrame owner,Dimension area){
 
+    public Leaderboard(GameFrame owner,Dimension area){
+
+    
         this.setFocusable(true);
         this.requestFocusInWindow();
 
@@ -64,7 +62,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
         this.owner = owner;
 
-        menuFace = new Rectangle(new Point(0,0),area);
+        leaderboardFace = new Rectangle(new Point(0,0),area);
         this.setPreferredSize(area);
 
         Dimension btnDim = new Dimension(area.width / 3, area.height / 12);
@@ -74,10 +72,11 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         borderStoke_noDashes = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
 
         titleFont = new Font("Noto Mono",Font.BOLD,40);
-        descriptionFont = new Font("Monospaced",Font.PLAIN,10);
-        paragraphFont = new Font("Noto Mono",Font.PLAIN,20);
+        scoreFont = new Font("Noto Mono",Font.PLAIN,20);
         buttonFont = new Font("Monospaced",Font.PLAIN,returnButton.height-2);
+            
     }
+    
     
     /**
      * Method to paint the Menu
@@ -85,13 +84,19 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     public void paint(Graphics g){
         drawMenu((Graphics2D)g);
+//    	draw1((Graphics2D)g);
     }
-
-    /**
+    
+    public void draw1(Graphics2D g2d) {
+    	g2d.setColor(Color.BLACK);
+    	g2d.fillRect(0,0,50,200);
+    }
+    
+     /**
      * Method to draw the menu
      * @param g2d Graphics
      */
-
+    
     public void drawMenu(Graphics2D g2d){
 
         drawContainer(g2d);
@@ -104,8 +109,8 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         Color prevColor = g2d.getColor();
         Font prevFont = g2d.getFont();
 
-        double x = menuFace.getX();
-        double y = menuFace.getY();
+        double x = leaderboardFace.getX();
+        double y = leaderboardFace.getY();
 
         g2d.translate(x,y);
 
@@ -128,17 +133,17 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         Color prev = g2d.getColor();
 
         g2d.setColor(BG_COLOR);
-        g2d.fill(menuFace);
+        g2d.fill(leaderboardFace);
 
         Stroke tmp = g2d.getStroke();
 
         g2d.setStroke(borderStoke_noDashes);
         g2d.setColor(DASH_BORDER_COLOR);
-        g2d.draw(menuFace);
+        g2d.draw(leaderboardFace);
 
         g2d.setStroke(borderStoke);
         g2d.setColor(BORDER_COLOR);
-        g2d.draw(menuFace);
+        g2d.draw(leaderboardFace);
 
         g2d.setStroke(tmp);
 
@@ -157,46 +162,53 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
         FontRenderContext frc = g2d.getFontRenderContext();
 
         Rectangle2D titleRect = titleFont.getStringBounds(TITLE,frc);
-        Rectangle2D descriptionRect = descriptionFont.getStringBounds(DESCRIPTION,frc);
-        Rectangle2D paragraphRect1 = paragraphFont.getStringBounds(PARAGRAPH1,frc);
-        Rectangle2D paragraphRect2 = paragraphFont.getStringBounds(PARAGRAPH2,frc);
-        Rectangle2D paragraphRect3 = paragraphFont.getStringBounds(PARAGRAPH3,frc);
-        Rectangle2D paragraphRect4 = paragraphFont.getStringBounds(PARAGRAPH4,frc);
-
+        
         int sX,sY;
 
-        sX = (int)(menuFace.getWidth() - titleRect.getWidth()) / 2;
+        sX = (int)(leaderboardFace.getWidth() - titleRect.getWidth()) / 2;
         sY = (int) (titleRect.getHeight() * 1.1);//add 10% of String height between the two strings
 
         g2d.setFont(titleFont);
         g2d.drawString(TITLE,sX,sY);
         
-        sX = (int)(menuFace.getWidth() - descriptionRect.getWidth()) / 2;
-        sY += (int) descriptionRect.getHeight() * 1.1;//add 10% of String height between the two strings
-
-        g2d.setFont(descriptionFont);
-        g2d.drawString(DESCRIPTION,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - paragraphRect1.getWidth()) / 2;
-        sY += (int) paragraphRect1.getHeight() * 1.6;
-
-        g2d.setFont(paragraphFont);
-        g2d.drawString(PARAGRAPH1,sX,sY);
+        int[] highscores = HighScore.loadScores();
+        String scores = "";
         
-        sX = (int)(menuFace.getWidth() - paragraphRect2.getWidth()) / 2;
-        sY += (int) paragraphRect2.getHeight() * 1.1;
-
-        g2d.drawString(PARAGRAPH2,sX,sY);
+        int id = 0;
         
-        sX = (int)(menuFace.getWidth() - paragraphRect3.getWidth()) / 2;
-        sY += (int) paragraphRect3.getHeight() * 1.1;
-
-        g2d.drawString(PARAGRAPH3,sX,sY);
         
-        sX = (int)(menuFace.getWidth() - paragraphRect4.getWidth()) / 2;
-        sY += (int) paragraphRect4.getHeight() * 1.1;
+        for(int score:highscores) {
+        	String strScore = Integer.toString(score);
+        	String strName = name;
+        	String strNum = Integer.toString(id);
+        	
+        	Rectangle2D numRect = scoreFont.getStringBounds(strNum, frc);
+        	Rectangle2D nameRect = scoreFont.getStringBounds(strNum, frc);
+        	Rectangle2D scoreRect = scoreFont.getStringBounds(strScore,frc);
+        	
+        	sX = (int)(leaderboardFace.getWidth() - numRect.getWidth()) / 2;
+            sY += (int) numRect.getHeight() * 1.5;
+            
+            g2d.setFont(scoreFont);
+            g2d.drawString(strNum,sX,sY);
+            
+            sX = (int)(leaderboardFace.getWidth() - nameRect.getWidth()) / 2;
+            sY += (int) nameRect.getHeight() * 0.7;
 
-        g2d.drawString(PARAGRAPH4,sX,sY);
+            g2d.setFont(scoreFont);
+            g2d.drawString(strName,sX,sY);
+            
+            sX = (int)(leaderboardFace.getWidth() - scoreRect.getWidth()) / 2;
+            sY += (int) scoreRect.getHeight() * 0.7;
+
+            g2d.setFont(scoreFont);
+            g2d.drawString(strScore,sX,sY);
+        	
+        	id++;
+        	
+        	
+        }
+        
 
     }
     
@@ -209,17 +221,17 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
         FontRenderContext frc = g2d.getFontRenderContext();
 
-        Rectangle2D txtRect = buttonFont.getStringBounds(RETURN_TEXT,frc);
+        Rectangle2D returnRect = buttonFont.getStringBounds(RETURN_TEXT,frc);
   
         g2d.setFont(buttonFont);
 
-        int x = (menuFace.width - returnButton.width) / 2;
-        int y =(int) ((menuFace.height - returnButton.height) * 0.85);
+        int x = (leaderboardFace.width - returnButton.width) / 2;
+        int y =(int) ((leaderboardFace.height - returnButton.height) * 0.85);
 
         returnButton.setLocation(x,y);
 
-        x = (int)(returnButton.getWidth() - txtRect.getWidth()) / 2;
-        y = (int)(returnButton.getHeight() - txtRect.getHeight()) / 2;
+        x = (int)(returnButton.getWidth() - returnRect.getWidth()) / 2;
+        y = (int)(returnButton.getHeight() - returnRect.getHeight()) / 2;
 
         x += returnButton.x;
         y += returnButton.y + (returnButton.height * 0.9);

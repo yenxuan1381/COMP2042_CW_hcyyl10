@@ -75,15 +75,15 @@ public class Wall {
         makeBall(ballPos);
         int speedX,speedY;
         do{
-            speedX = rnd.nextInt(7) - 3;
+            speedX = rnd.nextInt(10) - 5;
         }while(speedX == 0);
         do{
-            speedY = -rnd.nextInt(5);
+            speedY = -rnd.nextInt(7);
         }while(speedY == 0);
 
         getBall().setSpeed(speedX,speedY);
-
-        setPlayer(new Player((Point) ballPos.clone(),150,10, drawArea));
+        
+        setPlayer((Point) ballPos.clone(),150,10, drawArea);
 
         area = drawArea;
     }
@@ -499,7 +499,7 @@ public class Wall {
      */
 
 	public Player getPlayer() {
-		return player;
+		return Player.getUniquePlayer();
 	}
 	
 	/**
@@ -507,8 +507,8 @@ public class Wall {
 	 * @param player The player object
 	 */
 
-	public void setPlayer(Player player) {
-		this.player = player;
+	public void setPlayer(Point ballPoint,int width,int height,Rectangle container) {
+		Player.getUniquePlayer(ballPoint, width, height, container);
 	}
 	
 	/**
