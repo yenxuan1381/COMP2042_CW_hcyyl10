@@ -72,7 +72,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
     private int strLen;
-    private int score;
+    //private int score;
     private Double r;
     private java.util.List<Ball> balls;
     private java.util.List<Brick> bricks;
@@ -104,7 +104,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         //initialize the first level
         wall.nextLevel();
         
-        score = 99999;
+        //score = 99999;
 
         bricks = new ArrayList<Brick>();
         
@@ -166,7 +166,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 }
             }
 
-            score--;
+            //score--;
             repaint();
         });
 
@@ -477,7 +477,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 wall.getPlayer().moveLeft();
                 break;
             case KeyEvent.VK_D:
-                wall.getPlayer().movRight();
+                wall.getPlayer().moveRight();
                 break;
             case KeyEvent.VK_ESCAPE:
                 showPauseMenu = !showPauseMenu;

@@ -75,7 +75,7 @@ abstract public class Brick  {
     
     /**
      * Method to determine whether the brick is broken or not
-     * @param point The coordinates of the point of the brick
+     * @param point The coordinates of the point of the ball
      * @param dir The direction of the impact
      * @return True if brick is not broken, False if the brick is broken
      */
@@ -169,6 +169,11 @@ abstract public class Brick  {
 	public static void setRnd(Random rnd) {
 		Brick.rnd = rnd;
 	}
+	
+	/**
+	 * Getter to get the randome value
+	 * @return rnd randome value
+	 */
 
 	public static Random getRnd() {
 		return rnd;

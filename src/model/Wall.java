@@ -172,10 +172,12 @@ public class Wall {
      */
 
     private Brick[] makeChessboardLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int typeA, int typeB){
-        /*
+        
+    	/*
           if brickCount is not divisible by line count,brickCount is adjusted to the biggest
           multiple of lineCount smaller then brickCount
          */
+    	
         brickCnt -= brickCnt % lineCnt;
 
         int brickOnLine = brickCnt / lineCnt;
@@ -217,7 +219,6 @@ public class Wall {
             else {
             	tmp[i] = b ?  makeBrick(p,brickSize,typeA) : makeBrick(p,brickSize,typeB);
             }
-            
         }
 
         for(double y = brickHgt;i < tmp.length;i++, y += 2*brickHgt){
@@ -231,8 +232,7 @@ public class Wall {
             
             else {
             	tmp[i] = makeBrick(p,brickSize,typeA);
-            }
-            
+            }       
         }
         return tmp;
     }

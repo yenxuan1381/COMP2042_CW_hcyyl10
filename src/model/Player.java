@@ -42,6 +42,14 @@ public class Player {
     private int max;
 
     /**
+     * Default constructor
+     */
+    
+    private Player() {
+    	
+    }
+    
+    /**
      * Constructor to create a player class 
      * @param ballPoint The coordinates of the point of the ball that touches the player's paddle
      * @param width The width of the player's paddle
@@ -49,10 +57,6 @@ public class Player {
      * @param container The rectangle shape of the player's paddle
      */
     
-    private Player() {
-    	
-    }
-
     private Player(Point ballPoint,int width,int height,Rectangle container) {
         this.ballPoint = ballPoint;
         
@@ -120,7 +124,7 @@ public class Player {
      * Method to move the player's paddle to the right
      */
 
-    public void movRight(){
+    public void moveRight(){
         moveAmount = DEF_MOVE_AMOUNT;
     }
     
@@ -132,22 +136,32 @@ public class Player {
         moveAmount = 0;
     }
     
+    /**
+     * Method to get the Player instance, creates a new instance if no instance is created
+     * @return player
+     */
+    
     public static Player getUniquePlayer() {
     	if(player == null) {
     		player = new Player();
     	}
-    	
 		return player;
-    	
     }
+    
+    /**
+     * Method to get the Player instance, creates a new instance if no instance is created
+     * @param ballPoint point of the ball
+     * @param width width of the paddle
+     * @param height height of the paddle
+     * @param container the rectangle shape of the player paddle
+     * @return player 
+     */
     
     public static Player getUniquePlayer(Point ballPoint,int width,int height,Rectangle container) {
     	if(player == null) {
     		player = new Player(ballPoint, width, height, container);
     	}
-    	
 		return player;
-    	
     }
     
     /**
@@ -155,7 +169,7 @@ public class Player {
      * @return The shape of the player's paddle
      */
 
-    public Shape getPlayerFace(){
+    public Rectangle getPlayerFace(){
         return  playerFace;
     }
     
