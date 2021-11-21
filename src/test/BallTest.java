@@ -51,15 +51,4 @@ class BallTest {
 		assertEquals(0, b1.getSpeedY());
 	}
 	
-	
-//	@Test
-//	void test() {
-//		Ball b1 = new RubberBall(new Point(300,430));
-//		b1.makeBall(new Point(300,430), 5);
-//		assertEquals(b1, b1.getBallFace());
-//	}
-	
-	
-	
-
 }

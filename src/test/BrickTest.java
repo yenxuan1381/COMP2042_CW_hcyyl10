@@ -23,6 +23,31 @@ class BrickTest {
 	}
 	
 	@Test
+	void testRightImpact() {
+		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		Ball b1 = new RubberBall(new Point(305,430));
+
+		assertEquals(400, clayBrick.findImpact(b1));
+	}
+	
+	@Test
+	void testUpImpact() {
+		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		Ball b1 = new RubberBall(new Point(300,425));
+		
+		assertEquals(100, clayBrick.findImpact(b1));
+	}
+	
+	@Test
+	void testDownImpact() {
+		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		Ball b1 = new RubberBall(new Point(300,440));
+
+		assertEquals(200, clayBrick.findImpact(b1));
+	}
+	
+	
+	@Test
 	void testRepair() {
 		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		// dir 40 = crack.DOWN
@@ -50,6 +75,7 @@ class BrickTest {
 		assertFalse(cementBrick.isBroken());
 	}
 
+	// by probability
 	@Test
 	void steelBrickStrength() {
 		Brick steelBrick = new SteelBrick(new Point(300,430), new Dimension(10,10));

@@ -38,7 +38,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     private GameBoard gameBoard;
     private InfoPage infoPage;
     private HomeMenu homeMenu;
-    private ScoreBoard scoreBoard;
+    //private ScoreBoard scoreBoard;
 
     private boolean gaming;
 
@@ -55,7 +55,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         
         infoPage = new InfoPage(this,new Dimension(450,300));
         
-        scoreBoard = new ScoreBoard(this, new Dimension(450,300));
+        //scoreBoard = new ScoreBoard(this, new Dimension(450,300));
 
         this.add(homeMenu,BorderLayout.CENTER);
 

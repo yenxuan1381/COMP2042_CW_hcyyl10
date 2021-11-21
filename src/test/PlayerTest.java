@@ -20,6 +20,10 @@ class PlayerTest {
 		Player p1 = Player.getUniquePlayer(new Point(300,430),150,10, new Rectangle(10,10,20,20));
 		Player p2 = Player.getUniquePlayer(new Point(200,330),150,10, new Rectangle(20,20,30,30));
 		assertEquals(p1, p2);
+		
+		Player p3 = Player.getUniquePlayer(new Point(100,230),150,10, new Rectangle(20,30,50,40));
+		assertEquals(p1, p3);
+		assertEquals(p2, p3);
 	}
 	
 	@Test
