@@ -15,7 +15,7 @@ public class HighScore {
 	
 	public static void saveScores(int[] updatedScores) {
 		try {
-			PrintWriter pw = new PrintWriter("/src/resources/highscore.txt", StandardCharsets.UTF_8);
+			PrintWriter pw = new PrintWriter("file:src/resources/highscore.txt", StandardCharsets.UTF_8);
 			
 			for (int score: updatedScores) {
 				pw.println(score);
@@ -31,7 +31,7 @@ public class HighScore {
 		int[] highestScores = new int[10];
 		
 		try {
-			FileReader fr = new FileReader("/src/resources/highscore.txt");
+			FileReader fr = new FileReader("file:src/resources/highscore.txt");
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 			
