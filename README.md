@@ -2,12 +2,7 @@
 Brick Breaker
 
 ## Table of contents
-* [Introduction] (#introduction)
-* [Basic Maintenance] (#basic-maintenance)
-* [Additions] (#additions)
-* [Git Version Control] (#git)
-* [Technologies] (#technologies)
-* [Setup] (#setup)
+[TOC]
 
 <a name="introduction"></a>
 ## Introduction
