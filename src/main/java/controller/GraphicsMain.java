@@ -15,12 +15,12 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package main;
+package main.java.controller;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import view.MenuView;
+import main.java.view.MenuView;
 
 
 public class GraphicsMain extends Application {

@@ -15,12 +15,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package view;
+package main.java.view;
 
 import javax.swing.*;
 
-import model.Ball;
-import model.Wall;
+import main.java.model.*;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;

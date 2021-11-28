@@ -7,9 +7,7 @@ import java.awt.Rectangle;
 
 import org.junit.jupiter.api.Test;
 
-import model.Ball;
-import model.Player;
-import model.RubberBall;
+import main.java.model.*;
 
 class PlayerTest {
 

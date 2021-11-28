@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package model;
+package main.java.model;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -103,6 +103,11 @@ public class Player {
         ballPoint.setLocation(x,ballPoint.getY());
         playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
     }
+    
+    /**
+     * Method to move the player's paddle a specific amount
+     * @param m Move amount
+     */
     
     public void move(int m){
         double x = ballPoint.getX() + m;

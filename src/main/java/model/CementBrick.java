@@ -1,4 +1,4 @@
-package model;
+package main.java.model;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;

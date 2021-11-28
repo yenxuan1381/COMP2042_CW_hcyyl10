@@ -1,4 +1,4 @@
-package model;
+package main.java.model;
 
 import java.awt.Color;
 import java.awt.Dimension;

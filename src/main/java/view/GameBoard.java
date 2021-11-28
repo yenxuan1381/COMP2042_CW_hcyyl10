@@ -15,25 +15,35 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package view;
+package main.java.view;
 
-import javax.swing.*;
-
-import model.Ball;
-import model.Brick;
-import model.Player;
-import model.RubberBall;
-import model.SpecialBrick;
-import model.Wall;
-
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Composite;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.TimerTask;
-import java.util.Timer;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+
+import main.java.model.*;
+
 
 
 /**
@@ -101,8 +111,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         
         //initialize the first level
         wall.nextLevel();
-        
-        //score = 99999;
 
         bricks = new ArrayList<Brick>();
         
@@ -111,27 +119,22 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         	wall.move();
             wall.findImpacts();
             message = String.format("Bricks: %d %nBalls %d",wall.getBrickCount(),wall.getBallCount());
- 
             
             for(Brick br : wall.getBricks()) {
             	
             	// If a new special brick is broken, unlock cheat mode
             	if (br.getClass() == SpecialBrick.class && br.isBroken()) {
-            		
             		if(!bricks.contains(br)) {
             			bricks.add(br);
-            			
             			Random rand = new Random();
             			r = rand.nextDouble();
-            			
-            			// 70% trigger odd bounce, 30% Speed boost
-            			if(r < 0.7) {
-            				oddBounce();
-            			}
-            			else {
-            				superSpeedBall();
-            			}
 
+            			if(r < 0.7) 
+            				oddBounce();
+            			
+            			else 
+            				superSpeedBall();
+            			
             		}		
             	}
             }
@@ -149,8 +152,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 if(wall.hasLevel()){
                     message = "Go to Next Level";
                     gameTimer.stop();
-                    
-                    //saveHighScore(score);
+                   
                     
                     wall.ballReset();
                     wall.wallReset();
@@ -159,12 +161,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 }
                 else{
                     message = "ALL WALLS DESTROYED";
-                    //saveHighScore(score);
                     gameTimer.stop();
                 }
             }
 
-            //score--;
             repaint();
         });
 
@@ -245,34 +245,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         this.addMouseMotionListener(this);
     }
     
-//    /**
-//     * Method to save the highscore into the highscore.txt file
-//     * @param score The score
-//     */
-//    
-//    private void saveHighScore(int score) {
-//    	int[] highscores = HighScore.loadScores();
-//    	int [] updatedHighScores = new int[10];
-//    	
-//    	for(int i = 0; i < highscores.length; i++) {
-//    		// Checks if the current score is greater than the score being checked
-//            if (score > highscores[i]) {
-//                // Sets the updated score in the parallel array
-//                updatedHighScores[i] = score;
-//                // Bumps the rest of the scores down
-//                for (int x = i+1; x < updatedHighScores.length; x++) {
-//                    updatedHighScores[x] = highscores[x-1];
-//                }
-//                break;
-//            } else {
-//                updatedHighScores[i] = highscores[i];
-//            }
-//            
-//            HighScore.saveScores(updatedHighScores);
-//            
-//    	}
-//    }
-    
+
 
     /**
      * Method to paint the graphics

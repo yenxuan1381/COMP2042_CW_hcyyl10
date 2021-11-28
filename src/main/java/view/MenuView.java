@@ -1,4 +1,4 @@
-package view;
+package main.java.view;
 
 import java.awt.EventQueue;
 
@@ -30,6 +30,10 @@ public class MenuView {
 	private Button infoButton;
 	private Button exitButton;
 	
+	private Text space0;
+	private Text space1;
+	private Text space2;
+	
 	public static Image image;
 	public static ImageView mv;
 	
@@ -39,35 +43,24 @@ public class MenuView {
 		
 		StackPane stack = new StackPane();
 
-		VBox bgLayer = new VBox();
+		VBox layer1 = new VBox();
 		
-		createBackground(bgLayer);
+		createBackground(layer1);
 		
-		
-		mainScene = new Scene(bgLayer,550,400);
+		mainScene = new Scene(layer1,550,400);
 		mainStage.setScene(mainScene);
 		mainStage.setResizable(false);
 		mainStage.setTitle("BrickBreaker by Emily");
 		
+		GridPane layer2 = new GridPane();
 		
-		GridPane buttonLayer = new GridPane();
-		
-		initialize(buttonLayer);
-		
-		Text space0 = new Text("   ");
-		Text space1 = new Text("   ");
-		Text space2 = new Text("   ");
+		initialize(layer2);
 
-		
+		createTexts();
 		createButtons();	
-		buttonLayer.add(space0, 0, 0);
-		buttonLayer.add(space1, 0, 1);
-		buttonLayer.add(space2, 0, 2);
-	    buttonLayer.add(startButton, 0, 5);
-	    buttonLayer.add(infoButton, 0, 6);
-	    buttonLayer.add(exitButton, 0, 7);
+		addButtons(layer2);
 	    
-	    stack.getChildren().addAll(bgLayer, buttonLayer);
+	    stack.getChildren().addAll(layer1, layer2);
 	    stack.setAlignment(Pos.CENTER);
 	    
 	    Scene stackScene = new Scene(stack);
@@ -78,7 +71,7 @@ public class MenuView {
 	private void createBackground(VBox bgLayer) {
 		bgLayer.setBackground(new Background(
                 new BackgroundImage(
-                        new Image("file:src/resources/bg_new.png"),
+                        new Image("file:src/main/java/resources/bg_new.png"),
                         BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT,
                         new BackgroundPosition(Side.LEFT, 0, true, Side.BOTTOM, 0, true),
                         new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, false, true)
@@ -89,15 +82,17 @@ public class MenuView {
 	}
 
 	private void initialize(GridPane gp) {
-		
 	    gp.setMinSize(400, 200); 
-	       
-	    gp.setPadding(new Insets(10, 10, 10, 10)); 
-	      
+	    gp.setPadding(new Insets(10, 10, 10, 10));      
 	    gp.setVgap(5); 
-	    gp.setHgap(5);       
-	      
+	    gp.setHgap(5);        
 	    gp.setAlignment(Pos.CENTER); 
+	}
+	
+	private void createTexts() {
+		space0 = new Text("   ");
+		space1 = new Text("   ");
+		space2 = new Text("   ");
 	}
 
 	private void createButtons() {
@@ -114,6 +109,15 @@ public class MenuView {
 		infoButton.setOnAction(e ->  EventQueue.invokeLater(() -> new GameFrame().enableInfoPage()));
 		exitButton.setOnAction(e ->  System.exit(0));
 
+	}
+	
+	private void addButtons(GridPane buttonLayer) {
+		buttonLayer.add(space0, 0, 0);
+		buttonLayer.add(space1, 0, 1);
+		buttonLayer.add(space2, 0, 2);
+	    buttonLayer.add(startButton, 0, 5);
+	    buttonLayer.add(infoButton, 0, 6);
+	    buttonLayer.add(exitButton, 0, 7);
 	}
 
 }

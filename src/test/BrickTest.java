@@ -7,7 +7,7 @@ import java.awt.Point;
 
 import org.junit.jupiter.api.Test;
 
-import model.*;
+import main.model.*;
 
 class BrickTest {
 
