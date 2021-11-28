@@ -41,7 +41,6 @@ public class Wall {
 
     private Brick[] bricks;
     private Ball ball;
-    private Player player;
 
     private Brick[][] levels;
     private int level;

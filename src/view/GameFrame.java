@@ -19,11 +19,10 @@ package view;
 
 import javax.swing.*;
 
+
 import java.awt.*;
-import java.awt.datatransfer.StringSelection;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
-import java.awt.event.WindowListener;
 
 /**
  * Objects of this class extend the JFrame class and implement WindowFocusListener interface
@@ -38,8 +37,6 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     private GameBoard gameBoard;
     private InfoPage infoPage;
     private HomeMenu homeMenu;
-    //private ScoreBoard scoreBoard;
-
     private boolean gaming;
 
     public GameFrame(){
@@ -55,8 +52,6 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         
         infoPage = new InfoPage(this,new Dimension(450,300));
         
-        //scoreBoard = new ScoreBoard(this, new Dimension(450,300));
-
         this.add(homeMenu,BorderLayout.CENTER);
 
         this.setUndecorated(true);
@@ -84,20 +79,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.add(gameBoard,BorderLayout.CENTER);
         this.setUndecorated(false);
         initialize();
-        /*to avoid problems with graphics focus controller is added here*/
         this.addWindowFocusListener(this);
 
     }
-    
-//    public void enableScoreBoard() {
-//    	this.dispose();
-//        this.remove(homeMenu);
-//        this.add(scoreBoard,BorderLayout.CENTER);
-//        this.setUndecorated(false);
-//        initialize();
-//        /*to avoid problems with graphics focus controller is added here*/
-//        this.addWindowFocusListener(this);
-//    }
     
     /**
      * Method to return to the home menu from the info page
@@ -109,10 +93,23 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.add(homeMenu,BorderLayout.CENTER);
         this.setUndecorated(true);
         initialize();
-        /*to avoid problems with graphics focus controller is added here*/
         this.addWindowFocusListener(this);
 
     }
+    
+    /**
+     * Method to show the info page
+     */
+
+	public void enableInfoPage() {
+		this.dispose();
+        this.remove(homeMenu);
+        this.add(infoPage,BorderLayout.CENTER);
+        this.setUndecorated(true);
+        initialize();
+        this.addWindowFocusListener(this);
+		
+	}
     
     /**
      * Method to auto locate the screen
@@ -128,14 +125,6 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     @Override
     public void windowGainedFocus(WindowEvent windowEvent) {
-        /*
-            the first time the frame loses focus is because
-            it has been disposed to install the GameBoard,
-            so went it regains the focus it's ready to play.
-            of course calling a method such as 'onLostFocus'
-            is useful only if the GameBoard as been displayed
-            at least once
-         */
         gaming = true;
     }
 
@@ -146,18 +135,4 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     }
     
-    /**
-     * Method to show the info page
-     */
-
-	public void enableInfoPage() {
-		this.dispose();
-        this.remove(homeMenu);
-        this.add(infoPage,BorderLayout.CENTER);
-        this.setUndecorated(true);
-        initialize();
-        /*to avoid problems with graphics focus controller is added here*/
-        this.addWindowFocusListener(this);
-		
-	}
 }

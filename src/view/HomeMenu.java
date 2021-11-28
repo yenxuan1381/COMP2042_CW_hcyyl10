@@ -258,33 +258,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
         y *= 1.2;
         
-//        scoreButton.setLocation(x,y);
-//
-//        x = (int)(scoreButton.getWidth() - lTxtRect.getWidth()) / 2;
-//        y = (int)(scoreButton.getHeight() - lTxtRect.getHeight()) / 2;
-//
-//        x += scoreButton.x;
-//        y += scoreButton.y + (scoreButton.height * 0.9);
-//
-//
-//        if(scoreClicked){
-//            Color tmp = g2d.getColor();
-//            g2d.setColor(CLICKED_BUTTON_COLOR);
-//            g2d.draw(scoreButton);
-//            g2d.setColor(CLICKED_TEXT);
-//            g2d.drawString(SCORE_TEXT,x,y);
-//            g2d.setColor(tmp);
-//        }
-//        else{
-//            g2d.draw(scoreButton);
-//            g2d.drawString(SCORE_TEXT,x,y);
-//        }
-//
-//        x = scoreButton.x;
-//        y = scoreButton.y;
-//
-//        y *= 1.15;
-        
+
         infoButton.setLocation(x,y);
 
         x = (int)(infoButton.getWidth() - iTxtRect.getWidth()) / 2;
@@ -351,10 +325,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         else if(infoButton.contains(p)){
             owner.enableInfoPage();
         }
-        
-//        else if(scoreButton.contains(p)){
-//            owner.enableScoreBoard();
-//        }
+
     }
 
     @Override
@@ -375,10 +346,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             repaint(infoButton.x,infoButton.y,infoButton.width+1,infoButton.height+1);
         }
         
-//        else if(scoreButton.contains(p)){
-//            scoreClicked = true;
-//            repaint(scoreButton.x,scoreButton.y,scoreButton.width+1,scoreButton.height+1);
-//        }
+
     }
 
     @Override
@@ -397,10 +365,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             repaint(infoButton.x,infoButton.y,infoButton.width+1,infoButton.height+1);
         }
         
-//        else if(scoreClicked){
-//            scoreClicked = false;
-//            repaint(scoreButton.x,scoreButton.y,scoreButton.width+1,scoreButton.height+1);
-//        }
+
     }
 
     @Override

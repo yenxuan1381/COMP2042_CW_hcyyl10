@@ -52,7 +52,6 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
     private GameFrame owner;
 
     private boolean returnClicked;
-    private String name;
 
     public InfoPage(GameFrame owner,Dimension area){
 

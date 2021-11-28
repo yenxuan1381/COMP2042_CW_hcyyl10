@@ -19,7 +19,6 @@ package view;
 
 import javax.swing.*;
 
-import main.HighScore;
 import model.Ball;
 import model.Brick;
 import model.Player;
@@ -72,7 +71,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
     private int strLen;
-    //private int score;
     private Double r;
     private java.util.List<Ball> balls;
     private java.util.List<Brick> bricks;
