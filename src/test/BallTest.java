@@ -6,8 +6,8 @@ import java.awt.Point;
 
 import org.junit.jupiter.api.Test;
 
-import main.model.Ball;
-import main.model.RubberBall;
+import main.java.model.Ball;
+import main.java.model.RubberBall;
 
 class BallTest {
 
