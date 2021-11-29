@@ -27,7 +27,7 @@ import java.awt.geom.Rectangle2D;
  *
  */
 
-public class Player {
+public class Player implements Playable {
 
     public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
     public static final Color INNER_COLOR = Color.GREEN;
@@ -187,4 +187,6 @@ public class Player {
         ballPoint.setLocation(p);
         playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
     }
+
+	
 }

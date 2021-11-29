@@ -86,7 +86,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private java.util.List<Brick> bricks;
     private int speedBoost;
 
-
+    private DrawObjects d;
     private DebugConsole debugConsole;
     
     /**
@@ -244,8 +244,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
-    
-
 
     /**
      * Method to paint the graphics
@@ -254,22 +252,23 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     public void paint(Graphics g){
 
         Graphics2D g2d = (Graphics2D) g;
+        d = new DrawObjects();
 
         clear(g2d);
 
         g2d.setColor(Color.BLUE);
         g2d.drawString(message,250,225);
 
-        drawBall(wall.getBall(),g2d);
+        d.drawBall(wall.getBall(),g2d);
          
   
         //for bricks in the wall, 
         for(Brick b : wall.getBricks())
         	// if brick is not broken, draw the brick
             if(!b.isBroken())
-                drawBrick(b,g2d);
+                d.drawBrick(b,g2d);
 
-        drawPlayer(wall.getPlayer(),g2d);
+       d. drawPlayer(wall.getPlayer(),g2d);
 
         if(showPauseMenu)
             drawMenu(g2d);
@@ -287,64 +286,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         Color tmp = g2d.getColor();
         g2d.setColor(BG_COLOR);
         g2d.fillRect(0,0,getWidth(),getHeight());
-        g2d.setColor(tmp);
-    }
-    
-    /**
-     * Method to draw the bricks
-     * @param brick Brick object
-     * @param g2d Graphics
-     */
-
-    private void drawBrick(Brick brick,Graphics2D g2d){
-        Color tmp = g2d.getColor();
-
-        g2d.setColor(brick.getInnerColor());
-        g2d.fill(brick.getBrick());
-
-        g2d.setColor(brick.getBorderColor());
-        g2d.draw(brick.getBrick());
-
-
-        g2d.setColor(tmp);
-    }
-    
-    /**
-     * Method to draw the ball
-     * @param ball Ball object
-     * @param g2d Graphics
-     */
-
-    private void drawBall(Ball ball,Graphics2D g2d){
-        Color tmp = g2d.getColor();
-
-        Shape s = ball.getBallFace();
-
-        g2d.setColor(ball.getInnerColor());
-        g2d.fill(s);
-
-        g2d.setColor(ball.getBorderColor());
-        g2d.draw(s);
-
-        g2d.setColor(tmp);
-    }
-    
-    /**
-     * Method to draw the player
-     * @param p Player object
-     * @param g2d Graphics
-     */
-
-    private void drawPlayer(Player p,Graphics2D g2d){
-        Color tmp = g2d.getColor();
-
-        Shape s = p.getPlayerFace();
-        g2d.setColor(Player.INNER_COLOR);
-        g2d.fill(s);
-
-        g2d.setColor(Player.BORDER_COLOR);
-        g2d.draw(s);
-
         g2d.setColor(tmp);
     }
 
