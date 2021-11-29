@@ -6,9 +6,11 @@ public class LevelFactory {
 	
 	private static final int LEVELS_COUNT = 6;
 	
-	private static final int CLAY = 1;
-    private static final int STEEL = 2;
-    private static final int CEMENT = 3;
+//	private static final int CLAY = 1;
+//    private static final int STEEL = 2;
+//    private static final int CEMENT = 3;
+	
+
     
     private Level level;
 	
@@ -28,12 +30,12 @@ public class LevelFactory {
 
     public Brick[][] makeLevels(Rectangle drawArea,int brickCount,int lineCount,double brickDimensionRatio){
         Brick[][] tmp = new Brick[LEVELS_COUNT][];
-        tmp[0] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY);
-        tmp[1] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CEMENT);
-        tmp[2] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CEMENT);
-        tmp[3] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,STEEL);
-        tmp[4] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,CEMENT);
-        tmp[5] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL);
+        tmp[0] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CLAY);
+        tmp[1] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CLAY,BrickType.CEMENT);
+        tmp[2] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CEMENT);
+        tmp[3] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CLAY,BrickType.STEEL);
+        tmp[4] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.STEEL,BrickType.CEMENT);
+        tmp[5] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.STEEL);
         return tmp;
     }
     

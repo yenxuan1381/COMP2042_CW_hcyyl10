@@ -18,11 +18,18 @@ abstract public class Brick  {
     public static final int DEF_CRACK_DEPTH = 1;
     public static final int DEF_STEPS = 35;
 
-
-    public static final int UP_IMPACT = 100;
-    public static final int DOWN_IMPACT = 200;
-    public static final int LEFT_IMPACT = 300;
-    public static final int RIGHT_IMPACT = 400;
+//    public static final int UP_IMPACT = 100;
+//    public static final int DOWN_IMPACT = 200;
+//    public static final int LEFT_IMPACT = 300;
+//    public static final int RIGHT_IMPACT = 400;
+    
+    enum ImpactDirection{
+    	UP_IMPACT,
+    	DOWN_IMPACT,
+    	LEFT_IMPACT,
+    	RIGHT_IMPACT,
+    	NO_IMPACT
+    }
 
     /**
      * Objects of this class represent the cracks of the brick
@@ -118,18 +125,18 @@ abstract public class Brick  {
      * @return The speed and direction of the ball after impact
      */
 
-    public final int findImpact(Ball b){
+    public final ImpactDirection findImpact(Ball b){
         if(broken)
-            return 0;
-        int out  = 0;
+            return ImpactDirection.NO_IMPACT;
+        ImpactDirection out  = ImpactDirection.NO_IMPACT;
         if(brickFace.contains(b.right))
-            out = LEFT_IMPACT;
+            out = ImpactDirection.LEFT_IMPACT;
         else if(brickFace.contains(b.left))
-            out = RIGHT_IMPACT;
+            out = ImpactDirection.RIGHT_IMPACT;
         else if(brickFace.contains(b.up))
-            out = DOWN_IMPACT;
+            out = ImpactDirection.DOWN_IMPACT;
         else if(brickFace.contains(b.down))
-            out = UP_IMPACT;
+            out = ImpactDirection.UP_IMPACT;
         return out;
     }
     
