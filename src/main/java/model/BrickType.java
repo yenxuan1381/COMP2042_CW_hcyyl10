@@ -1,5 +1,11 @@
 package main.java.model;
 
 public enum BrickType {
-	CLAY, STEEL, CEMENT, SPECIAL, 
+	CLAY,
+	STEEL,
+	CEMENT, 
+	SPECIAL, 
 }
+
+
+

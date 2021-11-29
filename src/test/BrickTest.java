@@ -19,7 +19,7 @@ class BrickTest {
 		b1.move();
 		
 		// (ball) --> [brick] (left impact)	
-		assertEquals(300, clayBrick.findImpact(b1));
+		assertEquals(ImpactDirection.LEFT_IMPACT, clayBrick.findImpact(b1));
 	}
 	
 	@Test
@@ -27,7 +27,7 @@ class BrickTest {
 		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		Ball b1 = new RubberBall(new Point(305,430));
 
-		assertEquals(400, clayBrick.findImpact(b1));
+		assertEquals(ImpactDirection.RIGHT_IMPACT, clayBrick.findImpact(b1));
 	}
 	
 	@Test
@@ -35,7 +35,7 @@ class BrickTest {
 		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		Ball b1 = new RubberBall(new Point(300,425));
 		
-		assertEquals(100, clayBrick.findImpact(b1));
+		assertEquals(ImpactDirection.UP_IMPACT, clayBrick.findImpact(b1));
 	}
 	
 	@Test
@@ -43,7 +43,7 @@ class BrickTest {
 		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		Ball b1 = new RubberBall(new Point(300,440));
 
-		assertEquals(200, clayBrick.findImpact(b1));
+		assertEquals(ImpactDirection.DOWN_IMPACT, clayBrick.findImpact(b1));
 	}
 	
 	
