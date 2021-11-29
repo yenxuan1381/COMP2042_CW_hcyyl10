@@ -75,13 +75,13 @@ class BrickTest {
 		assertFalse(cementBrick.isBroken());
 	}
 
-	// by probability
-	@Test
-	void steelBrickStrength() {
-		Brick steelBrick = new SteelBrick(new Point(300,430), new Dimension(10,10));
-		// dir 40 = crack.DOWN
-		steelBrick.setImpact(new Point(300,440),40) ;
-		
-		assertFalse(steelBrick.isBroken());
-	}
+//	// by probability
+//	@Test
+//	void steelBrickStrength() {
+//		Brick steelBrick = new SteelBrick(new Point(300,430), new Dimension(10,10));
+//		// dir 40 = crack.DOWN
+//		steelBrick.setImpact(new Point(300,440),40) ;
+//		
+//		assertFalse(steelBrick.isBroken());
+//	}
 }

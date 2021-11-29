@@ -39,7 +39,6 @@ public class GraphicsMain extends Application {
 	}
 	
     public static void main(String[] args){
-//        EventQueue.invokeLater(() -> new GameFrame().initialize());
         launch(args);
     }
 
