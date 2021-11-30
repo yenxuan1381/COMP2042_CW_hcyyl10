@@ -20,7 +20,7 @@ package main.java.view;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
-import main.java.model.Wall;
+import main.java.model.wall.Wall;
 
 import java.awt.*;
 import java.awt.event.ActionListener;

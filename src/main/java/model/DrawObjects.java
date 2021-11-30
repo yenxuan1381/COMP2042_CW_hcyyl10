@@ -4,6 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 
+import main.java.controller.BrickController;
+import main.java.model.ball.Ball;
+import main.java.model.brick.Brick;
+import main.java.model.player.Player;
+
 public class DrawObjects {
 
 	public DrawObjects() {
@@ -17,13 +22,13 @@ public class DrawObjects {
 	 * @param g2d   Graphics
 	 */
 
-	public void drawBrick(Brick brick, Graphics2D g2d) {
+	public void drawBrick(BrickController brick, Graphics2D g2d) {
 		Color tmp = g2d.getColor();
 
-		g2d.setColor(brick.getInnerColor());
+		g2d.setColor(brick.getInner());
 		g2d.fill(brick.getBrick());
 
-		g2d.setColor(brick.getBorderColor());
+		g2d.setColor(brick.getBorder());
 		g2d.draw(brick.getBrick());
 
 		g2d.setColor(tmp);

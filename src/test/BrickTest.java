@@ -7,13 +7,20 @@ import java.awt.Point;
 
 import org.junit.jupiter.api.Test;
 
+import main.java.controller.BrickController;
 import main.java.model.*;
+import main.java.model.ball.Ball;
+import main.java.model.ball.RubberBall;
+import main.java.model.brick.Brick;
+import main.java.model.brick.CementBrick;
+import main.java.model.brick.ClayBrick;
+import main.java.model.brick.ImpactDirection;
 
 class BrickTest {
 
 	@Test
 	void testLeftImpact() {
-		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		Ball b1 = new RubberBall(new Point(280,430));
 		b1.setXSpeed(20);
 		b1.move();
@@ -24,7 +31,7 @@ class BrickTest {
 	
 	@Test
 	void testRightImpact() {
-		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		Ball b1 = new RubberBall(new Point(305,430));
 
 		assertEquals(ImpactDirection.RIGHT_IMPACT, clayBrick.findImpact(b1));
@@ -32,7 +39,7 @@ class BrickTest {
 	
 	@Test
 	void testUpImpact() {
-		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		Ball b1 = new RubberBall(new Point(300,425));
 		
 		assertEquals(ImpactDirection.UP_IMPACT, clayBrick.findImpact(b1));
@@ -40,7 +47,7 @@ class BrickTest {
 	
 	@Test
 	void testDownImpact() {
-		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		Ball b1 = new RubberBall(new Point(300,440));
 
 		assertEquals(ImpactDirection.DOWN_IMPACT, clayBrick.findImpact(b1));
@@ -49,7 +56,7 @@ class BrickTest {
 	
 	@Test
 	void testRepair() {
-		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		// dir 40 = crack.DOWN
 		clayBrick.setImpact(new Point(300,440),40);
 		clayBrick.repair();
@@ -59,7 +66,7 @@ class BrickTest {
 	
 	@Test
 	void clayBrickStrength() {
-		Brick clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
 		// dir 40 = crack.DOWN
 		clayBrick.setImpact(new Point(300,440),40);
 		
@@ -68,7 +75,7 @@ class BrickTest {
 	
 	@Test
 	void cementBrickStrength() {
-		Brick cementBrick = new CementBrick(new Point(300,430), new Dimension(10,10));
+		BrickController cementBrick = new CementBrick(new Point(300,430), new Dimension(10,10));
 		// dir 40 = crack.DOWN
 		cementBrick.setImpact(new Point(300,440),40);
 		

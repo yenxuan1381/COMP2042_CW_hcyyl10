@@ -1,4 +1,4 @@
-package main.java.model;
+package main.java.model.brick;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,13 +6,15 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Shape;
 
+import main.java.controller.BrickController;
+
 /**
  * The objects of this class inherits from the Brick class
  * @author Emily
  *
  */
 
-public class SpecialBrick extends Brick {
+public class SpecialBrick extends BrickController {
 	
 	private static final String NAME = "Special Brick";
     private static final Color DEF_INNER = new Color(255, 215, 0);
@@ -37,7 +39,6 @@ public class SpecialBrick extends Brick {
 
     @Override
     public Shape getBrick() {
-        return super.brickFace;
+        return super.getBrickFace();
     }
-
 }

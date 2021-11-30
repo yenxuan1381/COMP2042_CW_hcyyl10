@@ -20,6 +20,8 @@ package main.java.view;
 import javax.swing.*;
 
 import main.java.model.*;
+import main.java.model.ball.Ball;
+import main.java.model.wall.Wall;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;

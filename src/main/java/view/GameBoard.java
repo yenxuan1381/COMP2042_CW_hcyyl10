@@ -42,7 +42,13 @@ import java.util.Random;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import main.java.controller.BrickController;
 import main.java.model.*;
+import main.java.model.ball.Ball;
+import main.java.model.ball.RubberBall;
+import main.java.model.brick.Brick;
+import main.java.model.brick.SpecialBrick;
+import main.java.model.wall.Wall;
 
 
 
@@ -83,7 +89,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private int strLen;
     private Double r;
     private java.util.List<Ball> balls;
-    private java.util.List<Brick> bricks;
+    private java.util.List<BrickController> bricks;
     private int speedBoost;
 
     private DrawObjects d;
@@ -112,7 +118,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         //initialize the first level
         wall.nextLevel();
 
-        bricks = new ArrayList<Brick>();
+        bricks = new ArrayList<BrickController>();
         
         gameTimer = new javax.swing.Timer(10,e ->{
 
@@ -120,7 +126,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             wall.findImpacts();
             message = String.format("Bricks: %d %nBalls %d",wall.getBrickCount(),wall.getBallCount());
             
-            for(Brick br : wall.getBricks()) {
+            for(BrickController br : wall.getBricks()) {
             	
             	// If a new special brick is broken, unlock cheat mode
             	if (br.getClass() == SpecialBrick.class && br.isBroken()) {
@@ -263,7 +269,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
          
   
         //for bricks in the wall, 
-        for(Brick b : wall.getBricks())
+        for(BrickController b : wall.getBricks())
         	// if brick is not broken, draw the brick
             if(!b.isBroken())
                 d.drawBrick(b,g2d);

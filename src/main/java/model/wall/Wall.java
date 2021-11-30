@@ -15,11 +15,18 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package main.java.model;
+package main.java.model.wall;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
+
+import main.java.controller.BrickController;
+import main.java.model.ball.Ball;
+import main.java.model.ball.RubberBall;
+import main.java.model.brick.Brick;
+import main.java.model.brick.Crack;
+import main.java.model.player.Player;
 
 /**
  * Objects of this class creates a wall of bricks
@@ -33,10 +40,10 @@ public class Wall {
 	private Random rnd;
 	private Rectangle area;
 
-	private Brick[] bricks;
+	private BrickController[] bricks;
 	private Ball ball;
 
-	private Brick[][] levels;
+	private BrickController[][] levels;
 	private int level;
 
 	private Point startPoint;
@@ -44,6 +51,8 @@ public class Wall {
 	private int ballCount;
 	private boolean ballLost;
 	private LevelFactory levelFac;
+//	private BrickController brController;
+
 
 	/**
 	 * Constructor to create a wall class
@@ -137,7 +146,7 @@ public class Wall {
 	 */
 
 	private boolean impactWall() {
-		for (Brick br : getBricks()) {
+		for (BrickController br : getBricks()) {
 			switch (br.findImpact(getBall())) {
 
 			case UP_IMPACT:
@@ -227,7 +236,7 @@ public class Wall {
 	 */
 
 	public void wallReset() {
-		for (Brick b : getBricks())
+		for (BrickController b : getBricks())
 			b.repair();
 		brickCount = getBricks().length;
 		ballCount = 3;
@@ -350,7 +359,7 @@ public class Wall {
 	 * @return An array of brick objects
 	 */
 
-	public Brick[] getBricks() {
+	public BrickController[] getBricks() {
 		return bricks;
 	}
 
@@ -360,7 +369,7 @@ public class Wall {
 	 * @param bricks An Array of brick objects
 	 */
 
-	public void setBricks(Brick[] bricks) {
+	public void setBricks(BrickController[] bricks) {
 		this.bricks = bricks;
 	}
 

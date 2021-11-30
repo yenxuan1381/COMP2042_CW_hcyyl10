@@ -15,11 +15,13 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package main.java.model;
+package main.java.model.player;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+
+import main.java.model.ball.Ball;
 
 /**
  * Objects of this class represent the player
@@ -27,7 +29,7 @@ import java.awt.geom.Rectangle2D;
  *
  */
 
-public class Player implements Playable {
+public class Player {
 
     public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
     public static final Color INNER_COLOR = Color.GREEN;

@@ -1,6 +1,9 @@
-package main.java.model;
+package main.java.model.wall;
 
 import java.awt.Rectangle;
+
+import main.java.controller.BrickController;
+import main.java.model.brick.BrickType;
 
 public class LevelFactory {
 	
@@ -21,8 +24,8 @@ public class LevelFactory {
 	 * @return An array of brick objects
 	 */
 
-    public Brick[][] makeLevels(Rectangle drawArea,int brickCount,int lineCount,double brickDimensionRatio){
-        Brick[][] tmp = new Brick[LEVELS_COUNT][];
+    public BrickController[][] makeLevels(Rectangle drawArea,int brickCount,int lineCount,double brickDimensionRatio){
+        BrickController[][] tmp = new BrickController[LEVELS_COUNT][];
         tmp[0] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CLAY);
         tmp[1] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CLAY,BrickType.CEMENT);
         tmp[2] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CEMENT);

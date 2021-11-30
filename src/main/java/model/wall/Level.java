@@ -1,9 +1,16 @@
-package main.java.model;
+package main.java.model.wall;
 
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Random;
+
+import main.java.controller.BrickController;
+import main.java.model.brick.BrickType;
+import main.java.model.brick.CementBrick;
+import main.java.model.brick.ClayBrick;
+import main.java.model.brick.SpecialBrick;
+import main.java.model.brick.SteelBrick;
 
 public class Level {
 
@@ -22,7 +29,7 @@ public class Level {
 	 * @return An array of brick objects
 	 */
 
-	public Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio,
+	public BrickController[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio,
 			BrickType type) {
 		/*
 		 * if brickCount is not divisible by line count,brickCount is adjusted to the
@@ -37,7 +44,7 @@ public class Level {
 
 		brickCnt += lineCnt / 2;
 
-		Brick[] tmp = new Brick[brickCnt];
+		BrickController[] tmp = new BrickController[brickCnt];
 
 		Dimension brickSize = new Dimension((int) brickLen, (int) brickHgt);
 		Point p = new Point();
@@ -97,7 +104,7 @@ public class Level {
 	 * @return An array of brick objects
 	 */
 
-	public Brick[] makeChessboardLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio,
+	public BrickController[] makeChessboardLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio,
 			BrickType typeA, BrickType typeB) {
 
 		/*
@@ -117,7 +124,7 @@ public class Level {
 
 		brickCnt += lineCnt / 2;
 
-		Brick[] tmp = new Brick[brickCnt];
+		BrickController[] tmp = new BrickController[brickCnt];
 
 		Dimension brickSize = new Dimension((int) brickLen, (int) brickHgt);
 		Point p = new Point();
@@ -173,8 +180,8 @@ public class Level {
 	 * @return A brick object
 	 */
 
-	private Brick makeBrick(Point point, Dimension size, BrickType type) {
-		Brick out;
+	private BrickController makeBrick(Point point, Dimension size, BrickType type) {
+		BrickController out;
 		switch (type) {
 		case CLAY:
 			out = new ClayBrick(point, size);

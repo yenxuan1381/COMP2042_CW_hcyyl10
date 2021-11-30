@@ -1,8 +1,10 @@
-package main.java.model;
+package main.java.model.brick;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
+
+import main.java.controller.BrickController;
 
 /**
  * Objects of this class inherits from the brick class, creating cement brick objects
@@ -10,7 +12,7 @@ import java.awt.geom.Point2D;
  *
  */
 
-public class CementBrick extends Brick {
+public class CementBrick extends BrickController {
 
     private static final String NAME = "Cement Brick";
     private static final Color DEF_INNER = new Color(147, 147, 147);
@@ -29,7 +31,7 @@ public class CementBrick extends Brick {
     public CementBrick(Point point, Dimension size){
         super(NAME,point,size,DEF_BORDER,DEF_INNER,CEMENT_STRENGTH);
         crack = new Crack(DEF_CRACK_DEPTH,DEF_STEPS);
-        brickFace = super.brickFace;
+        brickFace = super.getBrickFace();
     }
 
     @Override
@@ -63,7 +65,7 @@ public class CementBrick extends Brick {
     private void updateBrick(){
         if(!super.isBroken()){
             GeneralPath gp = crack.draw();
-            gp.append(super.brickFace,false);
+            gp.append(super.getBrickFace(),false);
             brickFace = gp;
         }
     }
@@ -72,6 +74,6 @@ public class CementBrick extends Brick {
     public void repair(){
         super.repair();
         crack.reset();
-        brickFace = super.brickFace;
+        brickFace = super.getBrickFace();
     }
 }
