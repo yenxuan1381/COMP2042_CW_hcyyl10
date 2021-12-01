@@ -19,6 +19,7 @@ package main.java.view;
 
 import javax.swing.*;
 
+import main.java.controller.BallController;
 import main.java.model.*;
 import main.java.model.ball.Ball;
 import main.java.model.wall.Wall;
@@ -113,7 +114,7 @@ public class DebugConsole extends JDialog implements WindowListener{
     @Override
     public void windowActivated(WindowEvent windowEvent) {
         setLocation();
-        Ball b = wall.getBall();
+        BallController b = wall.getBall();
         debugPanel.setValues(b.getSpeedX(),b.getSpeedY());
     }
 

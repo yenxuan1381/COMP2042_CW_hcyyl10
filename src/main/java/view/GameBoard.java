@@ -42,6 +42,7 @@ import java.util.Random;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.model.*;
 import main.java.model.ball.Ball;
@@ -88,7 +89,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private Rectangle restartButtonRect;
     private int strLen;
     private Double r;
-    private java.util.List<Ball> balls;
+    private java.util.List<BallController> balls;
     private java.util.List<BrickController> bricks;
     private int speedBoost;
 
@@ -102,6 +103,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     
     public GameBoard(JFrame owner){
         super();
+        HighScore highscore = new HighScore();
+        
 
         strLen = 0;
         showPauseMenu = false;
@@ -155,6 +158,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 gameTimer.stop();
             }
             else if(wall.isDone()){
+            	
+            	highscore.writeFile("GAME OVER");
                 if(wall.hasLevel()){
                     message = "Go to Next Level";
                     gameTimer.stop();
@@ -212,13 +217,13 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     	
     	Random rnd = new Random();
 
-    	Ball ballA = new RubberBall(p);
-    	Ball ballB = new RubberBall(p);
+    	BallController ballA = new RubberBall(p);
+    	BallController ballB = new RubberBall(p);
     	
     	balls.add(ballA);
     	balls.add(ballB);
     	
-    	for(Ball b: balls) {
+    	for(BallController b: balls) {
     		
     		b.makeBall(p, 10);
   

@@ -21,13 +21,15 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
+import main.java.controller.BallController;
+
 /**
  * The objects of this class inherits from the Ball class
  * @author Emily
  *
  */
 
-public class RubberBall extends Ball {
+public class RubberBall extends BallController {
 
     private static final int DEF_RADIUS = 10;
     private static final Color DEF_INNER_COLOR = new Color(255, 219, 88);

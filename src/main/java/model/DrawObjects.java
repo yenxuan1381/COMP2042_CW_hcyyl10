@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 
+import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.model.ball.Ball;
 import main.java.model.brick.Brick;
@@ -41,7 +42,7 @@ public class DrawObjects {
 	 * @param g2d  Graphics
 	 */
 
-	public void drawBall(Ball ball, Graphics2D g2d) {
+	public void drawBall(BallController ball, Graphics2D g2d) {
 		Color tmp = g2d.getColor();
 
 		Shape s = ball.getBallFace();

@@ -21,6 +21,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+import main.java.controller.BallController;
 import main.java.model.ball.Ball;
 
 /**
@@ -86,12 +87,12 @@ public class Player {
     
     /**
      * Method that determines whether the ball touches the player's paddle
-     * @param b The ball object
+     * @param ballController The ball object
      * @return True if the ball touches the player's paddle, False if the ball did not touch the player's paddle
      */
 
-    public boolean impact(Ball b){
-        return playerFace.contains(b.getPosition()) && playerFace.contains(b.down) ;
+    public boolean impact(BallController ballController){
+        return playerFace.contains(ballController.getPosition()) && playerFace.contains(ballController.getDown()) ;
     }
     
     /**

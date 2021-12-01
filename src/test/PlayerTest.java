@@ -38,8 +38,8 @@ class PlayerTest {
 	@Test
 	void testImpact() {
 		Player p1 = Player.getUniquePlayer(new Point(300,430),150,10, new Rectangle(300,430,150,10));
-		Ball b1 = new RubberBall(new Point(300,430));
-		Ball b2 = new RubberBall(new Point(200,330));
+		RubberBall b1 = new RubberBall(new Point(300,430));
+		RubberBall b2 = new RubberBall(new Point(200,330));
 		assertTrue(p1.impact(b1));
 		assertFalse(p1.impact(b2));
 	}

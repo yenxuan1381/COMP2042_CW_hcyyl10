@@ -20,9 +20,6 @@ public abstract class BrickController {
 	private String name;
     private Shape brickFace;
 
-	private Color border;
-    private Color inner;
-
     private int fullStrength;
     private int strength;
 
@@ -35,8 +32,6 @@ public abstract class BrickController {
 	
 		brickModel = new Brick(name);
 		setBrickFace(makeBrickFace(pos,size));
-//		this.setName(name);
-//	    brickFace = makeBrickFace(pos,size);
 		
 	    brickView = new BrickView(border, inner);
 
@@ -79,21 +74,21 @@ public abstract class BrickController {
 
 	/**
      * Method to find the impact point between the ball object and the brick object
-     * @param b The ball object
+     * @param ballController The ball object
      * @return The speed and direction of the ball after impact
      */
 
-    public final ImpactDirection findImpact(Ball b){
+    public final ImpactDirection findImpact(BallController ballController){
         if(broken)
             return ImpactDirection.NO_IMPACT;
         ImpactDirection out  = ImpactDirection.NO_IMPACT;
-        if(getBrickFace().contains(b.right))
+        if(getBrickFace().contains(ballController.getRight()))
             out = ImpactDirection.LEFT_IMPACT;
-        else if(getBrickFace().contains(b.left))
+        else if(getBrickFace().contains(ballController.getLeft()))
             out = ImpactDirection.RIGHT_IMPACT;
-        else if(getBrickFace().contains(b.up))
+        else if(getBrickFace().contains(ballController.getUp()))
             out = ImpactDirection.DOWN_IMPACT;
-        else if(getBrickFace().contains(b.down))
+        else if(getBrickFace().contains(ballController.getDown()))
             out = ImpactDirection.UP_IMPACT;
         return out;
     }
@@ -126,28 +121,37 @@ public abstract class BrickController {
         broken = (strength == 0);
     }
     
-//    public Shape getBrick() {
-//		return brickModel.getBrickFace();
-//    	
-//    }
-//    
-
-
+    /**
+     * Getter to get the Border colour
+     * @return Border colour
+     */
 	
 	public Color getBorder() {
 		return brickView.getBorderColor();
 	}
 
+	/**
+     * Getter to get the Inner colour
+     * @return Inner colour
+     */
+	
 	public Color getInner() {
 		return brickView.getInnerColor();
 	}
 
-
+	/**
+	 * Method to get the brick face
+	 * @return brick face
+	 */
 	public Shape getBrickFace() {
 		return brickFace;
 	}
 
-
+	/**
+	 * Method to set the brick Face
+	 * @param brickFace
+	 */
+	
 	public void setBrickFace(Shape brickFace) {
 		this.brickFace = brickFace;
 	}

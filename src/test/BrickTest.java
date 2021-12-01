@@ -7,6 +7,7 @@ import java.awt.Point;
 
 import org.junit.jupiter.api.Test;
 
+import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.model.*;
 import main.java.model.ball.Ball;
@@ -21,7 +22,7 @@ class BrickTest {
 	@Test
 	void testLeftImpact() {
 		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-		Ball b1 = new RubberBall(new Point(280,430));
+		RubberBall b1 = new RubberBall(new Point(280,430));
 		b1.setXSpeed(20);
 		b1.move();
 		
@@ -32,7 +33,7 @@ class BrickTest {
 	@Test
 	void testRightImpact() {
 		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-		Ball b1 = new RubberBall(new Point(305,430));
+		RubberBall b1 = new RubberBall(new Point(305,430));
 
 		assertEquals(ImpactDirection.RIGHT_IMPACT, clayBrick.findImpact(b1));
 	}
@@ -40,7 +41,7 @@ class BrickTest {
 	@Test
 	void testUpImpact() {
 		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-		Ball b1 = new RubberBall(new Point(300,425));
+		BallController b1 = new RubberBall(new Point(300,425));
 		
 		assertEquals(ImpactDirection.UP_IMPACT, clayBrick.findImpact(b1));
 	}
@@ -48,7 +49,7 @@ class BrickTest {
 	@Test
 	void testDownImpact() {
 		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-		Ball b1 = new RubberBall(new Point(300,440));
+		BallController b1 = new RubberBall(new Point(300,440));
 
 		assertEquals(ImpactDirection.DOWN_IMPACT, clayBrick.findImpact(b1));
 	}

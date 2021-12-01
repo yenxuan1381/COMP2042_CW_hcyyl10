@@ -6,21 +6,21 @@ import java.awt.Point;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.model.ball.Ball;
+import main.java.controller.BallController;
 import main.java.model.ball.RubberBall;
 
 class BallTest {
 
 	@Test
 	void moveBallPosition() {
-		Ball b1 = new RubberBall(new Point(300,430));
+		RubberBall b1 = new RubberBall(new Point(300,430));
 		b1.moveTo(new Point(430,300));
 		assertEquals(new Point(430,300), b1.getPosition());
 	}
 	
 	@Test
 	void moveBall() {
-		Ball b1 = new RubberBall(new Point(300,430));
+		RubberBall b1 = new RubberBall(new Point(300,430));
 		b1.setSpeed(10, 5);
 		b1.move();
 		assertNotEquals(new Point(300,430), b1.getPosition());
@@ -28,7 +28,7 @@ class BallTest {
 	
 	@Test
 	void reverseXSpeed() {
-		Ball b1 = new RubberBall(new Point(300,430));
+		BallController b1 = new RubberBall(new Point(300,430));
 		b1.setSpeed(10, 5);
 		b1.reverseX();
 		assertEquals(-10, b1.getSpeedX());
@@ -37,7 +37,7 @@ class BallTest {
 	
 	@Test
 	void reverseYSpeed() {
-		Ball b1 = new RubberBall(new Point(300,430));
+		BallController b1 = new RubberBall(new Point(300,430));
 		b1.setSpeed(10, 5);
 		b1.reverseY();
 		assertEquals(-5, b1.getSpeedY());
@@ -45,7 +45,7 @@ class BallTest {
 	
 	@Test
 	void speed0() {
-		Ball b1 = new RubberBall(new Point(300,430));
+		BallController b1 = new RubberBall(new Point(300,430));
 		b1.setSpeed(0, 0);
 		b1.reverseY();
 		assertEquals(0, b1.getSpeedY());

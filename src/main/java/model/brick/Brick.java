@@ -17,18 +17,6 @@ import main.java.view.BrickView;
 
 public class Brick  {
 
-//    public static final int MIN_CRACK = 1;
-//    public static final int DEF_CRACK_DEPTH = 1;
-//    public static final int DEF_STEPS = 35;
-    
-//    enum ImpactDirection{
-//    	UP_IMPACT,
-//    	DOWN_IMPACT,
-//    	LEFT_IMPACT,
-//    	RIGHT_IMPACT,
-//    	NO_IMPACT
-//    }
-
     /**
      * Objects of this class represent the cracks of the brick
      * @author Emily
@@ -42,14 +30,6 @@ public class Brick  {
 
 	BrickController bController;
     BrickView bView;
-//
-//    private Color border;
-//    private Color inner;
-//
-//    private int fullStrength;
-//    private int strength;
-//
-//    private boolean broken;
     
    
     /**
@@ -65,112 +45,11 @@ public class Brick  {
     public Brick(String name){
     	
         setRnd(new Random());
-//        broken = false;
         this.setName(name);
         
-
-//        this.border = border;
-//        this.inner = inner;
-//        this.fullStrength = this.strength = strength;
     }
     
-//    /**
-//     * Abstract method to create the shape of the brick object
-//     * @param pos Position of the brick object
-//     * @param size Size of the brick object
-//     * @return The shape of the brick object
-//     */
-//
-//    protected abstract Shape makeBrickFace(Point pos,Dimension size);
-    
-//    /**
-//     * Method to determine whether the brick is broken or not
-//     * @param point The coordinates of the point of the ball
-//     * @param dir The direction of the impact
-//     * @return True if brick is not broken, False if the brick is broken
-//     */
-//
-//    public  boolean setImpact(Point2D point , int dir){
-//        if(broken)
-//            return false;
-//        impact();
-//        return  broken;
-//    }
 
-//    /**
-//     * Getter for the shape of the brick object
-//     * @return The shape of the brick object
-//     */
-//    
-//    public abstract Shape getBrick();
-//    
-//    /**
-//     * Getter for the border color of the brick object
-//     * @return the color of the border of the brick object
-//     */
-//
-//    public Color getBorderColor(){
-//        return  border;
-//    }
-//    
-//    /**
-//     * Getter for the inner color of the brick object
-//     * @return the inner color of the brick object
-//     */
-//
-//    public Color getInnerColor(){
-//        return inner;
-//    }
-    
-//    /**
-//     * Method to find the impact point between the ball object and the brick object
-//     * @param b The ball object
-//     * @return The speed and direction of the ball after impact
-//     */
-//
-//    public final ImpactDirection findImpact(Ball b){
-//        if(broken)
-//            return ImpactDirection.NO_IMPACT;
-//        ImpactDirection out  = ImpactDirection.NO_IMPACT;
-//        if(brickFace.contains(b.right))
-//            out = ImpactDirection.LEFT_IMPACT;
-//        else if(brickFace.contains(b.left))
-//            out = ImpactDirection.RIGHT_IMPACT;
-//        else if(brickFace.contains(b.up))
-//            out = ImpactDirection.DOWN_IMPACT;
-//        else if(brickFace.contains(b.down))
-//            out = ImpactDirection.UP_IMPACT;
-//        return out;
-//    }
-//    
-//    /**
-//     * Method to determine whether the brick object is broken
-//     * @return True if the brick object is broken, False if the brick object is not broken
-//     */
-//
-//    public final boolean isBroken(){
-//        return broken;
-//    }
-//    
-//
-//    /**
-//     * Method to reset the strength of the brick object to full strength
-//     */
-//
-//    public void repair() {
-//        broken = false;
-//        strength = fullStrength;
-//    }
-//    
-//    /**
-//     * Method to decrease the strength of the brick object
-//     */
-//
-//    public void impact(){
-//        strength--;
-//        broken = (strength == 0);
-//    }
-//    
     /**
      * Setter to set the random value
      * @param rnd random value
@@ -198,13 +77,18 @@ public class Brick  {
 		this.name = name;
 	}
 	
+	/**
+	 * Getter to get the brickFace
+	 * @return
+	 */
+	
 	public Shape getBrickFace() {
 		return brickFace;
 	}
 
-	public void setBrickFace(Shape brickFace) {
-		this.brickFace = brickFace;
-	}
+//	public void setBrickFace(Shape brickFace) {
+//		this.brickFace = brickFace;
+//	}
 
 
 

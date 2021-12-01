@@ -21,6 +21,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
+import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.model.ball.Ball;
 import main.java.model.ball.RubberBall;
@@ -41,7 +42,7 @@ public class Wall {
 	private Rectangle area;
 
 	private BrickController[] bricks;
-	private Ball ball;
+	private BallController ball;
 
 	private BrickController[][] levels;
 	private int level;
@@ -73,7 +74,7 @@ public class Wall {
 		levels = levelFac.makeLevels(drawArea, brickCount, lineCount, brickDimensionRatio);
 		level = 0;
 
-		ballCount = 3;
+		ballCount = 10;
 		ballLost = false;
 
 		rnd = new Random();
@@ -151,16 +152,16 @@ public class Wall {
 
 			case UP_IMPACT:
 				getBall().reverseY();
-				return br.setImpact(getBall().down, Crack.UP);
+				return br.setImpact(getBall().getDown(), Crack.UP);
 			case DOWN_IMPACT:
 				getBall().reverseY();
-				return br.setImpact(getBall().up, Crack.DOWN);
+				return br.setImpact(getBall().getUp(), Crack.DOWN);
 			case LEFT_IMPACT:
 				getBall().reverseX();
-				return br.setImpact(getBall().right, Crack.RIGHT);
+				return br.setImpact(getBall().getRight(), Crack.RIGHT);
 			case RIGHT_IMPACT:
 				getBall().reverseX();
-				return br.setImpact(getBall().left, Crack.LEFT);
+				return br.setImpact(getBall().getLeft(), Crack.LEFT);
 			case NO_IMPACT:
 				continue;
 
@@ -339,7 +340,7 @@ public class Wall {
 	 * @return The ball object
 	 */
 
-	public Ball getBall() {
+	public BallController getBall() {
 		return ball;
 	}
 
@@ -349,7 +350,7 @@ public class Wall {
 	 * @param ball The ball object
 	 */
 
-	public void setBall(Ball ball) {
+	public void setBall(BallController ball) {
 		this.ball = ball;
 	}
 
