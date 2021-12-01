@@ -23,6 +23,7 @@ import java.util.Random;
 
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
+import main.java.controller.PlayerController;
 import main.java.model.ball.Ball;
 import main.java.model.ball.RubberBall;
 import main.java.model.brick.Brick;
@@ -320,8 +321,8 @@ public class Wall {
 	 * @return The player obejct
 	 */
 
-	public Player getPlayer() {
-		return Player.getUniquePlayer();
+	public PlayerController getPlayer() {
+		return PlayerController.getUniquePlayer();
 	}
 
 	/**
@@ -331,7 +332,7 @@ public class Wall {
 	 */
 
 	public void setPlayer(Point ballPoint, int width, int height, Rectangle container) {
-		Player.getUniquePlayer(ballPoint, width, height, container);
+		PlayerController.getUniquePlayer(ballPoint, width, height, container);
 	}
 
 	/**

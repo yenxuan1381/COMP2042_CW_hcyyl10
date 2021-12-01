@@ -35,12 +35,9 @@ public abstract class BrickController {
 		
 	    brickView = new BrickView(border, inner);
 
-//	    this.border = border;
-//	    this.inner = inner;
 	    this.fullStrength = this.strength = strength;
 			
 	}
-	
 	
 	/**
      * Abstract method to create the shape of the brick object

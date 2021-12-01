@@ -35,20 +35,14 @@ public class Player {
     public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
     public static final Color INNER_COLOR = Color.GREEN;
 
-    private static final int DEF_MOVE_AMOUNT = 5;
-	private static Player player;
 
-    private Rectangle playerFace;
+//    private Rectangle playerFace;
     private Point ballPoint;
-    private int moveAmount;
+//    private int moveAmount;
     private int min;
     private int max;
 
-    /**
-     * Default constructor
-     */
-    
-    private Player() {
+    public Player() {
     	
     }
     
@@ -60,136 +54,52 @@ public class Player {
      * @param container The rectangle shape of the player's paddle
      */
     
-    private Player(Point ballPoint,int width,int height,Rectangle container) {
+    public Player(Point ballPoint, int width, Rectangle container) {
         this.ballPoint = ballPoint;
         
         //initialise the moveAmount
-        moveAmount = 0;
-        playerFace = makeRectangle(width, height);
+//        moveAmount = 0;
         
         //container.x is the X coordinate of the upper-left corner of the Rectangle container.
         min = container.x + (width / 2);
         max = min + container.width - width;
 
-    }
-    
-    /**
-     * Method to create a rectangle object 
-     * @param width The width of the rectangle
-     * @param height The height of the rectangle
-     * @return A rectangle object
-     */
+    }   
+   
+//    /**
+//     * Getter to get the shape of the player's paddle
+//     * @return The shape of the player's paddle
+//     */
+//
+//    public Rectangle getPlayerFace(){
+//        return  playerFace;
+//    }
 
-    private Rectangle makeRectangle(int width,int height){
-        Point p = new Point((int)(ballPoint.getX() - (width / 2)),(int)ballPoint.getY());
-        return  new Rectangle(p,new Dimension(width,height));
-    }
-    
-    /**
-     * Method that determines whether the ball touches the player's paddle
-     * @param ballController The ball object
-     * @return True if the ball touches the player's paddle, False if the ball did not touch the player's paddle
-     */
+	public Point getBallPoint() {
+		return ballPoint;
+	}
 
-    public boolean impact(BallController ballController){
-        return playerFace.contains(ballController.getPosition()) && playerFace.contains(ballController.getDown()) ;
-    }
-    
-    /**
-     * Method to move the player's paddle
-     */
+	public void setBallPoint(Point ballPoint) {
+		this.ballPoint = ballPoint;
+	}
 
-    public void move(){
-        double x = ballPoint.getX() + moveAmount;
-        if(x < min || x > max)
-            return;
-        ballPoint.setLocation(x,ballPoint.getY());
-        playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
-    }
-    
-    /**
-     * Method to move the player's paddle a specific amount
-     * @param m Move amount
-     */
-    
-    public void move(int m){
-        double x = ballPoint.getX() + m;
-        if(x < min || x > max)
-            return;
-        ballPoint.setLocation(x,ballPoint.getY());
-        playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
-    }
-    
-    /**
-     * Method to move the player's paddle to the left
-     */
+	public int getMin() {
+		return min;
+	}
 
-    public void moveLeft(){
-        moveAmount = -DEF_MOVE_AMOUNT;
-    }
-    
-    /**
-     * Method to move the player's paddle to the right
-     */
+	public void setMin(int min) {
+		this.min = min;
+	}
 
-    public void moveRight(){
-        moveAmount = DEF_MOVE_AMOUNT;
-    }
-    
-    /**
-     * Method to stop the player's paddle from moving
-     */
+	public int getMax() {
+		return max;
+	}
 
-    public void stop(){
-        moveAmount = 0;
-    }
+	public void setMax(int max) {
+		this.max = max;
+	}
     
-    /**
-     * Method to get the Player instance, creates a new instance if no instance is created
-     * @return player
-     */
     
-    public static Player getUniquePlayer() {
-    	if(player == null) {
-    		player = new Player();
-    	}
-		return player;
-    }
-    
-    /**
-     * Method to get the Player instance, creates a new instance if no instance is created
-     * @param ballPoint point of the ball
-     * @param width width of the paddle
-     * @param height height of the paddle
-     * @param container the rectangle shape of the player paddle
-     * @return player 
-     */
-    
-    public static Player getUniquePlayer(Point ballPoint,int width,int height,Rectangle container) {
-    	if(player == null) {
-    		player = new Player(ballPoint, width, height, container);
-    	}
-		return player;
-    }
-    
-    /**
-     * Getter to get the shape of the player's paddle
-     * @return The shape of the player's paddle
-     */
-
-    public Rectangle getPlayerFace(){
-        return  playerFace;
-    }
-    
-    /**
-     * Method to move the player's paddle to a specific point
-     * @param p The coordinates of the point for the player's paddle to move to
-     */
-
-    public void moveTo(Point p){
-        ballPoint.setLocation(p);
-        playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
-    }
 
 	
 }

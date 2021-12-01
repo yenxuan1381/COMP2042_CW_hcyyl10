@@ -85,13 +85,6 @@ public class Brick  {
 	public Shape getBrickFace() {
 		return brickFace;
 	}
-
-//	public void setBrickFace(Shape brickFace) {
-//		this.brickFace = brickFace;
-//	}
-
-
-
 }
 
 

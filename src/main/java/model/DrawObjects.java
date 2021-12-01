@@ -6,6 +6,7 @@ import java.awt.Shape;
 
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
+import main.java.controller.PlayerController;
 import main.java.model.ball.Ball;
 import main.java.model.brick.Brick;
 import main.java.model.player.Player;
@@ -63,7 +64,7 @@ public class DrawObjects {
 	 * @param g2d Graphics
 	 */
 
-	public void drawPlayer(Player p, Graphics2D g2d) {
+	public void drawPlayer(PlayerController p, Graphics2D g2d) {
 		Color tmp = g2d.getColor();
 
 		Shape s = p.getPlayerFace();
