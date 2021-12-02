@@ -41,6 +41,7 @@ import java.util.Random;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
@@ -84,10 +85,16 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private Font menuFont;
 
+    private String name;
     private Rectangle continueButtonRect;
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
     private int strLen;
+    private int score;
+    private int record;
+    private int flag = 1;
+    private int stage = 1;
+    private String nameRecord;
     private Double r;
     private java.util.List<BallController> balls;
     private java.util.List<BrickController> bricks;
@@ -95,6 +102,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private DrawObjects d;
     private DebugConsole debugConsole;
+    private HighScore highscore;
     
     /**
      * Constructor to create the game board
@@ -103,7 +111,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     
     public GameBoard(JFrame owner){
         super();
-        HighScore highscore = new HighScore();
+        nameInput();
+        
+        
+        
         
 
         strLen = 0;
@@ -120,13 +131,29 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         
         //initialize the first level
         wall.nextLevel();
+        this.stage = wall.getStage();
+        
 
         bricks = new ArrayList<BrickController>();
         
         gameTimer = new javax.swing.Timer(10,e ->{
-
+        	
+        	if(flag == 1 ) {
+        		score = 0;
+        		wall.setScore(0);
+        		HighScore highscore = new HighScore(stage);
+	        	this.highscore = highscore;
+	            highscore.readFile();
+	            record = Integer.parseInt(highscore.highscore);
+	            nameRecord = highscore.username;
+	            flag = 0;
+	        	
+            
+        	}
+            
         	wall.move();
             wall.findImpacts();
+            this.score = wall.getScore();
             message = String.format("Bricks: %d %nBalls %d",wall.getBrickCount(),wall.getBallCount());
             
             for(BrickController br : wall.getBricks()) {
@@ -158,8 +185,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 gameTimer.stop();
             }
             else if(wall.isDone()){
+            	this.score += wall.getBallCount()*100;
             	
-            	highscore.writeFile("GAME OVER");
+            	
                 if(wall.hasLevel()){
                     message = "Go to Next Level";
                     gameTimer.stop();
@@ -175,7 +203,17 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                     gameTimer.stop();
                 }
             }
-
+            
+            if (score > record) {
+            	record = score;
+            	nameRecord = name;
+            	highscore.writeFile(Integer.toString(record)+nameRecord);
+            }
+            
+            if(this.stage != wall.getStage()) {
+            	flag = 1;
+            	this.stage = wall.getStage();
+            }
             repaint();
         });
 
@@ -203,6 +241,11 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         wall.getBall().setSpeed(speedX,speedY);
         wall.getPlayer().move(speedBoost);
 	}
+    
+    public void nameInput() {
+        String name = JOptionPane.showInputDialog(this,"ENTER YOUR USERNAME:");
+        this.name=name;
+    }
     
    /**
     * Method to allow the ball to bounce oddly 
@@ -269,6 +312,13 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         g2d.setColor(Color.BLUE);
         g2d.drawString(message,250,225);
+        g2d.drawString("Current Score : "+score,30,110);
+        g2d.drawString("("+name+")",30,140);
+        g2d.drawString("High Score : "+record,460,110);
+        if(nameRecord!=null) {
+        	g2d.drawString("("+nameRecord+")",460,140);
+        }
+        
 
         d.drawBall(wall.getBall(),g2d);
          
@@ -440,6 +490,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             message = "Restarting Game...";
             wall.ballReset();
             wall.wallReset();
+            wall.setScore(0);
+            score = 0;
             showPauseMenu = false;
             repaint();
         }
@@ -497,5 +549,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         message = "Focus Lost";
         repaint();
     }
+
+	
 
 }

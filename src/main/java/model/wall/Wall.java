@@ -47,7 +47,8 @@ public class Wall {
 
 	private BrickController[][] levels;
 	private int level;
-
+	private int stage = 0;
+	private int score = 0;
 	private Point startPoint;
 	private int brickCount;
 	private int ballCount;
@@ -122,6 +123,7 @@ public class Wall {
 	 */
 
 	public void findImpacts() {
+		
 		if (getPlayer().impact(getBall())) {
 			getBall().reverseY();
 		} else if (impactWall()) {
@@ -129,6 +131,7 @@ public class Wall {
 			 * for efficiency reverse is done into method impactWall because for every brick
 			 * program checks for horizontal and vertical impacts
 			 */
+			this.setScore(this.getScore() + 50);
 			brickCount--;
 		} else if (impactBorder()) {
 			getBall().reverseX();
@@ -274,6 +277,7 @@ public class Wall {
 	public void nextLevel() {
 		setBricks(levels[level++]);
 		this.brickCount = getBricks().length;
+		this.setStage(this.getStage() + 1);
 	}
 
 	/**
@@ -373,6 +377,22 @@ public class Wall {
 
 	public void setBricks(BrickController[] bricks) {
 		this.bricks = bricks;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getStage() {
+		return stage;
+	}
+
+	public void setStage(int stage) {
+		this.stage = stage;
 	}
 
 }

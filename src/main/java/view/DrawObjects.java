@@ -1,4 +1,4 @@
-package main.java.model;
+package main.java.view;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
