@@ -12,23 +12,23 @@ public class HighScore {
 	String highscore = "0";
 	String username;
 	HighScore(int stage){
-	
+
 		try {
 			if(stage == 1) {
-				File file = new File("C:\\Users\\Windows10\\eclipse-workspace\\COMP2042_CW_emily1381\\src\\main\\java\\resources\\highscore1.txt");
-				this.file = file;
+				File file1 = new File("src\\main\\java\\resources\\highscore1.txt");
+				this.file = file1;
 			}
 			else if(stage == 2) {
-				File file = new File("C:\\Users\\Windows10\\eclipse-workspace\\COMP2042_CW_emily1381\\src\\main\\java\\resources\\highscore2.txt");
-				this.file = file;
+				File file2 = new File("src\\main\\java\\resources\\highscore2.txt");
+				this.file = file2;
 			}
 			else if(stage == 3) {
-				File file = new File("C:\\Users\\Windows10\\eclipse-workspace\\COMP2042_CW_emily1381\\src\\main\\java\\resources\\highscore3.txt");
-				this.file = file;
+				File file3 = new File("src\\main\\java\\resources\\highscore3.txt");
+				this.file = file3;
 			}
 			else if(stage == 4) {
-				File file = new File("C:\\Users\\Windows10\\eclipse-workspace\\COMP2042_CW_emily1381\\src\\main\\java\\resources\\highscore4.txt");
-				this.file = file;
+				File file4 = new File("src\\main\\java\\resources\\highscore4.txt");
+				this.file = file4;
 			}
 			
 			if(file.createNewFile()) {

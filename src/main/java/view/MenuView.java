@@ -25,7 +25,7 @@ import javafx.scene.text.Text;
 public class MenuView {
 		
 	private Scene mainScene;
-	
+	private Stage mainStage;
 	private Button startButton;
 	private Button infoButton;
 	private Button exitButton;
@@ -40,7 +40,7 @@ public class MenuView {
 	GridPane gridpane;
 	
 	public MenuView (Stage mainStage){
-		
+		this.mainStage = mainStage;
 		StackPane stack = new StackPane();
 
 		VBox layer1 = new VBox();
@@ -105,7 +105,9 @@ public class MenuView {
 		infoButton.setPrefWidth(70);
 		exitButton.setPrefWidth(70);
 		
-		startButton.setOnAction(e ->  EventQueue.invokeLater(() -> new GameFrame().enableGameBoard()));
+		startButton.setOnAction(e ->  EventQueue.invokeLater(() -> {
+			new GameFrame().enableGameBoard();
+			}));
 		infoButton.setOnAction(e ->  EventQueue.invokeLater(() -> new GameFrame().enableInfoPage()));
 		exitButton.setOnAction(e ->  System.exit(0));
 

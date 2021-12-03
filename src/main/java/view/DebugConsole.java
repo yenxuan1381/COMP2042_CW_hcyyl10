@@ -20,6 +20,7 @@ package main.java.view;
 import javax.swing.*;
 
 import main.java.controller.BallController;
+import main.java.controller.WallController;
 import main.java.model.*;
 import main.java.model.ball.Ball;
 import main.java.model.wall.Wall;
@@ -41,7 +42,7 @@ public class DebugConsole extends JDialog implements WindowListener{
     private JFrame owner;
     private DebugPanel debugPanel;
     private GameBoard gameBoard;
-    private Wall wall;
+    private WallController wall;
 
     /**
      * Method to debug the console
@@ -50,7 +51,7 @@ public class DebugConsole extends JDialog implements WindowListener{
      * @param gameBoard The game board
      */
 
-    public DebugConsole(JFrame owner,Wall wall,GameBoard gameBoard){
+    public DebugConsole(JFrame owner,WallController wall,GameBoard gameBoard){
 
         this.wall = wall;
         this.owner = owner;

@@ -20,6 +20,7 @@ package main.java.view;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
+import main.java.controller.WallController;
 import main.java.model.wall.Wall;
 
 import java.awt.*;
@@ -37,7 +38,7 @@ public class DebugPanel extends JPanel {
     private JSlider ballXSpeed;
     private JSlider ballYSpeed;
 
-    public DebugPanel(Wall wall){
+    public DebugPanel(WallController wall){
 
         initialize();
 

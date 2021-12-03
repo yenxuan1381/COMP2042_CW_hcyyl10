@@ -70,7 +70,7 @@ public class WallController {
 	public WallController(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos) {
 
 //		this.startPoint = new Point(ballPos);
-		wallModel = new Wall(drawArea, ballPos);
+//		wallModel = new Wall(drawArea, ballPos);
 
 		levelFac = new LevelFactory();
 
@@ -81,26 +81,11 @@ public class WallController {
 //		ballLost = false;
 
 		rnd = new Random();
-
+//		setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
+		wallModel = new Wall(drawArea, ballPos);
 		makeBall(ballPos);
-//		int speedX, speedY;
-//		do {
-//			speedX = rnd.nextInt(10) - 5;
-//		} while (speedX == 0);
-//		do {
-//			speedY = -rnd.nextInt(7);
-//		} while (speedY == 0);
-//
-//		getBall().setSpeed(speedX, speedY);
-		
-		initSpeed();
+//		setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
 
-		setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
-
-//		area = drawArea;
-	}
-	
-	public void initSpeed() {
 		int speedX, speedY;
 		do {
 			speedX = rnd.nextInt(10) - 5;
@@ -110,7 +95,25 @@ public class WallController {
 		} while (speedY == 0);
 
 		getBall().setSpeed(speedX, speedY);
+		
+//		initSpeed();
+
+		wallModel.setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
+
+//		area = drawArea;
 	}
+	
+//	public void initSpeed() {
+//		int speedX, speedY;
+//		do {
+//			speedX = rnd.nextInt(10) - 5;
+//		} while (speedX == 0);
+//		do {
+//			speedY = -rnd.nextInt(7);
+//		} while (speedY == 0);
+//
+//		getBall().setSpeed(speedX, speedY);
+//	}
 
 	/**
 	 * Method to create a ball at a specific position
@@ -119,7 +122,7 @@ public class WallController {
 	 */
 
 	private void makeBall(Point2D ballPos) {
-		setBall(new RubberBall(ballPos));
+		wallModel.setBall(new RubberBall(ballPos));
 	}
 
 	/**
@@ -146,6 +149,7 @@ public class WallController {
 			 * program checks for horizontal and vertical impacts
 			 */
 //			brickCount--;
+			wallModel.setScore(getScore() + 50);
 			wallModel.setBrickCount(getBrickCount()-1);
 		} else if (impactBorder()) {
 			getBall().reverseX();
@@ -240,12 +244,13 @@ public class WallController {
 	public void ballReset() {
 		getPlayer().moveTo(wallModel.getStartPoint());
 		getBall().moveTo(wallModel.getStartPoint());
+//		initSpeed();
 		int speedX, speedY;
 		do {
-			speedX = rnd.nextInt(5) - 2;
+			speedX = rnd.nextInt(10) - 5;
 		} while (speedX == 0);
 		do {
-			speedY = -rnd.nextInt(3);
+			speedY = -rnd.nextInt(7);
 		} while (speedY == 0);
 
 		getBall().setSpeed(speedX, speedY);
@@ -260,7 +265,7 @@ public class WallController {
 		for (BrickController b : getBricks())
 			b.repair();
 		wallModel.setBrickCount(getBricks().length);
-		ballCount = 3;
+		wallModel.setBallCount(3);
 	}
 
 	/**
@@ -271,7 +276,7 @@ public class WallController {
 	 */
 
 	public boolean ballEnd() {
-		return ballCount == 0;
+		return wallModel.getBallCount() == 0;
 	}
 
 	/**
@@ -283,7 +288,7 @@ public class WallController {
 	 */
 
 	public boolean isDone() {
-		return brickCount == 0;
+		return wallModel.getBrickCount() == 0;
 	}
 
 	/**
@@ -291,8 +296,16 @@ public class WallController {
 	 */
 
 	public void nextLevel() {
-		setBricks(levels[level++]);
-		this.brickCount = getBricks().length;
+//		setBricks(levels[level++]);
+		
+		
+		int nextLvl = getLevel();
+		setBricks(levels[nextLvl]);
+		nextLvl++;
+		wallModel.setLevel(nextLvl);
+		wallModel.setBrickCount(getBricks().length);
+		
+		wallModel.setStage(getStage() + 1);
 	}
 
 	/**
@@ -303,7 +316,7 @@ public class WallController {
 	 */
 
 	public boolean hasLevel() {
-		return wallModel.getLevel() < levels.length;
+		return getLevel() < levels.length;
 	}
 
 	/**
@@ -350,9 +363,10 @@ public class WallController {
 	 * @param player The player object
 	 */
 
-	public void setPlayer(Point ballPoint, int width, int height, Rectangle container) {
-		PlayerController.getUniquePlayer(ballPoint, width, height, container);
-	}
+//	public void setPlayer(Point ballPoint, int width, int height, Rectangle container) {
+////		PlayerController.getUniquePlayer(ballPoint, width, height, container);
+//		wallModel.setPlayer(ballPoint, width, height, container);
+//	}
 
 	/**
 	 * Getter to get the ball object
@@ -364,15 +378,15 @@ public class WallController {
 		return wallModel.getBall();
 	}
 
-	/**
-	 * Setter to set the ball object
-	 * 
-	 * @param ball The ball object
-	 */
-
-	public void setBall(BallController ball) {
-		wallModel.setBall(ball);
-	}
+//	/**
+//	 * Setter to set the ball object
+//	 * 
+//	 * @param ball The ball object
+//	 */
+//
+//	public void setBall(BallController ball) {
+//		wallModel.setBall(ball);
+//	}
 
 	/**
 	 * Getter to get the array of brick objects
@@ -392,6 +406,23 @@ public class WallController {
 
 	public void setBricks(BrickController[] bricks) {
 		wallModel.setBricks(bricks);
+	}
+	
+	public int getLevel() {
+		return wallModel.getLevel();
+	}
+
+	public int getStage() {
+		return wallModel.getStage();
+	}
+
+	public void setScore(int i) {
+		wallModel.setScore(i);
+		
+	}
+
+	public int getScore() {
+		return wallModel.getScore();
 	}
 
 }

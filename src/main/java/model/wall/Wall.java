@@ -39,7 +39,7 @@ import main.java.model.player.Player;
 
 public class Wall {
 
-	private Random rnd;
+//	private Random rnd;
 	private Rectangle area;
 
 	private BrickController[] bricks;
@@ -53,7 +53,7 @@ public class Wall {
 	private int brickCount;
 	private int ballCount;
 	private boolean ballLost;
-	private LevelFactory levelFac;
+//	private LevelFactory levelFac;
 //	private BrickController brController;
 
 
@@ -67,124 +67,138 @@ public class Wall {
 	 * @param ballPos             the coordinates of the point of the ball
 	 */
 
-	public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos) {
+	public Wall(Rectangle drawArea, Point ballPos) {
 
 		this.startPoint = new Point(ballPos);
 
-		levelFac = new LevelFactory();
-
-		levels = levelFac.makeLevels(drawArea, brickCount, lineCount, brickDimensionRatio);
+//		levelFac = new LevelFactory();
+//
+//		levels = levelFac.makeLevels(drawArea, brickCount, lineCount, brickDimensionRatio);
 		level = 0;
 
 		ballCount = 10;
 		ballLost = false;
 
-		rnd = new Random();
+//		rnd = new Random();
 
-		makeBall(ballPos);
-		int speedX, speedY;
-		do {
-			speedX = rnd.nextInt(10) - 5;
-		} while (speedX == 0);
-		do {
-			speedY = -rnd.nextInt(7);
-		} while (speedY == 0);
+//		makeBall(ballPos);
+//		int speedX, speedY;
+//		do {
+//			speedX = rnd.nextInt(10) - 5;
+//		} while (speedX == 0);
+//		do {
+//			speedY = -rnd.nextInt(7);
+//		} while (speedY == 0);
+//
+//		getBall().setSpeed(speedX, speedY);
+		
+//		initSpeed();
 
-		getBall().setSpeed(speedX, speedY);
-
-		setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
+//		setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
 
 		area = drawArea;
 	}
+	
+//	public void initSpeed() {
+//		int speedX, speedY;
+//		do {
+//			speedX = rnd.nextInt(10) - 5;
+//		} while (speedX == 0);
+//		do {
+//			speedY = -rnd.nextInt(7);
+//		} while (speedY == 0);
+//
+//		getBall().setSpeed(speedX, speedY);
+//	}
 
-	/**
-	 * Method to create a ball at a specific position
-	 * 
-	 * @param ballPos The coordinates of the point of the ball
-	 */
+//	/**
+//	 * Method to create a ball at a specific position
+//	 * 
+//	 * @param ballPos The coordinates of the point of the ball
+//	 */
+//
+//	private void makeBall(Point2D ballPos) {
+//		setBall(new RubberBall(ballPos));
+//	}
 
-	private void makeBall(Point2D ballPos) {
-		setBall(new RubberBall(ballPos));
-	}
+//	/**
+//	 * Method to move the player and the ball object
+//	 */
+//
+//	public void move() {
+//		getPlayer().move();
+//		getBall().move();
+//	}
+//
+//	/**
+//	 * Method to find the impact made by the ball
+//	 * <li>if impact made between ball and player, ball change direction
+//	 * <li>if impact made between ball and wall, the amount of bricks decreases
+//	 */
+//
+//	public void findImpacts() {
+//		
+//		if (getPlayer().impact(getBall())) {
+//			getBall().reverseY();
+//		} else if (impactWall()) {
+//			/*
+//			 * for efficiency reverse is done into method impactWall because for every brick
+//			 * program checks for horizontal and vertical impacts
+//			 */
+//			this.setScore(this.getScore() + 50);
+//			brickCount--;
+//		} else if (impactBorder()) {
+//			getBall().reverseX();
+//		} else if (getBall().getPosition().getY() < area.getY()) {
+//			getBall().reverseY();
+//		} else if (getBall().getPosition().getY() > area.getY() + area.getHeight()) {
+//			ballCount--;
+//			ballLost = true;
+//		}
+//	}
 
-	/**
-	 * Method to move the player and the ball object
-	 */
-
-	public void move() {
-		getPlayer().move();
-		getBall().move();
-	}
-
-	/**
-	 * Method to find the impact made by the ball
-	 * <li>if impact made between ball and player, ball change direction
-	 * <li>if impact made between ball and wall, the amount of bricks decreases
-	 */
-
-	public void findImpacts() {
-		
-		if (getPlayer().impact(getBall())) {
-			getBall().reverseY();
-		} else if (impactWall()) {
-			/*
-			 * for efficiency reverse is done into method impactWall because for every brick
-			 * program checks for horizontal and vertical impacts
-			 */
-			this.setScore(this.getScore() + 50);
-			brickCount--;
-		} else if (impactBorder()) {
-			getBall().reverseX();
-		} else if (getBall().getPosition().getY() < area.getY()) {
-			getBall().reverseY();
-		} else if (getBall().getPosition().getY() > area.getY() + area.getHeight()) {
-			ballCount--;
-			ballLost = true;
-		}
-	}
-
-	/**
-	 * Method to determine and set the direction of the ball if impact made between
-	 * the ball and the wall
-	 * 
-	 * @return True if impact is made, False if no impact is made
-	 */
-
-	private boolean impactWall() {
-		for (BrickController br : getBricks()) {
-			switch (br.findImpact(getBall())) {
-
-			case UP_IMPACT:
-				getBall().reverseY();
-				return br.setImpact(getBall().getDown(), Crack.UP);
-			case DOWN_IMPACT:
-				getBall().reverseY();
-				return br.setImpact(getBall().getUp(), Crack.DOWN);
-			case LEFT_IMPACT:
-				getBall().reverseX();
-				return br.setImpact(getBall().getRight(), Crack.RIGHT);
-			case RIGHT_IMPACT:
-				getBall().reverseX();
-				return br.setImpact(getBall().getLeft(), Crack.LEFT);
-			case NO_IMPACT:
-				continue;
-
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Method to determine and set the direction of the ball if impact made between
-	 * the ball and the border
-	 * 
-	 * @return True if impact is made, False if no impact is made
-	 */
-
-	private boolean impactBorder() {
-		Point2D p = getBall().getPosition();
-		return ((p.getX() < area.getX()) || (p.getX() > (area.getX() + area.getWidth())));
-	}
+//	/**
+//	 * Method to determine and set the direction of the ball if impact made between
+//	 * the ball and the wall
+//	 * 
+//	 * @return True if impact is made, False if no impact is made
+//	 */
+//
+//	private boolean impactWall() {
+//		for (BrickController br : getBricks()) {
+//			switch (br.findImpact(getBall())) {
+//
+//			case UP_IMPACT:
+//				getBall().reverseY();
+//				return br.setImpact(getBall().getDown(), Crack.UP);
+//			case DOWN_IMPACT:
+//				getBall().reverseY();
+//				return br.setImpact(getBall().getUp(), Crack.DOWN);
+//			case LEFT_IMPACT:
+//				getBall().reverseX();
+//				return br.setImpact(getBall().getRight(), Crack.RIGHT);
+//			case RIGHT_IMPACT:
+//				getBall().reverseX();
+//				return br.setImpact(getBall().getLeft(), Crack.LEFT);
+//			case NO_IMPACT:
+//				continue;
+//
+//			}
+//		}
+//		return false;
+//	}
+//
+//	/**
+//	 * Method to determine and set the direction of the ball if impact made between
+//	 * the ball and the border
+//	 * 
+//	 * @return True if impact is made, False if no impact is made
+//	 */
+//
+//	private boolean impactBorder() {
+//		Point2D p = getBall().getPosition();
+//		return ((p.getX() < area.getX()) || (p.getX() > (area.getX() + area.getWidth())));
+//	}
 
 	/**
 	 * Getter to get the number of bricks
@@ -216,80 +230,80 @@ public class Wall {
 		return ballLost;
 	}
 
-	/**
-	 * Method to reset the coordinates of the points of the ball to the default
-	 * starting position
-	 */
+//	/**
+//	 * Method to reset the coordinates of the points of the ball to the default
+//	 * starting position
+//	 */
+//
+//	public void ballReset() {
+//		getPlayer().moveTo(startPoint);
+//		getBall().moveTo(startPoint);
+//		int speedX, speedY;
+//		do {
+//			speedX = rnd.nextInt(5) - 2;
+//		} while (speedX == 0);
+//		do {
+//			speedY = -rnd.nextInt(3);
+//		} while (speedY == 0);
+//
+//		getBall().setSpeed(speedX, speedY);
+//		ballLost = false;
+//	}
+//
+//	/**
+//	 * Method to reset the wall to the default amount of bricks
+//	 */
+//
+//	public void wallReset() {
+//		for (BrickController b : getBricks())
+//			b.repair();
+//		brickCount = getBricks().length;
+//		ballCount = 3;
+//	}
 
-	public void ballReset() {
-		getPlayer().moveTo(startPoint);
-		getBall().moveTo(startPoint);
-		int speedX, speedY;
-		do {
-			speedX = rnd.nextInt(5) - 2;
-		} while (speedX == 0);
-		do {
-			speedY = -rnd.nextInt(3);
-		} while (speedY == 0);
+//	/**
+//	 * Method to determine if the balls left is 0
+//	 * 
+//	 * @return True if the number of balls left is 0, False if the number of balls
+//	 *         left is > 0
+//	 */
+//
+//	public boolean ballEnd() {
+//		return ballCount == 0;
+//	}
+//
+//	/**
+//	 * Method to determine if the game is done Game is done when the number of
+//	 * bricks left is 0
+//	 * 
+//	 * @return True if the number of bricks left is 0, False if the number of bricks
+//	 *         left is > 0
+//	 */
+//
+//	public boolean isDone() {
+//		return brickCount == 0;
+//	}
 
-		getBall().setSpeed(speedX, speedY);
-		ballLost = false;
-	}
+//	/**
+//	 * Method to move to the next level
+//	 */
+//
+//	public void nextLevel() {
+//		setBricks(levels[level++]);
+//		this.brickCount = getBricks().length;
+//		this.setStage(this.getStage() + 1);
+//	}
 
-	/**
-	 * Method to reset the wall to the default amount of bricks
-	 */
-
-	public void wallReset() {
-		for (BrickController b : getBricks())
-			b.repair();
-		brickCount = getBricks().length;
-		ballCount = 3;
-	}
-
-	/**
-	 * Method to determine if the balls left is 0
-	 * 
-	 * @return True if the number of balls left is 0, False if the number of balls
-	 *         left is > 0
-	 */
-
-	public boolean ballEnd() {
-		return ballCount == 0;
-	}
-
-	/**
-	 * Method to determine if the game is done Game is done when the number of
-	 * bricks left is 0
-	 * 
-	 * @return True if the number of bricks left is 0, False if the number of bricks
-	 *         left is > 0
-	 */
-
-	public boolean isDone() {
-		return brickCount == 0;
-	}
-
-	/**
-	 * Method to move to the next level
-	 */
-
-	public void nextLevel() {
-		setBricks(levels[level++]);
-		this.brickCount = getBricks().length;
-		this.setStage(this.getStage() + 1);
-	}
-
-	/**
-	 * Method to determine if the game has another level
-	 * 
-	 * @return True if the game has another level, False if the game is on the final
-	 *         level
-	 */
-
-	public boolean hasLevel() {
-		return level < levels.length;
-	}
+//	/**
+//	 * Method to determine if the game has another level
+//	 * 
+//	 * @return True if the game has another level, False if the game is on the final
+//	 *         level
+//	 */
+//
+//	public boolean hasLevel() {
+//		return getLevel() < levels.length;
+//	}
 
 	/**
 	 * Setter to set the horizontal speed of the ball
@@ -394,5 +408,43 @@ public class Wall {
 	public void setStage(int stage) {
 		this.stage = stage;
 	}
+
+	public void setBrickCount(int brickCount) {
+		this.brickCount = brickCount;
+	}
+
+	public void setBallCount(int ballCount) {
+		this.ballCount = ballCount;
+	}
+
+	public Rectangle getArea() {
+		return area;
+	}
+
+	public void setArea(Rectangle area) {
+		this.area = area;
+	}
+
+	public Point getStartPoint() {
+		return startPoint;
+	}
+
+	public void setStartPoint(Point startPoint) {
+		this.startPoint = startPoint;
+	}
+
+	public void setBallLost(boolean ballLost) {
+		this.ballLost = ballLost;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	
+	
 
 }

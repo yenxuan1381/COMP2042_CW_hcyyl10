@@ -45,6 +45,7 @@ import javax.swing.JOptionPane;
 
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
+import main.java.controller.WallController;
 import main.java.model.*;
 import main.java.model.ball.Ball;
 import main.java.model.ball.RubberBall;
@@ -77,7 +78,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private javax.swing.Timer gameTimer;
 
-    private Wall wall;
+    private WallController wall;
 
     private String message;
 
@@ -112,10 +113,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     public GameBoard(JFrame owner){
         super();
         nameInput();
-        
-        
-        
-        
 
         strLen = 0;
         showPauseMenu = false;
@@ -125,7 +122,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         this.initialize();
         message = "";
-        wall = new Wall(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
+        wall = new WallController(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
 
         debugConsole = new DebugConsole(owner,wall,this);
         
@@ -137,6 +134,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         bricks = new ArrayList<BrickController>();
         
         gameTimer = new javax.swing.Timer(10,e ->{
+//        	System.out.println("counting");
         	
         	if(flag == 1 ) {
         		score = 0;
