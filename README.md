@@ -2,8 +2,11 @@
 Brick Breaker
 
 ### Table of Contents  
-**[Project Setup](#project-setup)**<br> 
-**[Refactoring](#refactoring)**<br>
+- **[Project Setup](#project-setup)**<br> 
+- **[Refactoring](#refactoring)**<br>
+- **[Additions](#additions)**<br>
+- **[Documentation](#documentation)**<br>
+- **[Git Use](#git-use)**<br>
 
 
 ## Project Setup
@@ -38,10 +41,68 @@ After that, run
 Everything is working fine if the "BUILD SUCCESS" is printed in the console
 
 
-Now, run the project as a Java Application. 
-
------------------**Game Starts**-----------------
+Now, run the project as a Java Application. **Game Starts**
 
 
 ## Refactoring
+- Organized classes into packages
+- Removed code smells
+	- removed duplicated code
+	- improved encapsulation
+	- broke down large classes to adhere the SOLID principle
+	- added interfaces (playable interface)
+	- removed primitive obsession, used enum instead
+- Arranged Code into MVC pattern
+- Applied some design patterns
+	- Level Factory
+	- Brick Factory
+	- Added Singleton to Player Class
+- Added meaningful JUnit tests
+	- BrickTest
+	- BallTest
+	- WallTest
+	- PlayerTest
+- Converted the project to Maven project
 
+
+## Additions
+- Added Highscore
+
+[insert image]
+
+- Added Username input
+
+![image](https://user-images.githubusercontent.com/76611914/144702175-58a6d401-e26f-4fb7-bb40-0b8be890a4ce.png)
+
+
+- Added additional levels
+	- The presence of special brick when creating a single brick type level
+	- From 4 levels -> 8 levels
+	- New brick type: Vibranium Brick, stronger than steel brick (able to crack)
+- Additional Features
+	- Cheatmode enabled when special brick is destroyed
+	- 2 types of cheatmode
+		- 30% increases the speed of the ball
+		- 70% the ball bounces oddly after impact
+	- Additional Info Page created using Java Swing
+	
+  ![image](https://user-images.githubusercontent.com/76611914/144702228-d33f5818-4cac-441f-971c-78743269cdfd.png)
+  
+  
+	- Created a main menu using JavaFx
+
+  [insert image]
+	
+  
+	
+
+
+## Documentation
+- Javadocs : [insert link here]
+- High-level class diagram:
+- Readme
+
+## Git Use
+- commit history from the start of the project
+- meaningful commit messages
+- use of branch and merge function
