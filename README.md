@@ -1,12 +1,14 @@
 # COMP2042_CW_hcyyl10
 Brick Breaker
 
-#### Table of Contents
-[Project Setup] (#setup)
+##### Table of Contents  
+[Headers](#headers)  
+[Emphasis](#emphasis)  
 
 
-<a name="setup"/>
-## Project Setup
+<a name="headers"/>
+## Headers
+
 I'm using Java 11.0.2 on eclipse.
 ```
 $user > java --version
