@@ -7,7 +7,7 @@ import main.java.model.brick.BrickType;
 
 public class LevelFactory {
 	
-	private static final int LEVELS_COUNT = 6;
+	private static final int LEVELS_COUNT = 8;
 
     private Level level;
 	
@@ -30,8 +30,10 @@ public class LevelFactory {
         tmp[1] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CLAY,BrickType.CEMENT);
         tmp[2] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CEMENT);
         tmp[3] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.CLAY,BrickType.STEEL);
-        tmp[4] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.STEEL,BrickType.CEMENT);
+        tmp[4] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.VIBRANIUM,BrickType.CEMENT);
         tmp[5] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.STEEL);
+        tmp[6] = level.makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.VIBRANIUM,BrickType.STEEL);
+        tmp[7] = level.makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,BrickType.VIBRANIUM);
         return tmp;
     }
 }

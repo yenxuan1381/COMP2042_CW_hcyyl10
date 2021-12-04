@@ -42,19 +42,32 @@ class WallTest {
     public void testStage() {
     	w1.nextLevel();
     	assertEquals(1, w1.getStage());
+    	w1.nextLevel();
+    	assertEquals(2, w1.getStage());
+    	
     }
 
 	
 	@Test
     public void testLevel() {
+		assertEquals(6,w1.getLevelsLength());
         assertTrue(w1.hasLevel());
         w1.nextLevel();
+        assertEquals(1, w1.getLevel());
         w1.nextLevel();
+        assertEquals(2, w1.getLevel());
         w1.nextLevel();
+        assertEquals(3, w1.getLevel());
         w1.nextLevel();
+        assertEquals(4, w1.getLevel());
         w1.nextLevel();
+        assertEquals(5, w1.getLevel());
         w1.nextLevel();
+        assertEquals(6, w1.getLevel());
         assertFalse(w1.hasLevel());
     }
+	
+	
+
 
 }

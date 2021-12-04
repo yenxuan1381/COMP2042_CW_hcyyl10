@@ -48,7 +48,7 @@ public class WallController {
 //	private BallController ball;
 //
 	private BrickController[][] levels;
-//	private int level;
+	private int nextLvl = 0;
 
 //	private Point startPoint;
 //	private int brickCount;
@@ -299,10 +299,10 @@ public class WallController {
 //		setBricks(levels[level++]);
 		
 		
-		int nextLvl = getLevel();
-		setBricks(levels[nextLvl]);
-		nextLvl++;
-		wallModel.setLevel(nextLvl);
+//		nextLvl = getLevel() ;
+//		wallModel.setLevel(nextLvl);
+		setBricks(levels[getLevel()]);
+		wallModel.setLevel(getLevel()+1);
 		wallModel.setBrickCount(getBricks().length);
 		
 		wallModel.setStage(getStage() + 1);
@@ -318,6 +318,11 @@ public class WallController {
 	public boolean hasLevel() {
 		return getLevel() < levels.length;
 	}
+	
+	public int getLevelsLength() {
+		return levels.length;
+	}
+	
 
 	/**
 	 * Setter to set the horizontal speed of the ball

@@ -143,30 +143,33 @@ public class Level {
 			p.setLocation(x, y);
 
 			boolean b = ((line % 2 == 0 && i % 2 == 0) || (line % 2 != 0 && posX > centerLeft && posX <= centerRight));
+			tmp[i] = b ? makeBrick(p, brickSize, typeA) : makeBrick(p, brickSize, typeB);
 
-			double r = rand.nextDouble();
-
-			if (r < 0.2) {
-				tmp[i] = makeBrick(p, brickSize, BrickType.SPECIAL);
-			}
-
-			else {
-				tmp[i] = b ? makeBrick(p, brickSize, typeA) : makeBrick(p, brickSize, typeB);
-			}
+//			double r = rand.nextDouble();
+//
+//			if (r < 0.2) {
+//				tmp[i] = makeBrick(p, brickSize, BrickType.SPECIAL);
+//			}
+//
+//			else {
+//				tmp[i] = b ? makeBrick(p, brickSize, typeA) : makeBrick(p, brickSize, typeB);
+//			}
 		}
 
 		for (double y = brickHgt; i < tmp.length; i++, y += 2 * brickHgt) {
 			double x = (brickOnLine * brickLen) - (brickLen / 2);
 			p.setLocation(x, y);
-			double r = rand.nextDouble();
+			tmp[i] = makeBrick(p, brickSize, typeA);
+			
+//			double r = rand.nextDouble();
 
-			if (r < 0.2) {
-				tmp[i] = makeBrick(p, brickSize, BrickType.SPECIAL);
-			}
-
-			else {
-				tmp[i] = makeBrick(p, brickSize, typeA);
-			}
+//			if (r < 0.2) {
+//				tmp[i] = makeBrick(p, brickSize, BrickType.SPECIAL);
+//			}
+//
+//			else {
+//				tmp[i] = makeBrick(p, brickSize, typeA);
+//			}
 		}
 		return tmp;
 	}

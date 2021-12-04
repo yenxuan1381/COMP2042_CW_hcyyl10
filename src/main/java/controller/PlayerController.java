@@ -5,10 +5,11 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import main.java.model.player.Playable;
 import main.java.model.player.Player;
 import main.java.view.PlayerView;
 
-public class PlayerController {
+public class PlayerController implements Playable {
 	
 //	public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
 //  public static final Color INNER_COLOR = Color.GREEN;
