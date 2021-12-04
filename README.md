@@ -1,13 +1,13 @@
 # COMP2042_CW_hcyyl10
 Brick Breaker
 
-##### Table of Contents  
+#####  #Table of Contents  
 [Headers](#headers)  
 [Emphasis](#emphasis)  
 
 
 <a name="headers"/>
-## Headers
+## ## Headers
 
 I'm using Java 11.0.2 on eclipse.
 ```
