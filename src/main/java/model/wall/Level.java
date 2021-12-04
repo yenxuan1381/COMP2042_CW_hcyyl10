@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.util.Random;
 
 import main.java.controller.BrickController;
+import main.java.model.brick.BrickFactory;
 import main.java.model.brick.BrickType;
 import main.java.model.brick.CementBrick;
 import main.java.model.brick.ClayBrick;
@@ -14,8 +15,12 @@ import main.java.model.brick.SteelBrick;
 import main.java.model.brick.VibraniumBrick;
 
 public class Level {
+	
+	private BrickFactory brFactory;
 
 	public Level() {
+		
+		brFactory = new BrickFactory();
 
 	}
 
@@ -66,11 +71,11 @@ public class Level {
 
 			// 30% chance to create Special Brick
 			if (r < 0.3) {
-				tmp[i] = makeBrick(p, brickSize, BrickType.SPECIAL);
+				tmp[i] = brFactory.makeBrick(p, brickSize, BrickType.SPECIAL);
 			}
 
 			else {
-				tmp[i] = makeBrick(p, brickSize, type);
+				tmp[i] = brFactory.makeBrick(p, brickSize, type);
 			}
 
 		}
@@ -82,11 +87,11 @@ public class Level {
 			double r = rand.nextDouble();
 
 			if (r < 0.3) {
-				tmp[i] = makeBrick(p, brickSize, BrickType.SPECIAL);
+				tmp[i] = brFactory.makeBrick(p, brickSize, BrickType.SPECIAL);
 			}
 
 			else {
-				tmp[i] = makeBrick(p, brickSize, type);
+				tmp[i] = brFactory.makeBrick(p, brickSize, type);
 			}
 		}
 		return tmp;
@@ -144,71 +149,17 @@ public class Level {
 			p.setLocation(x, y);
 
 			boolean b = ((line % 2 == 0 && i % 2 == 0) || (line % 2 != 0 && posX > centerLeft && posX <= centerRight));
-			tmp[i] = b ? makeBrick(p, brickSize, typeA) : makeBrick(p, brickSize, typeB);
+			tmp[i] = b ? brFactory.makeBrick(p, brickSize, typeA) : brFactory.makeBrick(p, brickSize, typeB);
 
-//			double r = rand.nextDouble();
-//
-//			if (r < 0.2) {
-//				tmp[i] = makeBrick(p, brickSize, BrickType.SPECIAL);
-//			}
-//
-//			else {
-//				tmp[i] = b ? makeBrick(p, brickSize, typeA) : makeBrick(p, brickSize, typeB);
-//			}
 		}
 
 		for (double y = brickHgt; i < tmp.length; i++, y += 2 * brickHgt) {
 			double x = (brickOnLine * brickLen) - (brickLen / 2);
 			p.setLocation(x, y);
-			tmp[i] = makeBrick(p, brickSize, typeA);
-			
-//			double r = rand.nextDouble();
+			tmp[i] = brFactory.makeBrick(p, brickSize, typeA);
 
-//			if (r < 0.2) {
-//				tmp[i] = makeBrick(p, brickSize, BrickType.SPECIAL);
-//			}
-//
-//			else {
-//				tmp[i] = makeBrick(p, brickSize, typeA);
-//			}
 		}
 		return tmp;
-	}
-
-	
-	//Turn into Brick Factory//////////////////////////////////////////////////////
-	/**
-	 * Method to create brick objects
-	 * 
-	 * @param point The point of the brick object
-	 * @param size  The size of the brick object
-	 * @param type  The type of the brick object
-	 * @return A brick object
-	 */
-
-	private BrickController makeBrick(Point point, Dimension size, BrickType type) {
-		BrickController out;
-		switch (type) {
-		case CLAY:
-			out = new ClayBrick(point, size);
-			break;
-		case STEEL:
-			out = new SteelBrick(point, size);
-			break;
-		case CEMENT:
-			out = new CementBrick(point, size);
-			break;
-		case SPECIAL:
-			out = new SpecialBrick(point, size);
-			break;
-		case VIBRANIUM:
-			out = new VibraniumBrick(point, size);
-			break;
-		default:
-			throw new IllegalArgumentException(String.format("Unknown Type:%d\n", type));
-			
-		}
-		return out;
 	}
 
 }

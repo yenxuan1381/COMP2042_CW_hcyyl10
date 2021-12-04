@@ -1,7 +1,5 @@
 package main.java.model.brick;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -9,17 +7,17 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
+/**
+ * Objects of this class represent the cracks of the brick
+ * 
+ * @author Emily
+ *
+ */
+
 public class Crack {
 
 	private static final int CRACK_SECTIONS = 3;
 	private static final double JUMP_PROBABILITY = 0.7;
-
-//	public static final int LEFT = 10;
-//	public static final int RIGHT = 20;
-//	public static final int UP = 30;
-//	public static final int DOWN = 40;
-//	public static final int VERTICAL = 100;
-//	public static final int HORIZONTAL = 200;
 
 	protected static Random rnd;
 	private GeneralPath crack;
@@ -103,7 +101,8 @@ public class Crack {
 			makeCrack(impact, tmp);
 
 			break;
-
+		default:
+			throw new IllegalArgumentException(String.format("Unknown Direction:%d\n", direction));
 		}
 	}
 
@@ -192,8 +191,8 @@ public class Crack {
 	 * Method that return a random point in range between starting point and ending
 	 * point
 	 * 
-	 * @param from      Starting point
-	 * @param to        Ending point
+	 * @param from     Starting point
+	 * @param to       Ending point
 	 * @param vertical The direction of impact
 	 * @return A random point in range between from and to
 	 */
@@ -212,6 +211,8 @@ public class Crack {
 			pos = Brick.getRnd().nextInt(to.y - from.y) + from.y;
 			out.setLocation(to.x, pos);
 			break;
+		default:
+			throw new IllegalArgumentException(String.format("Unknown Vertical Direction:%d\n", vertical));
 		}
 		return out;
 	}

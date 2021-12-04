@@ -21,15 +21,8 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
-import main.java.controller.BallController;
-import main.java.controller.BrickController;
-import main.java.controller.PlayerController;
-import main.java.model.ball.Ball;
 import main.java.model.ball.RubberBall;
-import main.java.model.brick.Brick;
-import main.java.model.brick.Crack;
 import main.java.model.brick.CrackDirection;
-import main.java.model.player.Player;
 import main.java.model.wall.LevelFactory;
 import main.java.model.wall.Wall;
 
@@ -59,7 +52,8 @@ public class WallController {
 	 * @param ballPos             the coordinates of the point of the ball
 	 */
 
-	public WallController(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos) {
+	public WallController(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio,
+			Point ballPos) {
 
 //		this.startPoint = new Point(ballPos);
 //		wallModel = new Wall(drawArea, ballPos);
@@ -87,12 +81,10 @@ public class WallController {
 		} while (speedY == 0);
 
 		getBall().setSpeed(speedX, speedY);
-		
 
 		wallModel.setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
 
 	}
-	
 
 	/**
 	 * Method to create a ball at a specific position
@@ -129,14 +121,14 @@ public class WallController {
 			 */
 //			brickCount--;
 			wallModel.setScore(getScore() + 50);
-			wallModel.setBrickCount(getBrickCount()-1);
+			wallModel.setBrickCount(getBrickCount() - 1);
 		} else if (impactBorder()) {
 			getBall().reverseX();
 		} else if (getBall().getPosition().getY() < wallModel.getArea().getY()) {
 			getBall().reverseY();
 		} else if (getBall().getPosition().getY() > wallModel.getArea().getY() + wallModel.getArea().getHeight()) {
 //			ballCount--;
-			wallModel.setBallCount(getBallCount()-1);
+			wallModel.setBallCount(getBallCount() - 1);
 //			ballLost = true;
 			wallModel.setBallLost(true);
 		}
@@ -182,7 +174,8 @@ public class WallController {
 
 	private boolean impactBorder() {
 		Point2D p = getBall().getPosition();
-		return ((p.getX() < wallModel.getArea().getX()) || (p.getX() > (wallModel.getArea().getX() + wallModel.getArea().getWidth())));
+		return ((p.getX() < wallModel.getArea().getX())
+				|| (p.getX() > (wallModel.getArea().getX() + wallModel.getArea().getWidth())));
 	}
 
 	/**
@@ -276,14 +269,13 @@ public class WallController {
 
 	public void nextLevel() {
 //		setBricks(levels[level++]);
-		
-		
+
 //		nextLvl = getLevel() ;
 //		wallModel.setLevel(nextLvl);
 		setBricks(levels[getLevel()]);
-		wallModel.setLevel(getLevel()+1);
+		wallModel.setLevel(getLevel() + 1);
 		wallModel.setBrickCount(getBricks().length);
-		
+
 		wallModel.setStage(getStage() + 1);
 	}
 
@@ -297,11 +289,10 @@ public class WallController {
 	public boolean hasLevel() {
 		return getLevel() < levels.length;
 	}
-	
+
 	public int getLevelsLength() {
 		return levels.length;
 	}
-	
 
 	/**
 	 * Setter to set the horizontal speed of the ball
@@ -342,17 +333,6 @@ public class WallController {
 	}
 
 	/**
-	 * Setter to set the player object
-	 * 
-	 * @param player The player object
-	 */
-
-//	public void setPlayer(Point ballPoint, int width, int height, Rectangle container) {
-////		PlayerController.getUniquePlayer(ballPoint, width, height, container);
-//		wallModel.setPlayer(ballPoint, width, height, container);
-//	}
-
-	/**
 	 * Getter to get the ball object
 	 * 
 	 * @return The ball object
@@ -361,16 +341,6 @@ public class WallController {
 	public BallController getBall() {
 		return wallModel.getBall();
 	}
-
-//	/**
-//	 * Setter to set the ball object
-//	 * 
-//	 * @param ball The ball object
-//	 */
-//
-//	public void setBall(BallController ball) {
-//		wallModel.setBall(ball);
-//	}
 
 	/**
 	 * Getter to get the array of brick objects
@@ -391,7 +361,7 @@ public class WallController {
 	public void setBricks(BrickController[] bricks) {
 		wallModel.setBricks(bricks);
 	}
-	
+
 	public int getLevel() {
 		return wallModel.getLevel();
 	}
@@ -402,7 +372,7 @@ public class WallController {
 
 	public void setScore(int i) {
 		wallModel.setScore(i);
-		
+
 	}
 
 	public int getScore() {

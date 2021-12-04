@@ -17,17 +17,14 @@ import main.java.view.BrickView;
 
 public class Brick  {
 
-    /**
-     * Objects of this class represent the cracks of the brick
-     * @author Emily
-     *
-     */
+    
 
     private int fullStrength;
     private int strength;
     protected static Random rnd;
 
     private String name;
+    private boolean broken;
     Shape brickFace;
 
 	BrickController bController;
@@ -46,6 +43,7 @@ public class Brick  {
 
     public Brick(String name, int strength){
     	
+    	setBroken(false);
         setRnd(new Random());
         this.setName(name);
         this.fullStrength = this.strength = strength;
@@ -107,6 +105,16 @@ public class Brick  {
 
 	public void setStrength(int strength) {
 		this.strength = strength;
+	}
+
+
+	public boolean isBroken() {
+		return broken;
+	}
+
+
+	public void setBroken(boolean broken) {
+		this.broken = broken;
 	}
 	
 	
