@@ -28,6 +28,7 @@ import main.java.model.ball.Ball;
 import main.java.model.ball.RubberBall;
 import main.java.model.brick.Brick;
 import main.java.model.brick.Crack;
+import main.java.model.brick.CrackDirection;
 import main.java.model.player.Player;
 import main.java.model.wall.LevelFactory;
 import main.java.model.wall.Wall;
@@ -42,18 +43,9 @@ import main.java.model.wall.Wall;
 public class WallController {
 
 	private Random rnd;
-//	private Rectangle area;
-//
-//	private BrickController[] bricks;
-//	private BallController ball;
-//
-	private BrickController[][] levels;
-	private int nextLvl = 0;
 
-//	private Point startPoint;
-//	private int brickCount;
-//	private int ballCount;
-//	private boolean ballLost;
+	private BrickController[][] levels;
+
 	private LevelFactory levelFac;
 	private Wall wallModel;
 
@@ -96,24 +88,11 @@ public class WallController {
 
 		getBall().setSpeed(speedX, speedY);
 		
-//		initSpeed();
 
 		wallModel.setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
 
-//		area = drawArea;
 	}
 	
-//	public void initSpeed() {
-//		int speedX, speedY;
-//		do {
-//			speedX = rnd.nextInt(10) - 5;
-//		} while (speedX == 0);
-//		do {
-//			speedY = -rnd.nextInt(7);
-//		} while (speedY == 0);
-//
-//		getBall().setSpeed(speedX, speedY);
-//	}
 
 	/**
 	 * Method to create a ball at a specific position
@@ -176,16 +155,16 @@ public class WallController {
 
 			case UP_IMPACT:
 				getBall().reverseY();
-				return br.setImpact(getBall().getDown(), Crack.UP);
+				return br.setImpact(getBall().getDown(), CrackDirection.UP);
 			case DOWN_IMPACT:
 				getBall().reverseY();
-				return br.setImpact(getBall().getUp(), Crack.DOWN);
+				return br.setImpact(getBall().getUp(), CrackDirection.DOWN);
 			case LEFT_IMPACT:
 				getBall().reverseX();
-				return br.setImpact(getBall().getRight(), Crack.RIGHT);
+				return br.setImpact(getBall().getRight(), CrackDirection.RIGHT);
 			case RIGHT_IMPACT:
 				getBall().reverseX();
-				return br.setImpact(getBall().getLeft(), Crack.LEFT);
+				return br.setImpact(getBall().getLeft(), CrackDirection.LEFT);
 			case NO_IMPACT:
 				continue;
 

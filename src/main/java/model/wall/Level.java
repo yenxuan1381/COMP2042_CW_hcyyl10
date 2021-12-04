@@ -11,6 +11,7 @@ import main.java.model.brick.CementBrick;
 import main.java.model.brick.ClayBrick;
 import main.java.model.brick.SpecialBrick;
 import main.java.model.brick.SteelBrick;
+import main.java.model.brick.VibraniumBrick;
 
 public class Level {
 
@@ -174,6 +175,8 @@ public class Level {
 		return tmp;
 	}
 
+	
+	//Turn into Brick Factory//////////////////////////////////////////////////////
 	/**
 	 * Method to create brick objects
 	 * 
@@ -198,8 +201,12 @@ public class Level {
 		case SPECIAL:
 			out = new SpecialBrick(point, size);
 			break;
+		case VIBRANIUM:
+			out = new VibraniumBrick(point, size);
+			break;
 		default:
 			throw new IllegalArgumentException(String.format("Unknown Type:%d\n", type));
+			
 		}
 		return out;
 	}

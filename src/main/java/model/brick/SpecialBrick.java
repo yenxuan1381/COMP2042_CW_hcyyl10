@@ -19,7 +19,7 @@ public class SpecialBrick extends BrickController {
 	private static final String NAME = "Special Brick";
     private static final Color DEF_INNER = new Color(255, 215, 0);
     private static final Color DEF_BORDER = Color.GRAY;
-    private static final int CLAY_STRENGTH = 1;
+    private static final int SPECIAL_STRENGTH = 1;
 
     /**
      * Constructor to create a brick object of the type special
@@ -28,7 +28,7 @@ public class SpecialBrick extends BrickController {
      */
     
     public SpecialBrick(Point point, Dimension size){
-        super(NAME,point,size,DEF_BORDER,DEF_INNER,CLAY_STRENGTH);
+        super(NAME,point,size,DEF_BORDER,DEF_INNER,SPECIAL_STRENGTH);
         
     }
 

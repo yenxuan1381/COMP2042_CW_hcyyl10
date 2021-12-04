@@ -2,7 +2,6 @@ package main.java.model.ball;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.awt.geom.RectangularShape;
 
 /**
  * This model class Ball stores basic Ball information /////////////////////////////////////////////////////////////

@@ -23,6 +23,8 @@ public class Brick  {
      *
      */
 
+    private int fullStrength;
+    private int strength;
     protected static Random rnd;
 
     private String name;
@@ -42,10 +44,11 @@ public class Brick  {
      * @param strength Strength of the brick object
      */
 
-    public Brick(String name){
+    public Brick(String name, int strength){
     	
         setRnd(new Random());
         this.setName(name);
+        this.fullStrength = this.strength = strength;
         
     }
     
@@ -85,6 +88,28 @@ public class Brick  {
 	public Shape getBrickFace() {
 		return brickFace;
 	}
+
+
+	public int getFullStrength() {
+		return fullStrength;
+	}
+
+
+	public void setFullStrength(int fullStrength) {
+		this.fullStrength = fullStrength;
+	}
+
+
+	public int getStrength() {
+		return strength;
+	}
+
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+	
+	
 }
 
 

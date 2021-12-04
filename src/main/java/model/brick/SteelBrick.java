@@ -58,7 +58,7 @@ public class SteelBrick extends BrickController {
     }
     
     @Override
-    public  boolean setImpact(Point2D point , int dir){
+    public  boolean setImpact(Point2D point , CrackDirection dir){
         if(super.isBroken())
             return false;
         impact();

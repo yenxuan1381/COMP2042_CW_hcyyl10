@@ -35,8 +35,16 @@ public class HighScore {
 				this.file = file5;
 			}
 			else if(stage == 6) {
-				File file6 = new File("src\\main\\java\\resources\\highscore4.txt");
+				File file6 = new File("src\\main\\java\\resources\\highscore6.txt");
 				this.file = file6;
+			}
+			else if(stage == 7) {
+				File file7 = new File("src\\main\\java\\resources\\highscore7.txt");
+				this.file = file7;
+			}
+			else if(stage == 8) {
+				File file8 = new File("src\\main\\java\\resources\\highscore8.txt");
+				this.file = file8;
 			}
 			
 			if(file.createNewFile()) {

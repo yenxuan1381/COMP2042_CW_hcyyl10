@@ -8,6 +8,7 @@ import java.awt.geom.Point2D;
 
 import main.java.model.ball.Ball;
 import main.java.model.brick.Brick;
+import main.java.model.brick.CrackDirection;
 import main.java.model.brick.ImpactDirection;
 import main.java.view.BrickView;
 
@@ -20,8 +21,8 @@ public abstract class BrickController {
 	private String name;
     private Shape brickFace;
 
-    private int fullStrength;
-    private int strength;
+//    private int fullStrength;
+//    private int strength;
 
     private boolean broken;
     Brick brickModel;
@@ -30,12 +31,12 @@ public abstract class BrickController {
 	public BrickController(String name, Point pos,Dimension size,Color border,Color inner,int strength) {
 		broken = false;
 	
-		brickModel = new Brick(name);
+		brickModel = new Brick(name, strength);
 		setBrickFace(makeBrickFace(pos,size));
 		
 	    brickView = new BrickView(border, inner);
 
-	    this.fullStrength = this.strength = strength;
+//	    this.fullStrength = this.strength = strength;
 			
 	}
 	
@@ -62,7 +63,7 @@ public abstract class BrickController {
      * @return True if brick is not broken, False if the brick is broken
      */
 
-    public  boolean setImpact(Point2D point , int dir){
+    public  boolean setImpact(Point2D point , CrackDirection dir){
         if(broken)
             return false;
         impact();
@@ -106,7 +107,8 @@ public abstract class BrickController {
 
     public void repair() {
         broken = false;
-        strength = fullStrength;
+//        strength = fullStrength;
+        brickModel.setStrength(brickModel.getFullStrength());
     }
     
     /**
@@ -114,8 +116,9 @@ public abstract class BrickController {
      */
 
     public void impact(){
-        strength--;
-        broken = (strength == 0);
+//        strength--;
+    	brickModel.setStrength(brickModel.getStrength()-1);
+        broken = (brickModel.getStrength() == 0);
     }
     
     /**
