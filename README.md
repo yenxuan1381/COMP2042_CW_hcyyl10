@@ -1,13 +1,16 @@
-# COMP2042_CW_emily1381
+# COMP2042_CW_hcyyl10
 Brick Breaker
 
-## Table of contents
+#### Table of Contents
 * [ Introduction ] (#introduction)
 * [ Basic Maintenance ] (#basic-maintenance)
 * [ Additions ] (#additions)
 * [ Git Version Control ] (#git)
 * [ Technologies ] (#technologies)
 * [ Setup ] (#setup)
+
+
+
 
 <a name="introduction"></a>
 ## Introduction
