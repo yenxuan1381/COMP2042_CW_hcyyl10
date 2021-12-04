@@ -2,42 +2,43 @@
 Brick Breaker
 
 #### Table of Contents
-* [ Introduction ] (#introduction)
-* [ Basic Maintenance ] (#basic-maintenance)
-* [ Additions ] (#additions)
-* [ Git Version Control ] (#git)
-* [ Technologies ] (#technologies)
-* [ Setup ] (#setup)
+[Project Setup] (#setup)
 
 
+<a name="setup"/>
+## Project Setup
+I'm using Java 11.0.2 on eclipse.
+```
+$user > java --version
+openjdk 11.0.2 2019-01-15
+OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
+```
+
+To run the game, select Run -> Run Configurations -> Arguments -> 
 
 
-<a name="introduction"></a>
-## Introduction
-Simple brick breaker game
+Add the following line to the VM Arguments:
+```
+--module-path "**/path/to/JavaFX/lib**" --add-modules=javafx.controls
+```
+In my case, the path to my JavaFx library is as follow:
+```
+--module-path "C:\javafx\javafx-sdk-17.0.1\lib" --add-modules=javafx.controls
+```
 
-<a name="basic-maintenance"></a>
-## Basic Maintenance
-highlights only
 
-<a name="additions"></a>
-## Additions 
-highlights only
+After that, run
+- Maven Build
+- Maven Clean
+- Maven Install
 
-<a name="git"></a>
-## Git Version Control
-blah
 
-<a name="technologies"></a>
-## Technologies
-Project is created with:
-Java version:
-Eclipse version:
-Maven version:
-JavaFX version:
-JUnit version: 5.0
+Everything is working fine if the "BUILD SUCCESS" is printed in the console
 
-<a name="setup"></a>
-## Setup
-To run this project, install it locally...
-...
+
+Now, run the project as a Java Application. 
+
+**Game Starts**
+
+
