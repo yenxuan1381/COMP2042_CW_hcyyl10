@@ -1,13 +1,12 @@
 # COMP2042_CW_hcyyl10
 Brick Breaker
 
-#####  #Table of Contents  
-[Headers](#headers)  
-[Emphasis](#emphasis)  
+### Table of Contents  
+**[Project Setup](#project-setup)**<br> 
+**[Refactoring](#refactoring)**<br>
 
 
-<a name="headers"/>
-## ## Headers
+## Project Setup
 
 I'm using Java 11.0.2 on eclipse.
 ```
@@ -41,6 +40,8 @@ Everything is working fine if the "BUILD SUCCESS" is printed in the console
 
 Now, run the project as a Java Application. 
 
-**Game Starts**
+-----------------**Game Starts**-----------------
 
+
+## Refactoring
 
