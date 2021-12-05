@@ -1,4 +1,4 @@
-package main.java.model.brick;
+package main.java.model.crack;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -6,6 +6,8 @@ import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
+
+import main.java.model.brick.Brick;
 
 /**
  * Objects of this class represent the cracks of the brick
@@ -66,7 +68,7 @@ public class Crack {
 	 * @param direction The direction of the impact
 	 */
 
-	protected void makeCrack(Shape brickFace, Point2D point, CrackDirection direction) {
+	public void makeCrack(Shape brickFace, Point2D point, CrackDirection direction) {
 		Rectangle bounds = brickFace.getBounds();
 
 		Point impact = new Point((int) point.getX(), (int) point.getY());

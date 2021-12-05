@@ -8,8 +8,7 @@ import main.java.model.ball.Ball;
 import main.java.view.BallView;
 
 /**
- * This abstract class Ball Controller allows other class to implement its
- * method
+ * This abstract class Ball Controller allows other class to inherit
  * 
  * @author Emily
  *
@@ -20,7 +19,7 @@ abstract public class BallController {
 	private Shape ballFace;
 
 	private Ball ballModel;
-//	private BallView ballView;
+	private BallView ballView;
 
 	/**
 	 * Constructor of Ball class
@@ -35,7 +34,7 @@ abstract public class BallController {
 
 		ballModel = new Ball(center, radius, inner, border);
 		ballFace = makeBall(center, radius);
-//		ballView = new BallView(inner, border);
+		ballView = new BallView();
 
 	}
 
@@ -63,6 +62,17 @@ abstract public class BallController {
 		setPoints(w, h);
 
 		ballFace = tmp;
+	}
+	
+	/**
+	 * Method to draw the ball
+	 * 
+	 * @param ball Ball object
+	 * @param g2d  Graphics
+	 */
+	
+	public void drawBall(BallController ball, Graphics2D g2d) {
+		ballView.drawBall(ball, g2d);
 	}
 
 	/**

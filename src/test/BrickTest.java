@@ -16,9 +16,9 @@ import main.java.model.ball.RubberBall;
 import main.java.model.brick.Brick;
 import main.java.model.brick.CementBrick;
 import main.java.model.brick.ClayBrick;
-import main.java.model.brick.CrackDirection;
 import main.java.model.brick.ImpactDirection;
 import main.java.model.brick.SteelBrick;
+import main.java.model.crack.CrackDirection;
 
 class BrickTest {
 	

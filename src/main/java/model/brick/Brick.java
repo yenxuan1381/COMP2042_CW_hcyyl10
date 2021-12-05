@@ -26,9 +26,6 @@ public class Brick {
 	private boolean broken;
 	Shape brickFace;
 
-//	BrickController bController;
-//	BrickView bView;
-
 	private Color border;
 	private Color inner;
 
@@ -70,6 +67,16 @@ public class Brick {
 
 	public static Random getRnd() {
 		return rnd;
+	}
+
+	/**
+	 * Getter to get the name of the brick
+	 * 
+	 * @return String brick name
+	 */
+
+	public String getName() {
+		return name;
 	}
 
 	/**

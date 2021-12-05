@@ -1,12 +1,20 @@
 package main.java.controller;
 
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 
 import main.java.model.player.Playable;
 import main.java.model.player.Player;
 import main.java.view.PlayerView;
+
+/**
+ * Objects of this class implements the Playable interface
+ * 
+ * @author Emily
+ *
+ */
 
 public class PlayerController implements Playable {
 
@@ -17,13 +25,16 @@ public class PlayerController implements Playable {
 	private int moveAmount;
 
 	private Player playerModel;
-//	private PlayerView playerView;
+	private PlayerView playerView;
 
 	/**
 	 * Default constructor
 	 */
 
 	private PlayerController() {
+
+		// Prints error message
+		System.out.println("Singleton Violated Error: Second Player object should not be created!!");
 	}
 
 	/**
@@ -41,7 +52,7 @@ public class PlayerController implements Playable {
 		moveAmount = 0;
 		playerModel = new Player(ballPoint, width, container);
 		playerFace = makeRectangle(width, height);
-//		playerView = new PlayerView();
+		playerView = new PlayerView();
 
 	}
 
@@ -87,7 +98,7 @@ public class PlayerController implements Playable {
 	/**
 	 * Method to move the player's paddle a specific amount
 	 * 
-	 * @param m Move amount
+	 * @param m Move amount integer
 	 */
 
 	public void move(int m) {
@@ -121,6 +132,29 @@ public class PlayerController implements Playable {
 
 	public void stop() {
 		moveAmount = 0;
+	}
+
+	/**
+	 * Method to move the player's paddle to a specific point
+	 * 
+	 * @param p The point of the player's paddle to move to
+	 */
+
+	public void moveTo(Point p) {
+		playerModel.getBallPoint().setLocation(p);
+		playerFace.setLocation(playerModel.getBallPoint().x - (int) playerFace.getWidth() / 2,
+				playerModel.getBallPoint().y);
+	}
+	
+	/**
+	 * Method to draw the player
+	 * 
+	 * @param p   Player object
+	 * @param g2d Graphics
+	 */
+	
+	public void drawPlayer(PlayerController p, Graphics2D g2d) {
+		playerView.drawPlayer(p, g2d);
 	}
 
 	/**
@@ -163,18 +197,6 @@ public class PlayerController implements Playable {
 
 	public Rectangle getPlayerFace() {
 		return playerFace;
-	}
-
-	/**
-	 * Method to move the player's paddle to a specific point
-	 * 
-	 * @param p The coordinates of the point for the player's paddle to move to
-	 */
-
-	public void moveTo(Point p) {
-		playerModel.getBallPoint().setLocation(p);
-		playerFace.setLocation(playerModel.getBallPoint().x - (int) playerFace.getWidth() / 2,
-				playerModel.getBallPoint().y);
 	}
 
 }

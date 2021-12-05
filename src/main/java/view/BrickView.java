@@ -5,8 +5,19 @@ import java.awt.Graphics2D;
 
 import main.java.controller.BrickController;
 
+/**
+ * This class renders the view of the Brick object
+ * 
+ * @author Emily
+ *
+ */
+
 public class BrickView {
 
+	/**
+	 * Default Constructor
+	 */
+	
 	public BrickView() {
 
 	}

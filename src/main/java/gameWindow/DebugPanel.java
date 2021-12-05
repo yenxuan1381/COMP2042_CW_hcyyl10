@@ -26,64 +26,150 @@ import main.java.model.wall.Wall;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-
+/**
+ * Object of this class extend JPanel
+ * 
+ * @author Emily
+ *
+ */
 
 public class DebugPanel extends JPanel {
 
-    private static final Color DEF_BKG = Color.WHITE;
+	private static final Color DEF_BKG = Color.WHITE;
 
-    private JButton skipLevel;
-    private JButton resetBalls;
+	private JButton skipLevel;
+	private JButton resetBalls;
+	private JButton level1;
+	private JButton level2;
+	private JButton level3;
+	private JButton level4;
+	private JButton level5;
+	private JButton level6;
+	private JButton level7;
+	private JButton level8;
 
-    private JSlider ballXSpeed;
-    private JSlider ballYSpeed;
+	private JSlider ballXSpeed;
+	private JSlider ballYSpeed;
 
-    public DebugPanel(WallController wall){
+	/**
+	 * Constructor to create the debug panel gui
+	 * 
+	 * @param wall The wall
+	 */
 
-        initialize();
+	public DebugPanel(WallController wall) {
 
-        skipLevel = makeButton("Skip Level",e -> {
-        	if(wall.hasLevel())
-        		wall.nextLevel();
-        	else
-        		System.out.println("Last Level, no more levels left");
-        });
-        resetBalls = makeButton("Reset Balls",e -> wall.resetBallCount());
+		initialize();
 
-        ballXSpeed = makeSlider(-4,4,e -> wall.setBallXSpeed(ballXSpeed.getValue()));
-        ballYSpeed = makeSlider(-4,4,e -> wall.setBallYSpeed(ballYSpeed.getValue()));
+		level1 = makeButton("Level 1", e -> setLevel(wall, 1));
 
-        this.add(skipLevel);
-        this.add(resetBalls);
+		level2 = makeButton("Level 2", e -> setLevel(wall, 2));
 
-        this.add(ballXSpeed);
-        this.add(ballYSpeed);
+		level3 = makeButton("Level 3", e -> setLevel(wall, 3));
 
-    }
+		level4 = makeButton("Level 4", e -> setLevel(wall, 4));
 
-    private void initialize(){
-        this.setBackground(DEF_BKG);
-        this.setLayout(new GridLayout(2,2));
-    }
+		level5 = makeButton("Level 5", e -> setLevel(wall, 5));
 
-    private JButton makeButton(String title, ActionListener e){
-        JButton out = new JButton(title);
-        out.addActionListener(e);
-        return  out;
-    }
+		level6 = makeButton("Level 6", e -> setLevel(wall, 6));
 
-    private JSlider makeSlider(int min, int max, ChangeListener e){
-        JSlider out = new JSlider(min,max);
-        out.setMajorTickSpacing(1);
-        out.setSnapToTicks(true);
-        out.setPaintTicks(true);
-        out.addChangeListener(e);
-        return out;
-    }
+		level7 = makeButton("Level 7", e -> setLevel(wall, 7));
 
-    public void setValues(int x,int y){
-        ballXSpeed.setValue(x);
-        ballYSpeed.setValue(y);
-    }
+		level8 = makeButton("Level 8", e -> setLevel(wall, 8));
+
+		skipLevel = makeButton("Skip Level", e -> {
+			if (wall.hasLevel())
+				wall.nextLevel();
+			else
+				System.out.println("Last Level, no more levels left");
+		});
+		resetBalls = makeButton("Reset Balls", e -> wall.resetBallCount());
+
+		ballXSpeed = makeSlider(-4, 4, e -> wall.setBallXSpeed(ballXSpeed.getValue()));
+		ballYSpeed = makeSlider(-4, 4, e -> wall.setBallYSpeed(ballYSpeed.getValue()));
+
+		this.add(skipLevel);
+		this.add(resetBalls);
+
+		this.add(level1);
+		this.add(level2);
+		this.add(level3);
+		this.add(level4);
+		this.add(level5);
+		this.add(level6);
+		this.add(level7);
+		this.add(level8);
+
+		this.add(ballXSpeed);
+		this.add(ballYSpeed);
+
+	}
+
+	/**
+	 * Method to initialise the default value of the fields
+	 */
+
+	private void initialize() {
+		this.setBackground(DEF_BKG);
+		this.setLayout(new GridLayout(3, 2));
+	}
+
+	/**
+	 * Method to create a button
+	 * 
+	 * @param title Title of the button
+	 * @param e     event
+	 * @return the button
+	 */
+
+	private JButton makeButton(String title, ActionListener e) {
+		JButton out = new JButton(title);
+		out.addActionListener(e);
+		return out;
+	}
+
+	/**
+	 * Method to create a slider
+	 * 
+	 * @param min the minimum
+	 * @param max the maximum
+	 * @param e   the event
+	 * @return the slider
+	 */
+
+	private JSlider makeSlider(int min, int max, ChangeListener e) {
+		JSlider out = new JSlider(min, max);
+		out.setMajorTickSpacing(1);
+		out.setSnapToTicks(true);
+		out.setPaintTicks(true);
+		out.addChangeListener(e);
+		return out;
+	}
+
+	/**
+	 * Method to set the speed value of the ball
+	 * 
+	 * @param x The horizontal speed of the ball
+	 * @param y The vertical speed of the ball
+	 */
+
+	public void setValues(int x, int y) {
+		ballXSpeed.setValue(x);
+		ballYSpeed.setValue(y);
+	}
+
+	/**
+	 * Method to set the level
+	 * 
+	 * @param wall The wall
+	 * @param lvl  The level
+	 */
+
+	private void setLevel(WallController wall, int lvl) {
+		wall.resetLevel();
+		for (int i = 0; i < lvl; i++) {
+			wall.nextLevel();
+		}
+	}
 
 }

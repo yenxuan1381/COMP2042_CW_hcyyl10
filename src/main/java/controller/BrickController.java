@@ -2,32 +2,34 @@ package main.java.controller;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 
 import main.java.model.brick.Brick;
-import main.java.model.brick.CrackDirection;
 import main.java.model.brick.ImpactDirection;
+import main.java.model.crack.CrackDirection;
 import main.java.view.BrickView;
 
 /**
- * This abstract BrickController class allows 
- * @author Windows10
+ * This abstract BrickController class allows other class to inherit
+ * 
+ * @author Emily
  *
  */
+
 public abstract class BrickController {
 
 	public static final int MIN_CRACK = 1;
 	public static final int DEF_CRACK_DEPTH = 1;
 	public static final int DEF_STEPS = 35;
 
-	private String name;
 	private Shape brickFace;
 
-	Brick brickModel;
-//	BrickView brickView;
-
+	private Brick brickModel;
+	private BrickView brickView;
+	
 	/**
 	 * Constructor to create the brick controller
 	 * 
@@ -43,8 +45,6 @@ public abstract class BrickController {
 
 		brickModel = new Brick(name, strength, border, inner);
 		setBrickFace(makeBrickFace(pos, size));
-
-//		brickView = new BrickView(border, inner);
 
 	}
 
@@ -131,6 +131,17 @@ public abstract class BrickController {
 		brickModel.setStrength(brickModel.getStrength() - 1);
 		brickModel.setBroken((brickModel.getStrength() == 0));
 	}
+	
+	/**
+	 * Method to draw the bricks
+	 * 
+	 * @param brick Brick object
+	 * @param g2d   Graphics
+	 */
+	
+	public void drawBrick(BrickController brick, Graphics2D g2d) {
+		brickView.drawBrick(brick, g2d);
+	}
 
 	/**
 	 * Getter to get the Border colour
@@ -171,12 +182,24 @@ public abstract class BrickController {
 		this.brickFace = brickFace;
 	}
 
+	/**
+	 * Getter to get the brick's name
+	 * 
+	 * @return String brick name
+	 */
+
 	public String getName() {
-		return name;
+		return brickModel.getName();
 	}
 
+	/**
+	 * Setter to set the name of the brick
+	 * 
+	 * @param name String name of the brick
+	 */
+
 	public void setName(String name) {
-		this.name = name;
+		brickModel.setName(name);
 	}
 
 }

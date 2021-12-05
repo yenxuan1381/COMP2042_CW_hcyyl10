@@ -7,8 +7,19 @@ import java.awt.Shape;
 import main.java.controller.PlayerController;
 import main.java.model.player.Player;
 
+/**
+ * This class renders the view of the Player object
+ * 
+ * @author Emily
+ *
+ */
+
 public class PlayerView {
 
+	/**
+	 * Default constructor
+	 */
+	
 	public PlayerView() {
 
 	}

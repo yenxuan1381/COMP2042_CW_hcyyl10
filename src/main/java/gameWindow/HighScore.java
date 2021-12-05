@@ -116,17 +116,41 @@ public class HighScore {
 
 	}
 
+	/**
+	 * Getter to get the highscore
+	 * 
+	 * @return String highscore
+	 */
+
 	public String getHighscore() {
 		return highscore;
 	}
+
+	/**
+	 * Setter to set the highscore
+	 * 
+	 * @param highscore String the highscore
+	 */
 
 	public void setHighscore(String highscore) {
 		this.highscore = highscore;
 	}
 
+	/**
+	 * Getter to get the username of the player
+	 * 
+	 * @return Strin of the username of the player
+	 */
+
 	public String getUsername() {
 		return username;
 	}
+
+	/**
+	 * Setter to set the username of the player
+	 * 
+	 * @param username String of username of the player
+	 */
 
 	public void setUsername(String username) {
 		this.username = username;

@@ -97,10 +97,9 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 	private java.util.List<BrickController> bricks;
 	private int speedBoost;
 
-//	private DrawObjects d;
 	private DebugConsole debugConsole;
 	private HighScore highscore;
-	
+
 	private BallView ballView;
 	private BrickView brickView;
 	private PlayerView playerView;
@@ -230,7 +229,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 		wall.getBall().setSpeed(speedX, speedY);
 		wall.getPlayer().move(speedBoost);
 	}
-	
+
 	/**
 	 * Method to prompt user to input his/her username
 	 */
@@ -299,7 +298,6 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 	public void paint(Graphics g) {
 
 		Graphics2D g2d = (Graphics2D) g;
-//		d = new DrawObjects();
 		ballView = new BallView();
 		brickView = new BrickView();
 		playerView = new PlayerView();

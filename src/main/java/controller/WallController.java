@@ -22,7 +22,7 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 import main.java.model.ball.RubberBall;
-import main.java.model.brick.CrackDirection;
+import main.java.model.crack.CrackDirection;
 import main.java.model.wall.LevelFactory;
 import main.java.model.wall.Wall;
 
@@ -55,22 +55,13 @@ public class WallController {
 	public WallController(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio,
 			Point ballPos) {
 
-//		this.startPoint = new Point(ballPos);
-//		wallModel = new Wall(drawArea, ballPos);
-
 		levelFac = new LevelFactory();
 
 		levels = levelFac.makeLevels(drawArea, brickCount, lineCount, brickDimensionRatio);
-//		level = 0;
-
-//		ballCount = 10;
-//		ballLost = false;
 
 		rnd = new Random();
-//		setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
 		wallModel = new Wall(drawArea, ballPos);
 		makeBall(ballPos);
-//		setPlayer((Point) ballPos.clone(), 150, 10, drawArea);
 
 		int speedX, speedY;
 		do {
@@ -119,7 +110,6 @@ public class WallController {
 			 * for efficiency reverse is done into method impactWall because for every brick
 			 * program checks for horizontal and vertical impacts
 			 */
-//			brickCount--;
 			wallModel.setScore(getScore() + 50);
 			wallModel.setBrickCount(getBrickCount() - 1);
 		} else if (impactBorder()) {
@@ -127,9 +117,7 @@ public class WallController {
 		} else if (getBall().getPosition().getY() < wallModel.getArea().getY()) {
 			getBall().reverseY();
 		} else if (getBall().getPosition().getY() > wallModel.getArea().getY() + wallModel.getArea().getHeight()) {
-//			ballCount--;
 			wallModel.setBallCount(getBallCount() - 1);
-//			ballLost = true;
 			wallModel.setBallLost(true);
 		}
 	}
@@ -216,7 +204,6 @@ public class WallController {
 	public void ballReset() {
 		getPlayer().moveTo(wallModel.getStartPoint());
 		getBall().moveTo(wallModel.getStartPoint());
-//		initSpeed();
 		int speedX, speedY;
 		do {
 			speedX = rnd.nextInt(10) - 5;
@@ -237,7 +224,7 @@ public class WallController {
 		for (BrickController b : getBricks())
 			b.repair();
 		wallModel.setBrickCount(getBricks().length);
-		wallModel.setBallCount(3);
+		wallModel.setBallCount(10);
 	}
 
 	/**
@@ -268,15 +255,21 @@ public class WallController {
 	 */
 
 	public void nextLevel() {
-//		setBricks(levels[level++]);
 
-//		nextLvl = getLevel() ;
-//		wallModel.setLevel(nextLvl);
 		setBricks(levels[getLevel()]);
 		wallModel.setLevel(getLevel() + 1);
 		wallModel.setBrickCount(getBricks().length);
-
 		wallModel.setStage(getStage() + 1);
+	}
+
+	/**
+	 * Method to reset the level
+	 */
+
+	public void resetLevel() {
+
+		wallModel.setLevel(0);
+		wallModel.setStage(0);
 	}
 
 	/**
@@ -289,6 +282,12 @@ public class WallController {
 	public boolean hasLevel() {
 		return getLevel() < levels.length;
 	}
+
+	/**
+	 * Getter to get the total number of levels
+	 * 
+	 * @return Total number of levels
+	 */
 
 	public int getLevelsLength() {
 		return levels.length;
@@ -325,7 +324,7 @@ public class WallController {
 	/**
 	 * Getter to get the player object
 	 * 
-	 * @return The player obejct
+	 * @return The player object
 	 */
 
 	public PlayerController getPlayer() {
@@ -362,18 +361,42 @@ public class WallController {
 		wallModel.setBricks(bricks);
 	}
 
+	/**
+	 * Getter to get the current level
+	 * 
+	 * @return Current level integer
+	 */
+
 	public int getLevel() {
 		return wallModel.getLevel();
 	}
+
+	/**
+	 * Getter to get the current stage
+	 * 
+	 * @return Current stage integer
+	 */
 
 	public int getStage() {
 		return wallModel.getStage();
 	}
 
+	/**
+	 * Setter to set the score
+	 * 
+	 * @param i The score integer
+	 */
+
 	public void setScore(int i) {
 		wallModel.setScore(i);
 
 	}
+
+	/**
+	 * Getter to get the current score
+	 * 
+	 * @return The score integer
+	 */
 
 	public int getScore() {
 		return wallModel.getScore();

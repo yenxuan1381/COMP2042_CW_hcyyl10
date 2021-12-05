@@ -5,8 +5,19 @@ import java.awt.Point;
 
 import main.java.controller.BrickController;
 
+/**
+ * This class implements the Factory design pattern to create brick objects
+ * 
+ * @author Emily
+ *
+ */
+
 public class BrickFactory {
 
+	/**
+	 * Default constructor
+	 */
+	
 	public BrickFactory() {
 
 	}
@@ -17,7 +28,7 @@ public class BrickFactory {
 	 * @param point The point of the brick object
 	 * @param size  The size of the brick object
 	 * @param type  The type of the brick object
-	 * @return A brick object
+	 * @return The brick object
 	 */
 
 	public BrickController makeBrick(Point point, Dimension size, BrickType type) {

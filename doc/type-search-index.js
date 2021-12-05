@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"view","l":"GameBoard"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"main.java.gameWindow","l":"MenuView"}]

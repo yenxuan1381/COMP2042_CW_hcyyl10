@@ -6,8 +6,19 @@ import java.awt.Shape;
 
 import main.java.controller.BallController;
 
+
+/**
+ * This class renders the view of the ball object
+ * @author Emily
+ *
+ */
+
 public class BallView {
 
+	/**
+	 * Default constructor
+	 */
+	
 	public BallView() {
 
 	}

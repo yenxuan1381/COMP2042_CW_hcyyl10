@@ -25,81 +25,96 @@ import main.java.controller.BallController;
 import main.java.model.ball.Ball;
 
 /**
- * Objects of this class represent the player
+ * This class stores the pure application data for playerController class
+ * 
  * @author Emily
  *
  */
 
 public class Player {
 
-    public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
-    public static final Color INNER_COLOR = Color.GREEN;
+	public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
+	public static final Color INNER_COLOR = Color.GREEN;
 
+	private Point ballPoint;
+	private int min;
+	private int max;
 
-//    private Rectangle playerFace;
-    private Point ballPoint;
-//    private int moveAmount;
-    private int min;
-    private int max;
+	/**
+	 * Constructor to create a player class
+	 * 
+	 * @param ballPoint The coordinates of the point of the ball that touches the
+	 *                  player's paddle
+	 * @param width     The width of the player's paddle
+	 * @param container The rectangle shape of the player's paddle
+	 */
 
-    public Player() {
-    	
-    }
-    
-    /**
-     * Constructor to create a player class 
-     * @param ballPoint The coordinates of the point of the ball that touches the player's paddle
-     * @param width The width of the player's paddle
-     * @param height The height of the player's paddle
-     * @param container The rectangle shape of the player's paddle
-     */
-    
-    public Player(Point ballPoint, int width, Rectangle container) {
-        this.ballPoint = ballPoint;
-        
-        //initialise the moveAmount
-//        moveAmount = 0;
-        
-        //container.x is the X coordinate of the upper-left corner of the Rectangle container.
-        min = container.x + (width / 2);
-        max = min + container.width - width;
+	public Player(Point ballPoint, int width, Rectangle container) {
 
-    }   
-   
-//    /**
-//     * Getter to get the shape of the player's paddle
-//     * @return The shape of the player's paddle
-//     */
-//
-//    public Rectangle getPlayerFace(){
-//        return  playerFace;
-//    }
+		this.ballPoint = ballPoint;
+
+		min = container.x + (width / 2);
+		max = min + container.width - width;
+
+	}
+
+	/**
+	 * Getter to get the point of the ball point
+	 * 
+	 * @return Point ball point
+	 */
 
 	public Point getBallPoint() {
 		return ballPoint;
 	}
 
+	/**
+	 * Setter to set the point of the ball point
+	 * 
+	 * @param ballPoint The point of the ball point
+	 */
+
 	public void setBallPoint(Point ballPoint) {
 		this.ballPoint = ballPoint;
 	}
+
+	/**
+	 * Getter to get the minimum
+	 * 
+	 * @return Integer minimum
+	 */
 
 	public int getMin() {
 		return min;
 	}
 
+	/**
+	 * Setter to set the minimum
+	 * 
+	 * @param min Integer minimum
+	 */
+
 	public void setMin(int min) {
 		this.min = min;
 	}
+
+	/**
+	 * Getter to get the maximum
+	 * 
+	 * @return Integer maximum
+	 */
 
 	public int getMax() {
 		return max;
 	}
 
+	/**
+	 * Setter to set the maximum
+	 * 
+	 * @param max Integer maximum
+	 */
 	public void setMax(int max) {
 		this.max = max;
 	}
-    
-    
 
-	
 }

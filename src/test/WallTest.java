@@ -44,6 +44,17 @@ class WallTest {
 		assertEquals(2, w1.getStage());
 
 	}
+	
+	@Test
+	public void testReset() {
+		w1.nextLevel();
+		w1.nextLevel();
+		w1.resetLevel();
+		w1.nextLevel();
+		assertEquals(1,w1.getStage());
+		w1.nextLevel();
+		assertEquals(2,w1.getStage());
+	}
 
 	@Test
 	public void testLevel() {
