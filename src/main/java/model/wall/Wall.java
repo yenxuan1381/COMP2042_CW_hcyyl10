@@ -18,20 +18,12 @@
 package main.java.model.wall;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.util.Random;
-
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.controller.PlayerController;
-import main.java.model.ball.Ball;
-import main.java.model.ball.RubberBall;
-import main.java.model.brick.Brick;
-import main.java.model.brick.Crack;
-import main.java.model.player.Player;
 
 /**
- * Objects of this class creates a wall of bricks
+ * This class contains the pure application data for WallController class
  * 
  * @author Emily
  *
@@ -39,13 +31,11 @@ import main.java.model.player.Player;
 
 public class Wall {
 
-//	private Random rnd;
 	private Rectangle area;
 
 	private BrickController[] bricks;
 	private BallController ball;
 
-	private BrickController[][] levels;
 	private int level;
 	private int stage = 0;
 	private int score = 0;
@@ -53,18 +43,12 @@ public class Wall {
 	private int brickCount;
 	private int ballCount;
 	private boolean ballLost;
-//	private LevelFactory levelFac;
-//	private BrickController brController;
-
 
 	/**
-	 * Constructor to create a wall class
+	 * Constructor to create the default value for the fields and parameters
 	 * 
-	 * @param drawArea            the area of the wall
-	 * @param brickCount          the amount of bricks
-	 * @param lineCount           the amount of lines
-	 * @param brickDimensionRatio the ratio of the brick shape
-	 * @param ballPos             the coordinates of the point of the ball
+	 * @param drawArea the area of the wall
+	 * @param ballPos  the coordinates of the point of the ball
 	 */
 
 	public Wall(Rectangle drawArea, Point ballPos) {
@@ -90,9 +74,9 @@ public class Wall {
 	}
 
 	/**
-	 * Getter to get the number of balls left (lives)
+	 * Getter to get the number of balls 
 	 * 
-	 * @return the number of balls left
+	 * @return the number of balls
 	 */
 
 	public int getBallCount() {
@@ -130,11 +114,11 @@ public class Wall {
 	}
 
 	/**
-	 * Method to reset the amount of balls left to 3 balls
+	 * Method to reset the amount of balls left to 10 balls
 	 */
 
 	public void resetBallCount() {
-		ballCount = 3;
+		ballCount = 10;
 	}
 
 	/**
@@ -197,58 +181,133 @@ public class Wall {
 		this.bricks = bricks;
 	}
 
+	/**
+	 * Getter to get the score of the player
+	 * 
+	 * @return Score integer
+	 */
+
 	public int getScore() {
 		return score;
 	}
+
+	/**
+	 * Setter to set the score
+	 * 
+	 * @param score The score of the player
+	 */
 
 	public void setScore(int score) {
 		this.score = score;
 	}
 
+	/**
+	 * Getter to get the current stage
+	 * 
+	 * @return Current stage integer
+	 */
+
 	public int getStage() {
 		return stage;
 	}
+
+	/**
+	 * Setter to set the stage number
+	 * 
+	 * @param stage Stage number
+	 */
 
 	public void setStage(int stage) {
 		this.stage = stage;
 	}
 
+	/**
+	 * Setter to set the number of bricks
+	 * 
+	 * @param brickCount Number of bricks
+	 */
+
 	public void setBrickCount(int brickCount) {
 		this.brickCount = brickCount;
 	}
+
+	/**
+	 * Setter to set the number of balls
+	 * 
+	 * @param ballCount Number of balls
+	 */
 
 	public void setBallCount(int ballCount) {
 		this.ballCount = ballCount;
 	}
 
+	/**
+	 * Getter to get the area
+	 * 
+	 * @return The area rectangle
+	 */
 	public Rectangle getArea() {
 		return area;
 	}
+
+	/**
+	 * Setter to set the area
+	 * 
+	 * @param area Rectangle area
+	 */
 
 	public void setArea(Rectangle area) {
 		this.area = area;
 	}
 
+	/**
+	 * Getter to get the starting point
+	 * 
+	 * @return Starting point
+	 */
+
 	public Point getStartPoint() {
 		return startPoint;
 	}
+
+	/**
+	 * Setter to set the starting point
+	 * 
+	 * @param startPoint Starting point
+	 */
 
 	public void setStartPoint(Point startPoint) {
 		this.startPoint = startPoint;
 	}
 
+	/**
+	 * Setter to set the boolean value of is the ball lost
+	 * 
+	 * @param ballLost Boolean ballLost
+	 */
+
 	public void setBallLost(boolean ballLost) {
 		this.ballLost = ballLost;
 	}
+
+	/**
+	 * Getter to get the current level
+	 * 
+	 * @return The current level integer
+	 */
 
 	public int getLevel() {
 		return level;
 	}
 
+	/**
+	 * Setter to set the current level
+	 * 
+	 * @param level The level integer
+	 */
+
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	
-	
 
 }

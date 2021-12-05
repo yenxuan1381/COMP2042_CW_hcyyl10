@@ -1,35 +1,33 @@
 package main.java.view;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
+
+import main.java.controller.BrickController;
 
 public class BrickView {
-	
-	private Color border;
-    private Color inner;
-	
-	public BrickView(Color border,Color inner){
-		
-		this.border = border;
-        this.inner = inner;
-		
+
+	public BrickView() {
+
 	}
-	
+
 	/**
-     * Getter for the border color of the brick object
-     * @return the color of the border of the brick object
-     */
+	 * Method to draw the bricks
+	 * 
+	 * @param brick Brick object
+	 * @param g2d   Graphics
+	 */
 
-    public Color getBorderColor(){
-        return  border;
-    }
-    
-    /**
-     * Getter for the inner color of the brick object
-     * @return the inner color of the brick object
-     */
+	public void drawBrick(BrickController brick, Graphics2D g2d) {
+		Color tmp = g2d.getColor();
 
-    public Color getInnerColor(){
-        return inner;
-    }
+		g2d.setColor(brick.getInner());
+		g2d.fill(brick.getBrick());
+
+		g2d.setColor(brick.getBorder());
+		g2d.draw(brick.getBrick());
+
+		g2d.setColor(tmp);
+	}
 
 }

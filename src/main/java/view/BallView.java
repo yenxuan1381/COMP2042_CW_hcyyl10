@@ -1,33 +1,36 @@
 package main.java.view;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Shape;
+
+import main.java.controller.BallController;
 
 public class BallView {
-	
-    private Color border;
-    private Color inner;
-	
-	public BallView(Color inner,Color border) {       
-		this.border = border;
-        this.inner  = inner;		
-	}
-	
-	/**
-     * Getter for the border color of the ball object
-     * @return Color code of the border color of the ball object
-     */
-	
-	public Color getBorderColor(){
-        return border;
-    }
-    
-    /**
-     * Getter for the inner Color of the ball object
-     * @return Color code of the inner color of the ball object 
-     */
 
-    public Color getInnerColor(){
-        return inner;
-    }
+	public BallView() {
+
+	}
+
+	/**
+	 * Method to draw the ball
+	 * 
+	 * @param ball Ball object
+	 * @param g2d  Graphics
+	 */
+
+	public void drawBall(BallController ball, Graphics2D g2d) {
+		Color tmp = g2d.getColor();
+
+		Shape s = ball.getBallFace();
+
+		g2d.setColor(ball.getInnerColor());
+		g2d.fill(s);
+
+		g2d.setColor(ball.getBorderColor());
+		g2d.draw(s);
+
+		g2d.setColor(tmp);
+	}
 
 }

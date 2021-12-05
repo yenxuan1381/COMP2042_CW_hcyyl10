@@ -8,18 +8,22 @@ import java.util.Random;
 import main.java.controller.BrickController;
 import main.java.model.brick.BrickFactory;
 import main.java.model.brick.BrickType;
-import main.java.model.brick.CementBrick;
-import main.java.model.brick.ClayBrick;
-import main.java.model.brick.SpecialBrick;
-import main.java.model.brick.SteelBrick;
-import main.java.model.brick.VibraniumBrick;
 
+/**
+ * Objects of this class creates levels for the game
+ * 
+ * @author Emily
+ *
+ */
 public class Level {
-	
+
 	private BrickFactory brFactory;
 
+	/**
+	 * Default constructor to create initialise the value for field
+	 */
 	public Level() {
-		
+
 		brFactory = new BrickFactory();
 
 	}
@@ -30,7 +34,7 @@ public class Level {
 	 * @param drawArea       The area of the wall
 	 * @param brickCnt       The amount of bricks
 	 * @param lineCnt        The amount of line
-	 * @param brickSizeRatio The ratio of the brick
+	 * @param brickSizeRatio The ratio of the brick size
 	 * @param type           The type of the brick
 	 * @return An array of brick objects
 	 */

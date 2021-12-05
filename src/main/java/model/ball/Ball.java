@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 
 /**
- * This model class Ball stores basic Ball information /////////////////////////////////////////////////////////////
+ * This class stores the pure application data for BallController class
  * @author Emily
  *
  */
@@ -23,17 +23,18 @@ public class Ball {
     private int speedX;
     private int speedY;
     
+    private Color border;
+    private Color inner;
+    
     /**
      * Constructor of Ball class
      * @param center 
      * 
      * @param center The coordinates of the center of the ball
      * @param radius The radius of the ball
-     * @param inner The color code for the inner color of the ball object
-     * @param border The color code for the border color of the ball object
      */
     
-    public Ball(Point2D center, int radius){
+    public Ball(Point2D center, int radius, Color inner,Color border){
     	this.center = center;
     	
     	up = new Point2D.Double();
@@ -49,6 +50,9 @@ public class Ball {
         
         speedX = 0;
         speedY = 0;
+        
+        this.border = border;
+        this.inner  = inner;
     }
     
     /**
@@ -114,6 +118,24 @@ public class Ball {
 
     public int getSpeedY(){
         return speedY;
+    }
+    
+    /**
+     * Getter for the border color of the ball object
+     * @return Color code of the border color of the ball object
+     */
+	
+	public Color getBorderColor(){
+        return border;
+    }
+    
+    /**
+     * Getter for the inner Color of the ball object
+     * @return Color code of the inner color of the ball object 
+     */
+
+    public Color getInnerColor(){
+        return inner;
     }
 
     public Point2D getUp() {

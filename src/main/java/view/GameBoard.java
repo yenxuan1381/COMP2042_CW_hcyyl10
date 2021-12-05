@@ -45,6 +45,8 @@ import javax.swing.JOptionPane;
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.controller.WallController;
+import main.java.gameWindow.DebugConsole;
+import main.java.gameWindow.HighScore;
 import main.java.model.ball.RubberBall;
 import main.java.model.brick.SpecialBrick;
 
@@ -95,9 +97,13 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 	private java.util.List<BrickController> bricks;
 	private int speedBoost;
 
-	private DrawObjects d;
+//	private DrawObjects d;
 	private DebugConsole debugConsole;
 	private HighScore highscore;
+	
+	private BallView ballView;
+	private BrickView brickView;
+	private PlayerView playerView;
 
 	/**
 	 * Constructor to create the game board
@@ -134,8 +140,8 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 				HighScore highscore = new HighScore(stage);
 				this.highscore = highscore;
 				highscore.readFile();
-				record = Integer.parseInt(highscore.highscore);
-				nameRecord = highscore.username;
+				record = Integer.parseInt(highscore.getHighscore());
+				nameRecord = highscore.getUsername();
 				flag = 0;
 
 			}
@@ -293,7 +299,10 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 	public void paint(Graphics g) {
 
 		Graphics2D g2d = (Graphics2D) g;
-		d = new DrawObjects();
+//		d = new DrawObjects();
+		ballView = new BallView();
+		brickView = new BrickView();
+		playerView = new PlayerView();
 
 		clear(g2d);
 
@@ -306,15 +315,15 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 			g2d.drawString("(" + nameRecord + ")", 460, 140);
 		}
 
-		d.drawBall(wall.getBall(), g2d);
+		ballView.drawBall(wall.getBall(), g2d);
 
 		// for bricks in the wall,
 		for (BrickController b : wall.getBricks())
 			// if brick is not broken, draw the brick
 			if (!b.isBroken())
-				d.drawBrick(b, g2d);
+				brickView.drawBrick(b, g2d);
 
-		d.drawPlayer(wall.getPlayer(), g2d);
+		playerView.drawPlayer(wall.getPlayer(), g2d);
 
 		if (showPauseMenu)
 			drawMenu(g2d);

@@ -19,8 +19,7 @@ package main.java;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import main.java.view.MenuView;
+import main.java.gameWindow.MenuView;
 
 
 public class GraphicsMain extends Application {

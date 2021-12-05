@@ -1,4 +1,4 @@
-package main.java.view;
+package main.java.gameWindow;
 
 import java.awt.EventQueue;
 

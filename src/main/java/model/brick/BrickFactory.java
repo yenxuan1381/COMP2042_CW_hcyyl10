@@ -6,11 +6,11 @@ import java.awt.Point;
 import main.java.controller.BrickController;
 
 public class BrickFactory {
-	
+
 	public BrickFactory() {
-		
+
 	}
-	
+
 	/**
 	 * Method to create brick objects
 	 * 

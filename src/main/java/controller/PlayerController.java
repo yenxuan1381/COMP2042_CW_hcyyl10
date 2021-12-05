@@ -17,7 +17,7 @@ public class PlayerController implements Playable {
 	private int moveAmount;
 
 	private Player playerModel;
-	private PlayerView playerView;
+//	private PlayerView playerView;
 
 	/**
 	 * Default constructor
@@ -41,7 +41,7 @@ public class PlayerController implements Playable {
 		moveAmount = 0;
 		playerModel = new Player(ballPoint, width, container);
 		playerFace = makeRectangle(width, height);
-		playerView = new PlayerView();
+//		playerView = new PlayerView();
 
 	}
 

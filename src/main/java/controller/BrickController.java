@@ -6,12 +6,16 @@ import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 
-import main.java.model.ball.Ball;
 import main.java.model.brick.Brick;
 import main.java.model.brick.CrackDirection;
 import main.java.model.brick.ImpactDirection;
 import main.java.view.BrickView;
 
+/**
+ * This abstract BrickController class allows 
+ * @author Windows10
+ *
+ */
 public abstract class BrickController {
 
 	public static final int MIN_CRACK = 1;
@@ -22,16 +26,25 @@ public abstract class BrickController {
 	private Shape brickFace;
 
 	Brick brickModel;
-	BrickView brickView;
-	
-	
+//	BrickView brickView;
+
+	/**
+	 * Constructor to create the brick controller
+	 * 
+	 * @param name     name of brick
+	 * @param pos      position of brick
+	 * @param size     size of brick
+	 * @param border   border color of the brick
+	 * @param inner    inner color of the brick
+	 * @param strength the strength of the brick
+	 */
 
 	public BrickController(String name, Point pos, Dimension size, Color border, Color inner, int strength) {
 
-		brickModel = new Brick(name, strength);
+		brickModel = new Brick(name, strength, border, inner);
 		setBrickFace(makeBrickFace(pos, size));
 
-		brickView = new BrickView(border, inner);
+//		brickView = new BrickView(border, inner);
 
 	}
 
@@ -126,7 +139,7 @@ public abstract class BrickController {
 	 */
 
 	public Color getBorder() {
-		return brickView.getBorderColor();
+		return brickModel.getBorderColor();
 	}
 
 	/**
@@ -136,7 +149,7 @@ public abstract class BrickController {
 	 */
 
 	public Color getInner() {
-		return brickView.getInnerColor();
+		return brickModel.getInnerColor();
 	}
 
 	/**
