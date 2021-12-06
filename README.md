@@ -1,5 +1,7 @@
 # COMP2042_CW_hcyyl10
-Brick Breaker
+- Brick Breaker by Lo Yen Xuan
+- OWA: hcyyl10
+- Email: hcyyl10@nottingham.edu.my
 
 ### Table of Contents  
 - **[Project Setup](#project-setup)**<br> 
@@ -24,7 +26,7 @@ To run the game, select Run -> Run Configurations -> Arguments ->
 
 Add the following line to the VM Arguments:
 ```
---module-path "**/path/to/JavaFX/lib**" --add-modules=javafx.controls
+--module-path "/path/to/JavaFX/lib" --add-modules=javafx.controls
 ```
 In my case, the path to my JavaFx library is as follow:
 ```
@@ -52,7 +54,12 @@ Now, run the project as a Java Application. **Game Starts**
 	- broke down large classes to adhere the SOLID principle
 	- added interfaces (playable interface)
 	- removed primitive obsession, used enum instead
+	- error handling (throws exception, display error message)
 - Arranged Code into MVC pattern
+	- brick
+	- ball
+	- player
+	- wall
 - Applied some design patterns
 	- Level Factory
 	- Brick Factory
@@ -66,9 +73,12 @@ Now, run the project as a Java Application. **Game Starts**
 
 
 ## Additions
-- Added Highscore
+- Added Highscore 
+	- Able to save and load the highscore from a txt file
+	- When the current score of the player is greater than the highscore, it overwrites the highscore
 
-[insert image]
+![image](https://user-images.githubusercontent.com/76611914/144796426-604b7c73-3297-4fc2-a49e-056709244e9f.png)
+
 
 - Added Username input
 
@@ -79,6 +89,12 @@ Now, run the project as a Java Application. **Game Starts**
 	- The presence of special brick when creating a single brick type level
 	- From 4 levels -> 8 levels
 	- New brick type: Vibranium Brick, stronger than steel brick (able to crack)
+
+- Added choice to choose level in Debug Panel
+
+![image](https://user-images.githubusercontent.com/76611914/144796566-8b8204d9-0c57-462a-9caf-fe097579543c.png)
+
+
 - Additional Features
 	- Cheatmode enabled when special brick is destroyed
 	- 2 types of cheatmode
@@ -91,7 +107,8 @@ Now, run the project as a Java Application. **Game Starts**
   
 	- Created a main menu using JavaFx
 
-  [insert image]
+  ![image](https://user-images.githubusercontent.com/76611914/144796471-cdd32bcf-0913-49a6-a7d9-cdf3c162fe1e.png)
+
 	
   
 	
