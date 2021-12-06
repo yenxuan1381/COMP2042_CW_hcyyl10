@@ -16,13 +16,6 @@ class WallTest {
 
 	WallController w1 = new WallController(new Rectangle(0, 0, 600, 450), 30, 3, 6 / 2, new Point(300, 430));
 
-//    @Test
-//    public void testImpacts() {
-//        w1.findImpacts();
-//        assertEquals(0, b1.getSpeedY());
-//        assertEquals(0, b1.getSpeedX());
-//    }
-
 	@Test
 	public void testBrickCount() {
 		w1.nextLevel();
