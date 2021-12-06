@@ -1,43 +1,125 @@
 # COMP2042_CW_hcyyl10
-Brick Breaker
+- Brick Breaker by Lo Yen Xuan
+- OWA: hcyyl10
+- Email: hcyyl10@nottingham.edu.my
 
-#### Table of Contents
-* [ Introduction ] (#introduction)
-* [ Basic Maintenance ] (#basic-maintenance)
-* [ Additions ] (#additions)
-* [ Git Version Control ] (#git)
-* [ Technologies ] (#technologies)
-* [ Setup ] (#setup)
+### Table of Contents  
+- **[Project Setup](#project-setup)**<br> 
+- **[Refactoring](#refactoring)**<br>
+- **[Additions](#additions)**<br>
+- **[Documentation](#documentation)**<br>
+- **[Git Use](#git-use)**<br>
 
 
+## Project Setup
+
+I'm using Java 11.0.2 on eclipse.
+```
+$user > java --version
+openjdk 11.0.2 2019-01-15
+OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
+```
+
+To run the game, select Run -> Run Configurations -> Arguments -> 
 
 
-<a name="introduction"></a>
-## Introduction
-Simple brick breaker game
+Add the following line to the VM Arguments:
+```
+--module-path "/path/to/JavaFX/lib" --add-modules=javafx.controls
+```
+In my case, the path to my JavaFx library is as follow:
+```
+--module-path "C:\javafx\javafx-sdk-17.0.1\lib" --add-modules=javafx.controls
+```
 
-<a name="basic-maintenance"></a>
-## Basic Maintenance
-highlights only
 
-<a name="additions"></a>
-## Additions 
-highlights only
+After that, run
+- Maven Build
+- Maven Clean
+- Maven Install
 
-<a name="git"></a>
-## Git Version Control
-blah
 
-<a name="technologies"></a>
-## Technologies
-Project is created with:
-Java version:
-Eclipse version:
-Maven version:
-JavaFX version:
-JUnit version: 5.0
+Everything is working fine if the "BUILD SUCCESS" is printed in the console
 
-<a name="setup"></a>
-## Setup
-To run this project, install it locally...
-...
+
+Now, run the project as a Java Application. **Game Starts**
+
+
+## Refactoring
+- Organized classes into packages
+- Removed code smells
+	- removed duplicated code
+	- improved encapsulation
+	- broke down large classes to adhere the SOLID principle
+	- added interfaces (playable interface)
+	- removed primitive obsession, used enum instead
+	- error handling (throws exception, display error message)
+- Arranged Code into MVC pattern
+	- brick
+	- ball
+	- player
+	- wall
+- Applied some design patterns
+	- Level Factory
+	- Brick Factory
+	- Added Singleton to Player Class
+- Added meaningful JUnit tests
+	- BrickTest
+	- BallTest
+	- WallTest
+	- PlayerTest
+- Converted the project to Maven project
+
+
+## Additions
+- Added Highscore 
+	- Able to save and load the highscore from a txt file
+	- When the current score of the player is greater than the highscore, it overwrites the highscore
+
+![image](https://user-images.githubusercontent.com/76611914/144796426-604b7c73-3297-4fc2-a49e-056709244e9f.png)
+
+
+- Added Username input
+
+![image](https://user-images.githubusercontent.com/76611914/144702175-58a6d401-e26f-4fb7-bb40-0b8be890a4ce.png)
+
+
+- Added additional levels
+	- The presence of special brick when creating a single brick type level
+	- From 4 levels -> 8 levels
+	- New brick type: Vibranium Brick, stronger than steel brick (able to crack)
+
+- Added choice to choose level in Debug Panel
+
+![image](https://user-images.githubusercontent.com/76611914/144796566-8b8204d9-0c57-462a-9caf-fe097579543c.png)
+
+
+- Additional Features
+	- Cheatmode enabled when special brick is destroyed
+	- 2 types of cheatmode
+		- 30% increases the speed of the ball
+		- 70% the ball bounces oddly after impact
+	- Additional Info Page created using Java Swing
+	
+  ![image](https://user-images.githubusercontent.com/76611914/144702228-d33f5818-4cac-441f-971c-78743269cdfd.png)
+  
+  
+	- Created a main menu using JavaFx
+
+  ![image](https://user-images.githubusercontent.com/76611914/144796471-cdd32bcf-0913-49a6-a7d9-cdf3c162fe1e.png)
+
+	
+  
+	
+
+
+## Documentation
+- Javadocs : [insert link here]
+- High-level class diagram:
+- Readme
+
+## Git Use
+- commit history from the start of the project
+- meaningful commit messages
+- use of branch and merge function
