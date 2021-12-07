@@ -99,6 +99,8 @@ Now, run the project as a Java Application. **Game Starts**
 	- 2 types of cheatmode
 		- 30% chance it increases the speed of the ball
 		- 70% chance the ball bounces oddly after impact
+	- Added health bricks
+		- Add health when health brick is destroyed
 	- Additional Info Page created using Java Swing
 	
   ![image](https://user-images.githubusercontent.com/76611914/144702228-d33f5818-4cac-441f-971c-78743269cdfd.png)
