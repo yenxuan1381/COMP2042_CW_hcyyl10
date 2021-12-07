@@ -10,7 +10,7 @@ import java.awt.geom.Point2D;
  *
  */
 
-public class Ball {
+public class BallModel {
 
 	private Shape ballFace;
 
@@ -36,7 +36,7 @@ public class Ball {
 	 * @param border The color code for the border color of the ball object
 	 */
 
-	public Ball(Point2D center, int radius, Color inner, Color border) {
+	public BallModel(Point2D center, int radius, Color inner, Color border) {
 		this.center = center;
 
 		up = new Point2D.Double();

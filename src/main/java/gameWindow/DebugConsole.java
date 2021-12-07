@@ -21,9 +21,6 @@ import javax.swing.*;
 
 import main.java.controller.BallController;
 import main.java.controller.WallController;
-import main.java.model.*;
-import main.java.model.ball.Ball;
-import main.java.model.wall.Wall;
 import main.java.view.GameBoard;
 
 import java.awt.*;

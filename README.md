@@ -48,13 +48,16 @@ Now, run the project as a Java Application. **Game Starts**
 
 ## Refactoring
 - Organized classes into packages
+- Basic Code Maintenance
+	- Changed Variable & Class name to improve readability
+	- Improved encapsulation
+	- Added Interfaces (Playable interface)
+	- broke down large classes (wall & gameboard class is too large)
+	- Error Handling (Throws exception, print error message)
 - Removed code smells
 	- removed duplicated code
-	- improved encapsulation
-	- broke down large classes to adhere the SOLID principle
-	- added interfaces (playable interface)
-	- removed primitive obsession, used enum instead
-	- error handling (throws exception, display error message)
+	- removed primitive obsession, used enum instead (enum CrackDirection, enum Impact Direction, enum BrickType)
+	- Separated Crack Class into its own individual class to adhere the Single Responsibility principle
 - Arranged Code into MVC pattern
 	- brick
 	- ball
@@ -66,10 +69,25 @@ Now, run the project as a Java Application. **Game Starts**
 	- Added Singleton to Player Class
 - Added meaningful JUnit tests
 	- BrickTest
+		- testImpactDirection()
+		- testImpact()
+		- testRepair()
+		- testBrickStrength()
 	- BallTest
+		- testMoveBall()
+		- testReverseSpeed()
+		- testZeroSpeed()
 	- WallTest
+		- testBrickCount()
+		- testMove()
+		- testReset()
+		- testStage()
+		- testLevel()
 	- PlayerTest
-- Converted the project to Maven project
+		- testSingleton()
+		- testMovePlayer()
+		- testImpact()
+- Converted the project to Maven project to handle dependencies
 
 
 ## Additions
@@ -98,8 +116,8 @@ Now, run the project as a Java Application. **Game Starts**
 - Additional Features
 	- Cheatmode enabled when special brick is destroyed
 	- 2 types of cheatmode
-		- 30% increases the speed of the ball
-		- 70% the ball bounces oddly after impact
+		- 30% chance it increases the speed of the ball
+		- 70% chance the ball bounces oddly after impact
 	- Additional Info Page created using Java Swing
 	
   ![image](https://user-images.githubusercontent.com/76611914/144702228-d33f5818-4cac-441f-971c-78743269cdfd.png)

@@ -6,7 +6,7 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 import main.java.controller.BrickController;
-import main.java.model.ball.Ball;
+import main.java.model.ball.BallModel;
 import main.java.view.BrickView;
 
 /**
@@ -16,7 +16,7 @@ import main.java.view.BrickView;
  *
  */
 
-public class Brick {
+public class BrickModel {
 
 	private int fullStrength;
 	private int strength;
@@ -37,7 +37,7 @@ public class Brick {
 	 * @param strength Strength of the brick object
 	 */
 
-	public Brick(String name, int strength, Color border, Color inner) {
+	public BrickModel(String name, int strength, Color border, Color inner) {
 
 		setBroken(false);
 		setRnd(new Random());
@@ -56,7 +56,7 @@ public class Brick {
 	 */
 
 	public static void setRnd(Random rnd) {
-		Brick.rnd = rnd;
+		BrickModel.rnd = rnd;
 	}
 
 	/**

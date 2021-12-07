@@ -7,7 +7,7 @@ import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 
-import main.java.model.brick.Brick;
+import main.java.model.brick.BrickModel;
 import main.java.model.brick.ImpactDirection;
 import main.java.model.crack.CrackDirection;
 import main.java.view.BrickView;
@@ -27,7 +27,7 @@ public abstract class BrickController {
 
 	private Shape brickFace;
 
-	private Brick brickModel;
+	private BrickModel brickModel;
 	private BrickView brickView;
 	
 	/**
@@ -43,7 +43,7 @@ public abstract class BrickController {
 
 	public BrickController(String name, Point pos, Dimension size, Color border, Color inner, int strength) {
 
-		brickModel = new Brick(name, strength, border, inner);
+		brickModel = new BrickModel(name, strength, border, inner);
 		setBrickFace(makeBrickFace(pos, size));
 
 	}

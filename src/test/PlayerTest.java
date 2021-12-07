@@ -8,10 +8,7 @@ import java.awt.Rectangle;
 import org.junit.jupiter.api.Test;
 
 import main.java.controller.PlayerController;
-import main.java.model.*;
-import main.java.model.ball.Ball;
 import main.java.model.ball.RubberBall;
-import main.java.model.player.Player;
 
 class PlayerTest {
 
@@ -45,12 +42,12 @@ class PlayerTest {
 		assertFalse(p1.impact(b2));
 	}
 	
-//	@Test
-//	void testMoveTo() {
-//		Player p1 = Player.getUniquePlayer(new Point(300,430),150,10, new Rectangle(10,10,20,20));
-//		p1.moveTo(new Point(400,530));
-//		assertEquals(new Point(390,530), p1.getPlayerFace().getLocation());
-//	}
+	@Test
+	void testMoveTo() {
+		PlayerController p1 = PlayerController.getUniquePlayer(new Point(300,430),150,10, new Rectangle(500,500,500,500));
+		p1.moveTo(new Point(400,530));
+		assertEquals(new Point(325,530), p1.getPlayerFace().getLocation());
+	}
 	
 	
 	

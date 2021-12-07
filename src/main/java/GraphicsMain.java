@@ -21,26 +21,36 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import main.java.gameWindow.MenuView;
 
+/**
+ * Main class to call the main method
+ * 
+ * @author Emily
+ *
+ */
 
 public class GraphicsMain extends Application {
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
-		
+
 		try {
 			MenuView menu = new MenuView(stage);
 			stage.show();
 
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}	
-		
-	}
-	
-    public static void main(String[] args){
-        launch(args);
-    }
+		}
 
-	
+	}
+
+	/**
+	 * Main method to run the game
+	 * 
+	 * @param args argument
+	 */
+
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 }

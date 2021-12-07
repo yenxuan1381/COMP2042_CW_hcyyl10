@@ -6,7 +6,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import main.java.model.player.Playable;
-import main.java.model.player.Player;
+import main.java.model.player.PlayerModel;
 import main.java.view.PlayerView;
 
 /**
@@ -24,7 +24,7 @@ public class PlayerController implements Playable {
 	private Rectangle playerFace;
 	private int moveAmount;
 
-	private Player playerModel;
+	private PlayerModel playerModel;
 	private PlayerView playerView;
 
 	/**
@@ -50,7 +50,7 @@ public class PlayerController implements Playable {
 	private PlayerController(Point ballPoint, int width, int height, Rectangle container) {
 
 		moveAmount = 0;
-		playerModel = new Player(ballPoint, width, container);
+		playerModel = new PlayerModel(ballPoint, width, container);
 		playerFace = makeRectangle(width, height);
 		playerView = new PlayerView();
 

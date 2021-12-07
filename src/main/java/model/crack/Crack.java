@@ -7,7 +7,7 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
-import main.java.model.brick.Brick;
+import main.java.model.brick.BrickModel;
 
 /**
  * Objects of this class represent the cracks of the brick
@@ -154,7 +154,7 @@ public class Crack {
 
 	private int randomInBounds(int bound) {
 		int n = (bound * 2) + 1;
-		return Brick.getRnd().nextInt(n) - bound;
+		return BrickModel.getRnd().nextInt(n) - bound;
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class Crack {
 
 	private int jumps(int bound, double probability) {
 
-		if (Brick.getRnd().nextDouble() > probability)
+		if (BrickModel.getRnd().nextDouble() > probability)
 			return randomInBounds(bound);
 		return 0;
 
@@ -206,11 +206,11 @@ public class Crack {
 
 		switch (vertical) {
 		case HORIZONTAL:
-			pos = Brick.getRnd().nextInt(to.x - from.x) + from.x;
+			pos = BrickModel.getRnd().nextInt(to.x - from.x) + from.x;
 			out.setLocation(pos, to.y);
 			break;
 		case VERTICAL:
-			pos = Brick.getRnd().nextInt(to.y - from.y) + from.y;
+			pos = BrickModel.getRnd().nextInt(to.y - from.y) + from.y;
 			out.setLocation(to.x, pos);
 			break;
 		default:

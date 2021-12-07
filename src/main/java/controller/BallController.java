@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.RectangularShape;
 
-import main.java.model.ball.Ball;
+import main.java.model.ball.BallModel;
 import main.java.view.BallView;
 
 /**
@@ -18,7 +18,7 @@ abstract public class BallController {
 
 	private Shape ballFace;
 
-	private Ball ballModel;
+	private BallModel ballModel;
 	private BallView ballView;
 
 	/**
@@ -32,7 +32,7 @@ abstract public class BallController {
 
 	public BallController(Point2D center, int radius, Color inner, Color border) {
 
-		ballModel = new Ball(center, radius, inner, border);
+		ballModel = new BallModel(center, radius, inner, border);
 		ballFace = makeBall(center, radius);
 		ballView = new BallView();
 

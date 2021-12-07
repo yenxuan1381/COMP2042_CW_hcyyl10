@@ -24,7 +24,7 @@ import java.util.Random;
 import main.java.model.ball.RubberBall;
 import main.java.model.crack.CrackDirection;
 import main.java.model.wall.LevelFactory;
-import main.java.model.wall.Wall;
+import main.java.model.wall.WallModel;
 
 /**
  * Objects of this class creates a wall of bricks
@@ -40,7 +40,7 @@ public class WallController {
 	private BrickController[][] levels;
 
 	private LevelFactory levelFac;
-	private Wall wallModel;
+	private WallModel wallModel;
 
 	/**
 	 * Constructor to create a wall class
@@ -60,7 +60,7 @@ public class WallController {
 		levels = levelFac.makeLevels(drawArea, brickCount, lineCount, brickDimensionRatio);
 
 		rnd = new Random();
-		wallModel = new Wall(drawArea, ballPos);
+		wallModel = new WallModel(drawArea, ballPos);
 		makeBall(ballPos);
 
 		int speedX, speedY;

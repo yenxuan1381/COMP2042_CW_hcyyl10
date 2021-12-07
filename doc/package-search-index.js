@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"main.java.gameWindow"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"main.java.view"}]

@@ -22,7 +22,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import main.java.controller.BallController;
-import main.java.model.ball.Ball;
+import main.java.model.ball.BallModel;
 
 /**
  * This class stores the pure application data for playerController class
@@ -31,7 +31,7 @@ import main.java.model.ball.Ball;
  *
  */
 
-public class Player {
+public class PlayerModel {
 
 	public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
 	public static final Color INNER_COLOR = Color.GREEN;
@@ -49,7 +49,7 @@ public class Player {
 	 * @param container The rectangle shape of the player's paddle
 	 */
 
-	public Player(Point ballPoint, int width, Rectangle container) {
+	public PlayerModel(Point ballPoint, int width, Rectangle container) {
 
 		this.ballPoint = ballPoint;
 

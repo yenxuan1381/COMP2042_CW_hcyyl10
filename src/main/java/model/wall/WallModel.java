@@ -29,7 +29,7 @@ import main.java.controller.PlayerController;
  *
  */
 
-public class Wall {
+public class WallModel {
 
 	private Rectangle area;
 
@@ -51,7 +51,7 @@ public class Wall {
 	 * @param ballPos  the coordinates of the point of the ball
 	 */
 
-	public Wall(Rectangle drawArea, Point ballPos) {
+	public WallModel(Rectangle drawArea, Point ballPos) {
 
 		this.startPoint = new Point(ballPos);
 

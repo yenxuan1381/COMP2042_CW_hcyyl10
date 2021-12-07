@@ -21,8 +21,6 @@ import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
 import main.java.controller.WallController;
-import main.java.model.wall.Wall;
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 

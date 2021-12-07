@@ -4,27 +4,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.Random;
-
 import org.junit.jupiter.api.Test;
 
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
-import main.java.model.*;
-import main.java.model.ball.Ball;
 import main.java.model.ball.RubberBall;
-import main.java.model.brick.Brick;
 import main.java.model.brick.CementBrick;
 import main.java.model.brick.ClayBrick;
 import main.java.model.brick.ImpactDirection;
-import main.java.model.brick.SteelBrick;
 import main.java.model.crack.CrackDirection;
 
 class BrickTest {
-	
-//	BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-//	BrickController cementBrick = new CementBrick(new Point(300,430), new Dimension(10,10));
-
 
 	@Test
 	void testLeftImpact() {
