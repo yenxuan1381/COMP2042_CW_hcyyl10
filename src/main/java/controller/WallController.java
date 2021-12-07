@@ -185,6 +185,16 @@ public class WallController {
 	public int getBallCount() {
 		return wallModel.getBallCount();
 	}
+	
+	/**
+	 * Setter to set the number of balls
+	 * 
+	 * @param ballCount Number of balls
+	 */
+
+	public void setBallCount(int ballCount) {
+		wallModel.setBallCount(ballCount);
+	}
 
 	/**
 	 * Method to determine is the ball lost (no impact made)
@@ -224,7 +234,7 @@ public class WallController {
 		for (BrickController b : getBricks())
 			b.repair();
 		wallModel.setBrickCount(getBricks().length);
-		wallModel.setBallCount(10);
+		setBallCount(3);
 	}
 
 	/**
@@ -318,7 +328,7 @@ public class WallController {
 	 */
 
 	public void resetBallCount() {
-		wallModel.setBallCount(3);
+		setBallCount(3);
 	}
 
 	/**

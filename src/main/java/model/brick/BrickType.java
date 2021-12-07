@@ -37,6 +37,12 @@ public enum BrickType {
 	 */
 	
 	SPECIAL, 
+	
+	/**
+	 * Health Brick
+	 */
+	
+	HEALTH, 
 }
 
 

@@ -81,7 +81,9 @@ public class DebugPanel extends JPanel {
 			else
 				System.out.println("Last Level, no more levels left");
 		});
-		resetBalls = makeButton("Reset Balls", e -> wall.resetBallCount());
+		resetBalls = makeButton("Reset Balls", e ->
+		{wall.resetBallCount();
+		wall.ballReset();});
 
 		ballXSpeed = makeSlider(-4, 4, e -> wall.setBallXSpeed(ballXSpeed.getValue()));
 		ballYSpeed = makeSlider(-4, 4, e -> wall.setBallYSpeed(ballYSpeed.getValue()));

@@ -72,10 +72,19 @@ public class Level {
 			p.setLocation(x, y);
 
 			double r = rand.nextDouble();
+			double r2 = rand.nextDouble();
 
 			// 30% chance to create Special Brick
 			if (r < 0.3) {
-				tmp[i] = brFactory.makeBrick(p, brickSize, BrickType.SPECIAL);
+				
+				if (r2 < 0.3) {
+					tmp[i] = brFactory.makeBrick(p, brickSize, BrickType.HEALTH);
+				}
+				
+				else {
+					tmp[i] = brFactory.makeBrick(p, brickSize, BrickType.SPECIAL);
+				}
+				
 			}
 
 			else {
@@ -138,8 +147,9 @@ public class Level {
 
 		Dimension brickSize = new Dimension((int) brickLen, (int) brickHgt);
 		Point p = new Point();
-
+		
 		Random rand = new Random();
+
 
 		int i;
 		for (i = 0; i < tmp.length; i++) {
@@ -153,14 +163,35 @@ public class Level {
 			p.setLocation(x, y);
 
 			boolean b = ((line % 2 == 0 && i % 2 == 0) || (line % 2 != 0 && posX > centerLeft && posX <= centerRight));
-			tmp[i] = b ? brFactory.makeBrick(p, brickSize, typeA) : brFactory.makeBrick(p, brickSize, typeB);
+//			tmp[i] = b ? brFactory.makeBrick(p, brickSize, typeA) : brFactory.makeBrick(p, brickSize, typeB);
+			
+			double r = rand.nextDouble();
+
+			// 10% chance create health brick instead
+			if (r < 0.1) {
+				tmp[i] = brFactory.makeBrick(p, brickSize, BrickType.HEALTH);
+			}
+
+			else {
+				tmp[i] = b ? brFactory.makeBrick(p, brickSize, typeA) : brFactory.makeBrick(p, brickSize, typeB);
+			}
 
 		}
 
 		for (double y = brickHgt; i < tmp.length; i++, y += 2 * brickHgt) {
 			double x = (brickOnLine * brickLen) - (brickLen / 2);
 			p.setLocation(x, y);
-			tmp[i] = brFactory.makeBrick(p, brickSize, typeA);
+//			tmp[i] = brFactory.makeBrick(p, brickSize, typeA);
+			
+			double r = rand.nextDouble();
+
+			if (r < 0.1) {
+				tmp[i] = brFactory.makeBrick(p, brickSize, BrickType.HEALTH);
+			}
+
+			else {
+				tmp[i] = brFactory.makeBrick(p, brickSize, typeA);
+			}
 
 		}
 		return tmp;

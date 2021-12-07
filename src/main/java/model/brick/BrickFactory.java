@@ -49,6 +49,9 @@ public class BrickFactory {
 		case VIBRANIUM:
 			out = new VibraniumBrick(point, size);
 			break;
+		case HEALTH:
+			out = new HealthBrick(point, size);
+			break;
 		default:
 			throw new IllegalArgumentException(String.format("Unknown Type:%d\n", type));
 

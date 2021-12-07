@@ -69,24 +69,9 @@ Now, run the project as a Java Application. **Game Starts**
 	- Added Singleton to Player Class
 - Added meaningful JUnit tests
 	- BrickTest
-		- testImpactDirection()
-		- testImpact()
-		- testRepair()
-		- testBrickStrength()
 	- BallTest
-		- testMoveBall()
-		- testReverseSpeed()
-		- testZeroSpeed()
 	- WallTest
-		- testBrickCount()
-		- testMove()
-		- testReset()
-		- testStage()
-		- testLevel()
 	- PlayerTest
-		- testSingleton()
-		- testMovePlayer()
-		- testImpact()
 - Converted the project to Maven project to handle dependencies
 
 
@@ -108,10 +93,6 @@ Now, run the project as a Java Application. **Game Starts**
 	- From 4 levels -> 8 levels
 	- New brick type: Vibranium Brick, stronger than steel brick (able to crack)
 
-- Added choice to choose level in Debug Panel
-
-![image](https://user-images.githubusercontent.com/76611914/144796566-8b8204d9-0c57-462a-9caf-fe097579543c.png)
-
 
 - Additional Features
 	- Cheatmode enabled when special brick is destroyed
@@ -121,6 +102,12 @@ Now, run the project as a Java Application. **Game Starts**
 	- Additional Info Page created using Java Swing
 	
   ![image](https://user-images.githubusercontent.com/76611914/144702228-d33f5818-4cac-441f-971c-78743269cdfd.png)
+
+
+	- Added choice to choose level in Debug Panel
+
+  ![image](https://user-images.githubusercontent.com/76611914/144796566-8b8204d9-0c57-462a-9caf-fe097579543c.png)
+
   
   
 	- Created a main menu using JavaFx

@@ -19,8 +19,6 @@ package main.java.gameWindow;
 
 import javax.swing.*;
 
-import main.java.view.GameBoard;
-
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;

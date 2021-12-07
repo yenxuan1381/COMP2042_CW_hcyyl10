@@ -57,7 +57,7 @@ public class WallModel {
 
 		level = 0;
 
-		ballCount = 10;
+		ballCount = 3;
 		ballLost = false;
 
 		area = drawArea;
@@ -113,13 +113,6 @@ public class WallModel {
 		getBall().setYSpeed(s);
 	}
 
-	/**
-	 * Method to reset the amount of balls left to 10 balls
-	 */
-
-	public void resetBallCount() {
-		ballCount = 10;
-	}
 
 	/**
 	 * Getter to get the player object

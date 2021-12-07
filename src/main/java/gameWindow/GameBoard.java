@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package main.java.view;
+package main.java.gameWindow;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -45,10 +45,12 @@ import javax.swing.JOptionPane;
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.controller.WallController;
-import main.java.gameWindow.DebugConsole;
-import main.java.gameWindow.HighScore;
 import main.java.model.ball.RubberBall;
+import main.java.model.brick.HealthBrick;
 import main.java.model.brick.SpecialBrick;
+import main.java.view.BallView;
+import main.java.view.BrickView;
+import main.java.view.PlayerView;
 
 /**
  * Objects of this class extend JComponenet and implements KeyListener,
@@ -164,6 +166,15 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 
 						else
 							superSpeedBall();
+
+					}
+				}
+				
+				// If a new health brick is broken, increase life
+				if (br.getClass() == HealthBrick.class && br.isBroken()) {
+					if (!bricks.contains(br)) {
+						bricks.add(br);
+						wall.setBallCount(wall.getBallCount() + 1);
 
 					}
 				}
