@@ -46,7 +46,6 @@ import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.controller.WallController;
 import main.java.model.ball.BallFactory;
-import main.java.model.ball.RubberBall;
 import main.java.model.brick.HealthBrick;
 import main.java.model.brick.SpecialBrick;
 import main.java.view.BallView;

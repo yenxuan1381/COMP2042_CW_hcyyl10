@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import main.java.controller.BallController;
 import main.java.controller.PlayerController;
 import main.java.model.ball.BallFactory;
-import main.java.model.ball.RubberBall;
 
 class PlayerTest {
 	

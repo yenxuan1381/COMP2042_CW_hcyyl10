@@ -1,13 +1,7 @@
 package main.java.model.brick;
 
 import java.awt.*;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
 import java.util.Random;
-
-import main.java.controller.BrickController;
-import main.java.model.ball.BallModel;
-import main.java.view.BrickView;
 
 /**
  * This class stores the application data for brickController class

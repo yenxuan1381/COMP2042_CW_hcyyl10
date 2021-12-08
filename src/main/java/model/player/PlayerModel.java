@@ -18,11 +18,6 @@
 package main.java.model.player;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-
-import main.java.controller.BallController;
-import main.java.model.ball.BallModel;
 
 /**
  * This class stores the pure application data for playerController class
