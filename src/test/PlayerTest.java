@@ -7,10 +7,14 @@ import java.awt.Rectangle;
 
 import org.junit.jupiter.api.Test;
 
+import main.java.controller.BallController;
 import main.java.controller.PlayerController;
+import main.java.model.ball.BallFactory;
 import main.java.model.ball.RubberBall;
 
 class PlayerTest {
+	
+	BallFactory ballFac = new BallFactory();
 
 	@Test
 	void testSingleton() {
@@ -35,9 +39,10 @@ class PlayerTest {
 	
 	@Test
 	void testImpact() {
-		PlayerController p1 = PlayerController.getUniquePlayer(new Point(300,430),150,10, new Rectangle(300,430,150,10));
-		RubberBall b1 = new RubberBall(new Point(300,430));
-		RubberBall b2 = new RubberBall(new Point(200,330));
+		PlayerController p1 = PlayerController.getUniquePlayer(new Point(300,430),150,10, new Rectangle(300,430,150,10));		
+		BallController b1 = ballFac.makeBallType("RUBBER", new Point(300,430));
+		BallController b2 = ballFac.makeBallType("RUBBER", new Point(200,330));
+
 		assertTrue(p1.impact(b1));
 		assertFalse(p1.impact(b2));
 	}

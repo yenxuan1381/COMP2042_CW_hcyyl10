@@ -45,6 +45,7 @@ import javax.swing.JOptionPane;
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.controller.WallController;
+import main.java.model.ball.BallFactory;
 import main.java.model.ball.RubberBall;
 import main.java.model.brick.HealthBrick;
 import main.java.model.brick.SpecialBrick;
@@ -97,6 +98,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 	private Double r;
 	private java.util.List<BallController> balls;
 	private java.util.List<BrickController> bricks;
+	private BallFactory ballFac;
 	private int speedBoost;
 
 	private DebugConsole debugConsole;
@@ -132,6 +134,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 		this.stage = wall.getStage();
 
 		bricks = new ArrayList<BrickController>();
+		ballFac = new BallFactory();
 
 		gameTimer = new javax.swing.Timer(10, e -> {
 
@@ -263,8 +266,8 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 
 		Random rnd = new Random();
 
-		BallController ballA = new RubberBall(p);
-		BallController ballB = new RubberBall(p);
+		BallController ballA = ballFac.makeBallType("RUBBER", p);
+		BallController ballB = ballFac.makeBallType("RUBBER", p);
 
 		balls.add(ballA);
 		balls.add(ballB);

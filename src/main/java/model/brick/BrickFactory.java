@@ -23,12 +23,12 @@ public class BrickFactory {
 	}
 
 	/**
-	 * Method to create brick objects
+	 * Factory method to create brick objects
 	 * 
 	 * @param point The point of the brick object
 	 * @param size  The size of the brick object
 	 * @param type  The type of the brick object
-	 * @return The brick object
+	 * @return A brick object
 	 */
 
 	public BrickController makeBrick(Point point, Dimension size, BrickType type) {

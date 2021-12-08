@@ -49,7 +49,7 @@ Now, run the project as a Java Application. **Game Starts**
 ## Refactoring
 - Organized classes into packages
 - Basic Code Maintenance
-	- Changed Variable & Class name to improve readability
+	- Renamed Variable & Class name to improve readability
 	- Improved encapsulation
 	- Added Interfaces (Playable interface)
 	- broke down large classes (wall & gameboard class is too large)
@@ -83,22 +83,23 @@ Now, run the project as a Java Application. **Game Starts**
 ![image](https://user-images.githubusercontent.com/76611914/144796426-604b7c73-3297-4fc2-a49e-056709244e9f.png)
 
 
-- Added Username input
-
-![image](https://user-images.githubusercontent.com/76611914/144702175-58a6d401-e26f-4fb7-bb40-0b8be890a4ce.png)
-
-
 - Added additional levels
 	- The presence of special brick when creating a single brick type level
 	- From 4 levels -> 8 levels
 	- New brick type: Vibranium Brick, stronger than steel brick (able to crack)
+	- When creating single type brick level, there's chance to spawn health brick and special brick, when creating chessboard type level, there's 10% chance to spawn health brick
 
 
 - Additional Features
 	- Cheatmode enabled when special brick is destroyed
 	- 2 types of cheatmode
 		- 30% chance it increases the speed of the ball
-		- 70% chance the ball bounces oddly after impact
+		- 70% chance the ball bounces oddly after impact 
+	- Added Username input
+
+  ![image](https://user-images.githubusercontent.com/76611914/144702175-58a6d401-e26f-4fb7-bb40-0b8be890a4ce.png)
+
+
 	- Added health bricks
 		- Add health when health brick is destroyed
 	- Additional Info Page created using Java Swing

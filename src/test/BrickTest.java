@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
+import main.java.model.ball.BallFactory;
 import main.java.model.ball.RubberBall;
 import main.java.model.brick.CementBrick;
 import main.java.model.brick.ClayBrick;
@@ -15,11 +16,13 @@ import main.java.model.brick.ImpactDirection;
 import main.java.model.crack.CrackDirection;
 
 class BrickTest {
+	
+	BallFactory ballFac = new BallFactory();
 
 	@Test
 	void testLeftImpact() {
 		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-		RubberBall b1 = new RubberBall(new Point(280,430));
+		BallController b1 = ballFac.makeBallType("RUBBER", new Point(280,430));
 		b1.setXSpeed(20);
 		b1.move();
 		
@@ -30,7 +33,7 @@ class BrickTest {
 	@Test
 	void testRightImpact() {
 		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-		RubberBall b1 = new RubberBall(new Point(305,430));
+		BallController b1 = ballFac.makeBallType("RUBBER", new Point(305,430));
 
 		assertEquals(ImpactDirection.RIGHT_IMPACT, clayBrick.findImpact(b1));
 	}
@@ -38,7 +41,8 @@ class BrickTest {
 	@Test
 	void testUpImpact() {
 		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-		BallController b1 = new RubberBall(new Point(300,425));
+		BallController b1 = ballFac.makeBallType("RUBBER", new Point(300,425));
+
 		
 		assertEquals(ImpactDirection.UP_IMPACT, clayBrick.findImpact(b1));
 	}
@@ -46,7 +50,8 @@ class BrickTest {
 	@Test
 	void testDownImpact() {
 		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-		BallController b1 = new RubberBall(new Point(300,440));
+		BallController b1 = ballFac.makeBallType("RUBBER", new Point(300,440));
+
 
 		assertEquals(ImpactDirection.DOWN_IMPACT, clayBrick.findImpact(b1));
 	}
@@ -87,7 +92,8 @@ class BrickTest {
 	@Test
 	void testFindImpact() {
 		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
-		BallController b1 = new RubberBall(new Point(300,440));
+		BallController b1 = ballFac.makeBallType("RUBBER", new Point(300,440));
+
 		ImpactDirection res = null;
 		clayBrick.impact();
 		res = clayBrick.findImpact(b1);
