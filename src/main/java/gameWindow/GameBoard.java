@@ -317,7 +317,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 
 		clear(g2d);
 
-		g2d.setColor(Color.BLUE);
+		g2d.setColor(Color.WHITE);
 		g2d.drawString(message, 250, 225);
 		g2d.drawString("Current Score : " + score, 30, 110);
 		g2d.drawString("(" + name + ")", 30, 140);

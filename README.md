@@ -66,6 +66,7 @@ Now, run the project as a Java Application. **Game Starts**
 - Applied some design patterns
 	- Level Factory
 	- Brick Factory
+	- Ball Factory
 	- Added Singleton to Player Class
 - Added meaningful JUnit tests
 	- BrickTest
