@@ -125,9 +125,12 @@ public class WallModel {
 	}
 
 	/**
-	 * Setter to set the player object
+	 * Setter to set the player
 	 * 
-	 * @param player The player object
+	 * @param ballPoint The point of the ball position
+	 * @param width The width of the player's paddle
+	 * @param height The height of the player's paddle
+	 * @param container The rectangle container of the player's paddle
 	 */
 
 	public void setPlayer(Point ballPoint, int width, int height, Rectangle container) {
