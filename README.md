@@ -81,7 +81,7 @@ Now, run the project as a Java Application. **Game Starts**
 	- Able to save and load the highscore from a txt file
 	- When the current score of the player is greater than the highscore, it overwrites the highscore
 
-![image](https://user-images.githubusercontent.com/76611914/144796426-604b7c73-3297-4fc2-a49e-056709244e9f.png)
+![image](https://user-images.githubusercontent.com/76611914/145346830-816b5bf4-68cd-490f-9e8b-99b94041104e.png)
 
 
 - Added additional levels
