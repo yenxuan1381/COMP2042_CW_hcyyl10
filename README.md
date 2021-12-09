@@ -126,6 +126,11 @@ Now, run the project as a Java Application. **Game Starts**
 ## Documentation
 - Javadocs : [insert link here]
 - High-level class diagram:
+
+![BrickBreaker](https://user-images.githubusercontent.com/76611914/145363937-3dfafeb1-8de0-4052-b5d0-6d458d5c1224.jpg)
+
+
+
 - Readme
 
 ## Git Use
