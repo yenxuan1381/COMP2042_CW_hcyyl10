@@ -103,10 +103,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 	private DebugConsole debugConsole;
 	private HighScore highscore;
 
-	private BallView ballView;
-	private BrickView brickView;
-	private PlayerView playerView;
-
+	
 	/**
 	 * Constructor to create the game board
 	 * 
@@ -311,9 +308,6 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 	public void paint(Graphics g) {
 
 		Graphics2D g2d = (Graphics2D) g;
-		ballView = new BallView();
-		brickView = new BrickView();
-		playerView = new PlayerView();
 
 		clear(g2d);
 
@@ -326,15 +320,15 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 			g2d.drawString("(" + nameRecord + ")", 460, 140);
 		}
 
-		ballView.drawBall(wall.getBall(), g2d);
+		wall.getBall().updateView(wall.getBall(), g2d);
 
 		// for bricks in the wall,
 		for (BrickController b : wall.getBricks())
 			// if brick is not broken, draw the brick
 			if (!b.isBroken())
-				brickView.drawBrick(b, g2d);
+				b.updateView(b, g2d);
 
-		playerView.drawPlayer(wall.getPlayer(), g2d);
+		wall.getPlayer().updateView(wall.getPlayer(), g2d);
 
 		if (showPauseMenu)
 			drawMenu(g2d);

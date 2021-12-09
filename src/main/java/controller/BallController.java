@@ -65,13 +65,13 @@ abstract public class BallController {
 	}
 	
 	/**
-	 * Method to draw the ball
+	 * Method to update the view of the ball
 	 * 
 	 * @param ball Ball object
 	 * @param g2d  Graphics
 	 */
 	
-	public void drawBall(BallController ball, Graphics2D g2d) {
+	public void updateView(BallController ball, Graphics2D g2d) {
 		ballView.drawBall(ball, g2d);
 	}
 
@@ -86,6 +86,7 @@ abstract public class BallController {
 		ballModel.setXSpeed(x);
 		ballModel.setYSpeed(y);
 	}
+
 
 	/**
 	 * Setter to set horizontal speed of the ball

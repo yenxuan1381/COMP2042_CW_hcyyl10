@@ -45,7 +45,8 @@ public abstract class BrickController {
 
 		brickModel = new BrickModel(name, strength, border, inner);
 		setBrickFace(makeBrickFace(pos, size));
-
+		brickView = new BrickView();
+		
 	}
 
 	/**
@@ -133,13 +134,13 @@ public abstract class BrickController {
 	}
 	
 	/**
-	 * Method to draw the bricks
+	 * Method to update the view of the bricks
 	 * 
 	 * @param brick Brick object
 	 * @param g2d   Graphics
 	 */
 	
-	public void drawBrick(BrickController brick, Graphics2D g2d) {
+	public void updateView(BrickController brick, Graphics2D g2d) {
 		brickView.drawBrick(brick, g2d);
 	}
 

@@ -153,7 +153,7 @@ public class PlayerController implements Playable {
 	 * @param g2d Graphics
 	 */
 	
-	public void drawPlayer(PlayerController p, Graphics2D g2d) {
+	public void updateView(PlayerController p, Graphics2D g2d) {
 		playerView.drawPlayer(p, g2d);
 	}
 
