@@ -12,8 +12,6 @@ import java.awt.geom.Point2D;
 
 public class BallModel {
 
-	private Shape ballFace;
-
 	private Point2D center;
 
 	public Point2D up;
@@ -97,16 +95,6 @@ public class BallModel {
 
 	public Point2D getPosition() {
 		return center;
-	}
-
-	/**
-	 * Getter for the shape of the ball object
-	 * 
-	 * @return the shape of the ballFace
-	 */
-
-	public Shape getBallFace() {
-		return ballFace;
 	}
 
 	/**

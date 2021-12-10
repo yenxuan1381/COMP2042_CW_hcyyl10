@@ -98,8 +98,8 @@ public class WallController {
 
 	/**
 	 * Method to find the impact made by the ball
-	 * <li>if impact made between ball and player, ball change direction
-	 * <li>if impact made between ball and wall, the amount of bricks decreases
+	 * if impact made between ball and player, ball change direction
+	 * if impact made between ball and wall, the amount of bricks decreases
 	 */
 
 	public void findImpacts() {
@@ -241,7 +241,7 @@ public class WallController {
 	 * Method to determine if the balls left is 0
 	 * 
 	 * @return True if the number of balls left is 0, False if the number of balls
-	 *         left is > 0
+	 *         left is more than 0
 	 */
 
 	public boolean ballEnd() {
@@ -253,7 +253,7 @@ public class WallController {
 	 * bricks left is 0
 	 * 
 	 * @return True if the number of bricks left is 0, False if the number of bricks
-	 *         left is > 0
+	 *         left is more than 0
 	 */
 
 	public boolean isDone() {
