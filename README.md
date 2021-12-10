@@ -127,7 +127,7 @@ Now, right click the main project and run it as a Java Application. **Game Start
 - Javadocs : [insert link here]
 - High-level class diagram:
 
-![BrickBreaker](https://user-images.githubusercontent.com/76611914/145363937-3dfafeb1-8de0-4052-b5d0-6d458d5c1224.jpg)
+![image](https://user-images.githubusercontent.com/76611914/145511804-db92745b-bbd1-4c8d-8b14-97ddbc024259.png)
 
 
 
