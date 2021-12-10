@@ -40,10 +40,10 @@ After that, run
 - Maven Install
 
 
-Everything is working fine if the "BUILD SUCCESS" is printed in the console
+Once the Maven Dependencies folder appeared, the program is now ready to be run.
 
 
-Now, run the project as a Java Application. **Game Starts**
+Now, right click the main project and run it as a Java Application. **Game Starts**
 
 
 ## Refactoring
