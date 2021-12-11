@@ -124,7 +124,7 @@ Now, right click the main project and run it as a Java Application. **Game Start
 
 
 ## Documentation
-- Javadocs : [insert link here]
+- Javadocs 
 - High-level class diagram:
 
 ![image](https://user-images.githubusercontent.com/76611914/145511804-db92745b-bbd1-4c8d-8b14-97ddbc024259.png)
