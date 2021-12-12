@@ -73,6 +73,8 @@ Now, right click the main project and run it as a Java Application. **Game Start
 	- BallTest
 	- WallTest
 	- PlayerTest
+	- CrackTest
+	- LevelTest
 - Converted the project to Maven project to handle dependencies
 
 

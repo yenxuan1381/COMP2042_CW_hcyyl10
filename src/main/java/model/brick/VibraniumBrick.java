@@ -10,7 +10,8 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 import main.java.controller.BrickController;
-import main.java.model.crack.Crack;
+import main.java.controller.CrackController;
+import main.java.model.crack.CrackModel;
 import main.java.model.crack.CrackDirection;
 
 /**
@@ -29,7 +30,7 @@ public class VibraniumBrick extends BrickController {
 	private static final int VIB_STRENGTH = 3;
 	private static final double VIB_PROBABILITY = 0.6;
 
-	private Crack crack;
+	private CrackController crack;
 	private Random rnd;
 	private Shape brickFace;
 
@@ -43,7 +44,7 @@ public class VibraniumBrick extends BrickController {
 	public VibraniumBrick(Point point, Dimension size) {
 		super(NAME, point, size, DEF_BORDER, DEF_INNER, VIB_STRENGTH);
 		rnd = new Random();
-		crack = new Crack(DEF_CRACK_DEPTH, DEF_STEPS);
+		crack = new CrackController(DEF_CRACK_DEPTH, DEF_STEPS);
 		brickFace = super.getBrickFace();
 	}
 
@@ -76,7 +77,7 @@ public class VibraniumBrick extends BrickController {
 
 	private void updateBrick() {
 		if (!super.isBroken()) {
-			GeneralPath gp = crack.draw();
+			GeneralPath gp = crack.updateView();
 			gp.append(super.getBrickFace(), false);
 			brickFace = gp;
 		}

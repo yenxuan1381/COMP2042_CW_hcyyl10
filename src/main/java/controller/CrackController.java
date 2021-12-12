@@ -1,4 +1,4 @@
-package main.java.model.crack;
+package main.java.controller;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -8,6 +8,9 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 import main.java.model.brick.BrickModel;
+import main.java.model.crack.CrackModel;
+import main.java.model.crack.CrackDirection;
+import main.java.view.CrackView;
 
 /**
  * Objects of this class represent the cracks of the brick
@@ -16,16 +19,19 @@ import main.java.model.brick.BrickModel;
  *
  */
 
-public class Crack {
+public class CrackController {
 
-	private static final int CRACK_SECTIONS = 3;
-	private static final double JUMP_PROBABILITY = 0.7;
+//	private static final int CRACK_SECTIONS = 3;
+//	private static final double JUMP_PROBABILITY = 0.7;
+//
+//	protected static Random rnd;
+//	private GeneralPath crack;
+//
+//	private int crackDepth;
+//	private int steps;
 
-	protected static Random rnd;
-	private GeneralPath crack;
-
-	private int crackDepth;
-	private int steps;
+	private CrackModel crackModel;
+	private CrackView crackView;
 
 	/**
 	 * Constructer of crack class
@@ -34,22 +40,21 @@ public class Crack {
 	 * @param steps      The steps of the crack
 	 */
 
-	public Crack(int crackDepth, int steps) {
+	public CrackController(int crackDepth, int steps) {
 
-		crack = new GeneralPath();
-		this.crackDepth = crackDepth;
-		this.steps = steps;
+		crackModel = new CrackModel(crackDepth, steps);
+		crackView = new CrackView(crackDepth, steps);
 
 	}
 
 	/**
-	 * Method to draw the crack
+	 * Method to update the view of the crack
 	 * 
-	 * @return Crack
+	 * @return general path crack
 	 */
 
-	public GeneralPath draw() {
-		return crack;
+	public GeneralPath updateView() {
+		return crackView.draw();
 	}
 
 	/**
@@ -57,7 +62,7 @@ public class Crack {
 	 */
 
 	public void reset() {
-		crack.reset();
+		crackView.getCrack().reset();
 	}
 
 	/**
@@ -121,28 +126,28 @@ public class Crack {
 
 		path.moveTo(start.x, start.y);
 
-		double w = (end.x - start.x) / (double) steps;
-		double h = (end.y - start.y) / (double) steps;
+		double w = (end.x - start.x) / (double) getSteps();
+		double h = (end.y - start.y) / (double) getSteps();
 
-		int bound = crackDepth;
+		int bound = getCrackDepth();
 		int jump = bound * 5;
 
 		double x, y;
 
-		for (int i = 1; i < steps; i++) {
+		for (int i = 1; i < getSteps(); i++) {
 
 			x = (i * w) + start.x;
 			y = (i * h) + start.y + randomInBounds(bound);
 
-			if (inMiddle(i, CRACK_SECTIONS, steps))
-				y += jumps(jump, JUMP_PROBABILITY);
+			if (inMiddle(i, crackModel.CRACK_SECTIONS, getSteps()))
+				y += jumps(jump, crackModel.JUMP_PROBABILITY);
 
 			path.lineTo(x, y);
 
 		}
 
 		path.lineTo(end.x, end.y);
-		crack.append(path, true);
+		crackView.getCrack().append(path, true);
 	}
 
 	/**
@@ -219,4 +224,23 @@ public class Crack {
 		return out;
 	}
 
+	/**
+	 * Getter to get the crack depth
+	 * 
+	 * @return crack depth
+	 */
+
+	public int getCrackDepth() {
+		return crackModel.getCrackDepth();
+	}
+
+	/**
+	 * Getter to get the steps
+	 * 
+	 * @return steps
+	 */
+
+	public int getSteps() {
+		return crackModel.getSteps();
+	}
 }

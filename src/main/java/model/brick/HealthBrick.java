@@ -5,7 +5,8 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
 import main.java.controller.BrickController;
-import main.java.model.crack.Crack;
+import main.java.controller.CrackController;
+import main.java.model.crack.CrackModel;
 import main.java.model.crack.CrackDirection;
 
 /**
@@ -23,7 +24,7 @@ public class HealthBrick extends BrickController {
 	private static final Color DEF_BORDER = new Color(147, 147, 147);
 	private static final int HEALTH_STRENGTH = 2;
 
-	private Crack crack;
+	private CrackController crack;
 	private Shape brickFace;
 
 	/**
@@ -35,7 +36,7 @@ public class HealthBrick extends BrickController {
 
 	public HealthBrick(Point point, Dimension size) {
 		super(NAME, point, size, DEF_BORDER, DEF_INNER, HEALTH_STRENGTH);
-		crack = new Crack(DEF_CRACK_DEPTH, DEF_STEPS);
+		crack = new CrackController(DEF_CRACK_DEPTH, DEF_STEPS);
 		brickFace = super.getBrickFace();
 	}
 
@@ -68,7 +69,7 @@ public class HealthBrick extends BrickController {
 
 	private void updateBrick() {
 		if (!super.isBroken()) {
-			GeneralPath gp = crack.draw();
+			GeneralPath gp = crack.updateView();
 			gp.append(super.getBrickFace(), false);
 			brickFace = gp;
 		}

@@ -9,13 +9,14 @@ import java.awt.geom.GeneralPath;
 import org.junit.jupiter.api.Test;
 
 import main.java.controller.BrickController;
+import main.java.controller.CrackController;
 import main.java.model.brick.CementBrick;
-import main.java.model.crack.Crack;
+import main.java.model.crack.CrackModel;
 
 class CrackTest {
 	
 	BrickController cementBrick = new CementBrick(new Point(300,430), new Dimension(10,10));
-	Crack crack = new Crack(305,445);
+	CrackController crack = new CrackController(305,445);
 	GeneralPath path = new GeneralPath();
 
 	@Test
@@ -27,7 +28,7 @@ class CrackTest {
 	@Test
 	void testDraw() {
 		crack.makeCrack(new Point(30,20), new Point(30,0));
-		path = crack.draw();
+		path = crack.updateView();
         assertNotNull(path);
 	}
 
