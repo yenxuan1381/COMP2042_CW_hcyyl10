@@ -60,6 +60,7 @@ Now, right click the main project and run it as a Java Application. **Game Start
 	- removed duplicated code
 	- removed primitive obsession, used enum instead (enum CrackDirection, enum Impact Direction, enum BrickType)
 	- Separated Crack Class into its own individual class to adhere the Single Responsibility principle
+	- Did not allow crack class to inherit from brick class due to Liskov's Substitution Principle
 - Arranged Code into MVC pattern
 	- brick
 	- ball
@@ -78,7 +79,7 @@ Now, right click the main project and run it as a Java Application. **Game Start
 	- PlayerTest
 	- CrackTest
 	- LevelTest
-- Converted the project to Maven project to handle dependencies
+- Converted the project to Maven project to handle dependencies (JUnit & JavaFx)
 
 
 ## Additions
