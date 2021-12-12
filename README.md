@@ -65,6 +65,7 @@ Now, right click the main project and run it as a Java Application. **Game Start
 	- ball
 	- player
 	- wall
+	- crack
 - Applied some design patterns
 	- Level Factory
 	- Brick Factory
