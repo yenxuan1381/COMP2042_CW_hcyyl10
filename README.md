@@ -21,6 +21,8 @@ OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
 OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
 ```
 
+I have tested my program on 2 different Windows devices using Eclipse
+
 To run the game, select Run -> Run Configurations -> Arguments -> 
 
 
@@ -68,7 +70,7 @@ Now, right click the main project and run it as a Java Application. **Game Start
 	- Brick Factory
 	- Ball Factory
 	- Added Singleton to Player Class
-- Added meaningful JUnit tests
+- Added meaningful JUnit tests, testing for the void methods for each class
 	- BrickTest
 	- BallTest
 	- WallTest
