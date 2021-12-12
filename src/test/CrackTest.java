@@ -8,14 +8,12 @@ import java.awt.geom.GeneralPath;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.controller.BrickController;
-import main.java.controller.CrackController;
-import main.java.model.brick.CementBrick;
-import main.java.model.crack.CrackModel;
+import main.java.gameObjects.controller.CrackController;
+import main.java.gameObjects.model.brick.CementBrick;
 
 class CrackTest {
 	
-	BrickController cementBrick = new CementBrick(new Point(300,430), new Dimension(10,10));
+	CementBrick cementBrick = new CementBrick(new Point(300,430), new Dimension(10,10));
 	CrackController crack = new CrackController(305,445);
 	GeneralPath path = new GeneralPath();
 

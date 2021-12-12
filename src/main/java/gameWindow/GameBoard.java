@@ -42,15 +42,15 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import main.java.controller.BallController;
-import main.java.controller.BrickController;
-import main.java.controller.WallController;
-import main.java.model.ball.BallFactory;
-import main.java.model.brick.HealthBrick;
-import main.java.model.brick.SpecialBrick;
-import main.java.view.BallView;
-import main.java.view.BrickView;
-import main.java.view.PlayerView;
+import main.java.gameObjects.controller.BallController;
+import main.java.gameObjects.controller.BrickController;
+import main.java.gameObjects.controller.WallController;
+import main.java.gameObjects.model.ball.BallFactory;
+import main.java.gameObjects.model.brick.HealthBrick;
+import main.java.gameObjects.model.brick.SpecialBrick;
+import main.java.gameObjects.view.BallView;
+import main.java.gameObjects.view.BrickView;
+import main.java.gameObjects.view.PlayerView;
 
 /**
  * Objects of this class extend JComponenet and implements KeyListener,

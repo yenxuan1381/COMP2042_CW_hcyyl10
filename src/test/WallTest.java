@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.controller.WallController;
+import main.java.gameObjects.controller.WallController;
 
 class WallTest {
 

@@ -8,16 +8,16 @@ import java.awt.Rectangle;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.controller.BrickController;
-import main.java.model.brick.BrickType;
-import main.java.model.brick.CementBrick;
-import main.java.model.brick.ClayBrick;
-import main.java.model.brick.HealthBrick;
-import main.java.model.brick.SpecialBrick;
-import main.java.model.brick.SteelBrick;
-import main.java.model.brick.VibraniumBrick;
-import main.java.model.wall.Level;
-import main.java.model.wall.LevelFactory;
+import main.java.gameObjects.controller.BrickController;
+import main.java.gameObjects.model.brick.BrickType;
+import main.java.gameObjects.model.brick.CementBrick;
+import main.java.gameObjects.model.brick.ClayBrick;
+import main.java.gameObjects.model.brick.HealthBrick;
+import main.java.gameObjects.model.brick.SpecialBrick;
+import main.java.gameObjects.model.brick.SteelBrick;
+import main.java.gameObjects.model.brick.VibraniumBrick;
+import main.java.gameObjects.model.wall.Level;
+import main.java.gameObjects.model.wall.LevelFactory;
 
 class LevelTest {
 	

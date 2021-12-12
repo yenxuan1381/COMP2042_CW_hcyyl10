@@ -20,7 +20,7 @@ package main.java.gameWindow;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
-import main.java.controller.WallController;
+import main.java.gameObjects.controller.WallController;
 import java.awt.*;
 import java.awt.event.ActionListener;
 

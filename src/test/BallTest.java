@@ -6,8 +6,8 @@ import java.awt.Point;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.controller.BallController;
-import main.java.model.ball.BallFactory;
+import main.java.gameObjects.controller.BallController;
+import main.java.gameObjects.model.ball.BallFactory;
 
 class BallTest {
 	

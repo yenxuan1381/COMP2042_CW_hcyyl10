@@ -6,16 +6,16 @@ import java.awt.Dimension;
 import java.awt.Point;
 import org.junit.jupiter.api.Test;
 
-import main.java.controller.BallController;
-import main.java.controller.BrickController;
-import main.java.model.ball.BallFactory;
-import main.java.model.brick.BrickFactory;
-import main.java.model.brick.BrickType;
-import main.java.model.brick.CementBrick;
-import main.java.model.brick.ClayBrick;
-import main.java.model.brick.HealthBrick;
-import main.java.model.brick.ImpactDirection;
-import main.java.model.crack.CrackDirection;
+import main.java.gameObjects.controller.BallController;
+import main.java.gameObjects.controller.BrickController;
+import main.java.gameObjects.model.ball.BallFactory;
+import main.java.gameObjects.model.brick.BrickFactory;
+import main.java.gameObjects.model.brick.BrickType;
+import main.java.gameObjects.model.brick.CementBrick;
+import main.java.gameObjects.model.brick.ClayBrick;
+import main.java.gameObjects.model.brick.HealthBrick;
+import main.java.gameObjects.model.brick.ImpactDirection;
+import main.java.gameObjects.model.crack.CrackDirection;
 
 class BrickTest {
 	

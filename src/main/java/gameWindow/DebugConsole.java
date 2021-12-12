@@ -19,8 +19,8 @@ package main.java.gameWindow;
 
 import javax.swing.*;
 
-import main.java.controller.BallController;
-import main.java.controller.WallController;
+import main.java.gameObjects.controller.BallController;
+import main.java.gameObjects.controller.WallController;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;
