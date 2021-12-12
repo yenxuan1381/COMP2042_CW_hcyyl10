@@ -21,14 +21,6 @@ import main.java.gameObjects.view.CrackView;
 
 public class CrackController {
 
-//	private static final int CRACK_SECTIONS = 3;
-//	private static final double JUMP_PROBABILITY = 0.7;
-//
-//	protected static Random rnd;
-//	private GeneralPath crack;
-//
-//	private int crackDepth;
-//	private int steps;
 
 	private CrackModel crackModel;
 	private CrackView crackView;
