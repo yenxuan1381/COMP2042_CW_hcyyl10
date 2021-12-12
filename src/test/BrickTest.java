@@ -9,18 +9,24 @@ import org.junit.jupiter.api.Test;
 import main.java.controller.BallController;
 import main.java.controller.BrickController;
 import main.java.model.ball.BallFactory;
+import main.java.model.brick.BrickFactory;
+import main.java.model.brick.BrickType;
 import main.java.model.brick.CementBrick;
 import main.java.model.brick.ClayBrick;
+import main.java.model.brick.HealthBrick;
 import main.java.model.brick.ImpactDirection;
 import main.java.model.crack.CrackDirection;
 
 class BrickTest {
 	
 	BallFactory ballFac = new BallFactory();
+	BrickFactory brFactory = new BrickFactory();
+	Point point = new Point(300,430);
+	Dimension dimension = new Dimension(10,10);
 
 	@Test
 	void testLeftImpact() {
-		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(point, dimension);
 		BallController b1 = ballFac.makeBallType("RUBBER", new Point(280,430));
 		b1.setXSpeed(20);
 		b1.move();
@@ -31,7 +37,7 @@ class BrickTest {
 	
 	@Test
 	void testRightImpact() {
-		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(point, dimension);
 		BallController b1 = ballFac.makeBallType("RUBBER", new Point(305,430));
 
 		assertEquals(ImpactDirection.RIGHT_IMPACT, clayBrick.findImpact(b1));
@@ -39,7 +45,7 @@ class BrickTest {
 	
 	@Test
 	void testUpImpact() {
-		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(point, dimension);
 		BallController b1 = ballFac.makeBallType("RUBBER", new Point(300,425));
 
 		
@@ -48,7 +54,7 @@ class BrickTest {
 	
 	@Test
 	void testDownImpact() {
-		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(point, dimension);
 		BallController b1 = ballFac.makeBallType("RUBBER", new Point(300,440));
 
 
@@ -58,16 +64,17 @@ class BrickTest {
 	
 	@Test
 	void testRepair() {
-		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(point, dimension);
 		clayBrick.setImpact(new Point(300,440),CrackDirection.DOWN);
-		clayBrick.repair();
+		assertTrue(clayBrick.isBroken());
 		
+		clayBrick.repair();
 		assertFalse(clayBrick.isBroken());
 	}
 	
 	@Test
 	void clayBrickStrength() {
-		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(point, dimension);
 		clayBrick.setImpact(new Point(300,440),CrackDirection.DOWN);
 		
 		assertTrue(clayBrick.isBroken());
@@ -75,7 +82,7 @@ class BrickTest {
 	
 	@Test
 	void cementBrickStrength() {
-		BrickController cementBrick = new CementBrick(new Point(300,430), new Dimension(10,10));
+		BrickController cementBrick = new CementBrick(point, dimension);
 		cementBrick.setImpact(new Point(300,440),CrackDirection.DOWN);
 		
 		assertFalse(cementBrick.isBroken());
@@ -83,14 +90,14 @@ class BrickTest {
 	
 	@Test
 	void testImpact() {
-		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(point, dimension);
 		clayBrick.impact();
 		assertTrue(clayBrick.isBroken());
 	}
 	
 	@Test
 	void testFindImpact() {
-		BrickController clayBrick = new ClayBrick(new Point(300,430), new Dimension(10,10));
+		BrickController clayBrick = new ClayBrick(point, dimension);
 		BallController b1 = ballFac.makeBallType("RUBBER", new Point(300,440));
 
 		ImpactDirection res = null;
@@ -98,6 +105,14 @@ class BrickTest {
 		res = clayBrick.findImpact(b1);
 		
 		assertEquals(ImpactDirection.NO_IMPACT, res);
+	}
+	
+	@Test
+	void testFactory() {
+		BrickController tmp = brFactory.makeBrick(point, dimension, BrickType.HEALTH);
+		BrickController healthBrick = new HealthBrick(point, dimension);
+		assertNotNull(tmp);
+		assertEquals(tmp.getClass(), healthBrick.getClass());
 	}
 
 }

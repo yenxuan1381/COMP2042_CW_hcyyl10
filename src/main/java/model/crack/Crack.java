@@ -115,7 +115,7 @@ public class Crack {
 	 * @param end   The ending point of the crack
 	 */
 
-	protected void makeCrack(Point start, Point end) {
+	public void makeCrack(Point start, Point end) {
 
 		GeneralPath path = new GeneralPath();
 

@@ -97,9 +97,9 @@ public class WallController {
 	}
 
 	/**
-	 * Method to find the impact made by the ball
-	 * if impact made between ball and player, ball change direction
-	 * if impact made between ball and wall, the amount of bricks decreases
+	 * Method to find the impact made by the ball if impact made between ball and
+	 * player, ball change direction if impact made between ball and wall, the
+	 * amount of bricks decreases
 	 */
 
 	public void findImpacts() {
@@ -185,7 +185,7 @@ public class WallController {
 	public int getBallCount() {
 		return wallModel.getBallCount();
 	}
-	
+
 	/**
 	 * Setter to set the number of balls
 	 * 
@@ -410,6 +410,17 @@ public class WallController {
 
 	public int getScore() {
 		return wallModel.getScore();
+	}
+
+	/**
+	 * Setter to set the ball lost
+	 * 
+	 * @param b true if ball is lost, false is ball is not lost
+	 */
+
+	public void setBallLost(boolean b) {
+		wallModel.setBallLost(b);
+
 	}
 
 }

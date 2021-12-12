@@ -14,6 +14,14 @@ class WallTest {
 	WallController w1 = new WallController(new Rectangle(0, 0, 600, 450), 30, 3, 6 / 2, new Point(300, 430));
 
 	@Test
+	void testFindImpacts() {
+		w1.getBall().setYSpeed(10);
+		w1.getPlayer().impact(w1.getBall());
+		w1.findImpacts();
+		assertEquals(-10, w1.getBall().getSpeedY());
+	}
+
+	@Test
 	public void testBrickCount() {
 		w1.nextLevel();
 		assertEquals(31, w1.getBrickCount());
@@ -34,17 +42,25 @@ class WallTest {
 		assertEquals(2, w1.getStage());
 
 	}
-	
+
 	@Test
-	public void testReset() {
+	public void testResetLevel() {
 		w1.nextLevel();
 		w1.nextLevel();
 		w1.resetLevel();
 		w1.nextLevel();
-		assertEquals(1,w1.getStage());
+		assertEquals(1, w1.getStage());
 		w1.nextLevel();
-		assertEquals(2,w1.getStage());
+		assertEquals(2, w1.getStage());
 	}
+	
+	@Test
+    void testBallReset() {
+		w1.setBallLost(true);
+		assertTrue(w1.isBallLost());
+		w1.ballReset();
+        assertFalse(w1.isBallLost());
+    }
 
 	@Test
 	public void testLevel() {
