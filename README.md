@@ -37,7 +37,7 @@ In my case, the path to my JavaFx library is as follow:
 
 
 After that, run
-- Maven Build
+- Maven Build (goal: "verify")
 - Maven Clean
 - Maven Install
 
@@ -45,7 +45,11 @@ After that, run
 Once the Maven Dependencies folder appeared, the program is now ready to be run.
 
 
-Now, right click the main project and run it as a Java Application. **Game Starts**
+Now, right click the main project and run it as a Java Application. 
+
+If any error occured, try right click the project -> maven -> reload project.
+
+**Game Starts**
 
 
 ## Refactoring
@@ -133,7 +137,7 @@ Now, right click the main project and run it as a Java Application. **Game Start
 - Javadocs 
 - High-level class diagram:
 
-![image](https://user-images.githubusercontent.com/76611914/145511804-db92745b-bbd1-4c8d-8b14-97ddbc024259.png)
+![image](https://user-images.githubusercontent.com/76611914/145712652-b76f55de-dde4-408a-9105-e9ba5efd7225.png)
 
 
 
