@@ -1,5 +1,13 @@
 # Brick Breaker
 
+Brick Breaker is a classic arcade game implemented in Java using JavaFX for the graphical user interface. The game is designed to entertain and challenge players by allowing them to control a paddle and a ball to break bricks on the screen. It provides a fun and nostalgic gaming experience, reminiscent of the popular brick-breaking games of the past.
+
+This project has undergone thorough refactoring to ensure clean and maintainable code. It adheres to clean code policies and best practices, resulting in improved code quality and readability. The refactoring efforts included organizing classes into packages, renaming variables and classes for improved clarity, encapsulating data properly, and breaking down large classes into smaller, more manageable ones.
+
+Additionally, code smells were addressed by removing duplicated code, eliminating primitive obsession, and applying appropriate design patterns. The project follows the MVC (Model-View-Controller) architectural pattern, enhancing code separation and modularity. Meaningful JUnit tests were added to validate the functionality of various classes.
+
+The documentation for this project includes Javadocs, providing comprehensive documentation for classes and methods. A high-level class diagram was created to visualize the project's structure and relationships. These efforts contribute to the project's maintainability and ease of understanding for future development or modifications.
+
 ### Table of Contents  
 - **[Project Setup](#project-setup)**<br> 
 - **[Refactoring](#refactoring)**<br>
