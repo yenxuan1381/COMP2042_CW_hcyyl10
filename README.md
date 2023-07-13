@@ -1,12 +1,4 @@
 # Brick Breaker
-- COMP2042_CW_hcyyl10
-- Brick Breaker by Lo Yen Xuan
-- OWA: hcyyl10
-- Email: hcyyl10@nottingham.edu.my
-- University of Nottingham Malaysia
-- Connect with me for more info ^_^
-
-*final marks of this module: 92*
 
 ### Table of Contents  
 - **[Project Setup](#project-setup)**<br> 
